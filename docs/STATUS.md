@@ -1,25 +1,24 @@
 # STATUS — 2026-11-23
 
 ## Current objective
-Demonstrate a new UI/UX (Brand Manual 2025 rebrand + lower information density) to the developers of the original system (https://ap52gestaoestrategica.pages.dev/). Work is local in `site/`; nothing published.
+Demonstrate a new UI/UX (Brand Manual 2025 rebrand + lower information density) to the developers of the original system (https://ap52gestaoestrategica.pages.dev/). Live demo: https://andersonguilher.github.io/ap52-gestao-redesign/ (GitHub Pages, deployed from `main`).
 
 ## Observed state (evidence: files and Git)
-- Git: branch `main`, 4 commits pushed to the public repo https://github.com/andersonguilher/ap52-gestao-redesign. Ignored (local only): `.env`, `site_original_backup/`, `identidade_visual.pdf`.
-- `.github/workflows/pages.yml` is local and untracked: the push needs the `workflow` token scope (`gh auth refresh -s workflow`). Pages is not enabled yet.
+- Git: branch `main`, commits pushed to the public repo https://github.com/andersonguilher/ap52-gestao-redesign. Ignored (local only): `.env`, `site_original_backup/`, `identidade_visual.pdf`.
+- GitHub Pages is enabled (source: GitHub Actions) via `.github/workflows/pages.yml`; every push to `main` redeploys `site/`.
 - The former `site/.git` (1 commit) was moved to `../site-nested-git-backup` (outside the repo).
 - `site/` has 74 entries; `site_original_backup/` has 63 files (original).
-- Change log: `site/README-ALTERACOES.md` (palette, `brand-rio.css`, `brand-ux.*`, 6-step RVL wizard, PWA).
+- Change log: `site/CHANGES.md` (palette, `brand-rio.css`, `brand-ux.*`, 6-step RVL wizard, PWA).
 - The one-off color migration scripts (`rebrand.py`, `recolor_green.py`) were deleted; their results are already in `site/`.
 
 ## Session summary (2026-11-23)
-- Initialized per INIT.md: created AGENTS.md, README.md, docs/STATUS.md, docs/WORKFLOW.md; translated `site/README-ALTERACOES.md` to English. No site code changed.
+- Initialized project docs; published the demo to GitHub Pages; fixed weekend color vs. Falta; removed one-off color scripts; renamed the change log to `site/CHANGES.md` (English).
 
 ## Validated
 - Manual check of the site by the user (2026-11-23): "ok". Screens covered not detailed; no automated tests.
-- The agent executed nothing during initialization (reading and documentation only).
+- Deploy workflow runs succeeded; the hosted page was not opened in a browser by the agent.
 
 ## Pending
-- Push the Pages workflow and enable GitHub Pages (source: GitHub Actions) once the token has the `workflow` scope.
 - Validate the map after publishing (it failed on localhost, likely an origin restriction).
 - Cera Pro: confirm license or keep Figtree.
 - Confirm RLS/permissions in Supabase (outside the repository; not verified).

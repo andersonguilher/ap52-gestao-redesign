@@ -2,7 +2,7 @@
 
 This folder (`site/`) is a COPY of the site. The original is in `../site_original_backup/`.
 To view: run `python -m http.server 8765` inside `site/` → http://localhost:8765/
-To publish: upload the contents of `site/` to Cloudflare Pages (you decide when).
+To publish: pushing to `main` redeploys the site to GitHub Pages (see `.github/workflows/pages.yml`).
 
 ## What changed
 - Palette migrated to the Brand Manual 2025 (#13335a, #2a688f, #42b9eb, #eceded); green/amber/red only for status.
@@ -14,7 +14,7 @@ To publish: upload the contents of `site/` to Cloudflare Pages (you decide when)
 ## Information density (brand-ux.css / brand-ux.js)
 - Dashboard: 5,094px -> ~1,600px. KPIs in one row; "Attention needed" shows only items with occurrences; "Alerts" shows 5 + "Show all"; analytical sections (quick reports, distribution, management units, trend, stability, movements) become closed accordions (state saved in the browser).
 - Employees: 22 repetitive cards -> one-line list per person; filters collapsed behind a "Filters" button; side panel became a drawer (opens on clicking a person or "Summary and priorities").
-- Removed what repeated: unit pill at the top (already in the sidebar/breadcrumb), eyebrow/subtitle in headers, descriptions under section titles, repeated "22ª GC"/"Local" labels.
+- Removed what repeated: unit pill at the top (already in the sidebar/breadcrumb), eyebrow/subtitle in headers, descriptions under section titles, repeated "22nd GC"/"Local" labels.
 - No business rule or data was changed; JS only shows/hides and regroups.
 
 ## RVL — Inspection Report

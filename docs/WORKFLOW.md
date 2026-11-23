@@ -12,7 +12,7 @@ Entry point: [AGENTS.md](../AGENTS.md). Current state: [STATUS.md](STATUS.md). C
 ## Resume uncommitted work
 1. Check `git status --short` and relevant diffs before editing. Today everything is untracked: comparing `site/` with `site_original_backup/` shows what changed.
 2. Tell complete work from partial by evidence; preserve all existing changes.
-3. Use STATUS.md and `site/README-ALTERACOES.md` only to understand intent.
+3. Use STATUS.md and `site/CHANGES.md` only to understand intent.
 4. Reconstruct the objective, previous validation, and safest next step; continue and validate.
 5. Ask only if plausible interpretations lead to different outcomes.
 
@@ -20,7 +20,7 @@ Entry point: [AGENTS.md](../AGENTS.md). Current state: [STATUS.md](STATUS.md). C
 1. Finish checks proportional to the authorized work.
 2. Review `git status --short` and diffs.
 3. Update STATUS.md (result, evidence, pending work, next step; max 80 lines).
-4. Update permanent documentation only if it became outdated (including `site/README-ALTERACOES.md` if behavior changed).
+4. Update permanent documentation only if it became outdated (including `site/CHANGES.md` if behavior changed).
 5. Record durable decisions only when useful.
 6. Summarize changed files, validation, risks, and pending work.
 7. Evaluate the commit policy below.

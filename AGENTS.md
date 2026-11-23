@@ -20,11 +20,10 @@ Web system for personnel and operations management of the AP5.2 Coordination (Ri
 - The original is hosted on Cloudflare Pages (URL above). Publishing this demo is the user's decision; never publish over the original.
 
 ## Repository map
-- `site/` — working copy (rebrand + UX). See `site/README-ALTERACOES.md` (canonical record of what changed).
+- `site/` — working copy (rebrand + UX). See `site/CHANGES.md` (canonical record of what changed).
 - `site_original_backup/` — pre-rebrand original. Read-only baseline for diffs. Git-ignored (local only; do not publish).
 - `site/index.original.html` — preserved original HTML.
 - `identidade_visual.pdf` — Brand Manual 2025 (palette: #13335a, #2a688f, #42b9eb, #eceded).
-- `INIT.md` — initialization procedure.
 
 ## Conventions
 - Edit `site/`, never `site_original_backup/`. Do not change business rules or data in visual tasks; the `brand-*.css/js` layer only shows/hides and restyles.
@@ -47,4 +46,4 @@ Web system for personnel and operations management of the AP5.2 Coordination (Ri
 Proactively suggest commits at validated milestones, following the policy in [docs/WORKFLOW.md](docs/WORKFLOW.md#commit-checkpoint-policy). Never run `git add/commit/push` without authorization.
 
 ## Source priority
-User instructions > this file > `site/README-ALTERACOES.md` > observed code. Discrepancies between code and intent are recorded, not silently "fixed".
+User instructions > this file > `site/CHANGES.md` > observed code. Discrepancies between code and intent are recorded, not silently "fixed".

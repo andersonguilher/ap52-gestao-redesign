@@ -4,16 +4,16 @@ A UI/UX transformation project for the existing web system for personnel and ope
 
 ## Available today
 - Static site in `site/` (modules: dashboard, employees, demands, schedules, warehouse, contracts, map, RVL, Asfaltinho). The UI is in pt-BR.
-- Color rebrand and UX layer (`site/brand-rio.css`, `site/brand-ux.*`). Details in [site/README-ALTERACOES.md](site/README-ALTERACOES.md).
+- Color rebrand and UX layer (`site/brand-rio.css`, `site/brand-ux.*`). Details in [site/CHANGES.md](site/CHANGES.md).
 
 ## Planned / pending
-- Host the demo for the developers (option: Cloudflare Pages in a project separate from the original; user's decision, nothing has been published).
-- Hand them a summary of the changes (currently `site/README-ALTERACOES.md`).
+- Share the hosted demo with the developers once the production-data question is settled.
+- Hand them a summary of the changes (currently `site/CHANGES.md`).
 - License/@font-face for the Cera Pro font (currently Figtree).
 - Validate the map after publishing (it did not load on localhost).
 
 ## Prerequisites
-- Python 3 (used to serve locally and run the scripts; verified version: 3.12.10).
+- Python 3 (used only to serve locally; verified version: 3.12.10).
 - A modern browser and internet access (Supabase, jsDelivr, and Google Fonts load from CDNs).
 
 ## Run locally
@@ -22,7 +22,7 @@ cd site
 python -m http.server 8765
 # open http://localhost:8765/
 ```
-Command taken from `site/README-ALTERACOES.md`; **not executed** during initialization.
+Command taken from `site/CHANGES.md`; not executed by the agent.
 
 ## Configuration
 - The client uses the project's Supabase with a public key embedded in `site/index.html`.
