@@ -1,0 +1,190 @@
+/* ==========================================================================
+   AP5.2 · Camada de identidade visual — Prefeitura do Rio (Manual de Marca 2025)
+   Carregada por último: tokens da marca + refinamentos de UI/UX.
+   Cores: #13335a (azul) · #2a688f (azul médio) · #42b9eb (ciano) · #eceded (cinza)
+   Tipografia: Cera Pro (se instalada) → Figtree (geométrica, equivalente livre)
+   Verde / âmbar / vermelho permanecem EXCLUSIVAMENTE como cores de status.
+   ========================================================================== */
+
+:root{
+  --rio-navy:#13335a;
+  --rio-blue:#2a688f;
+  --rio-cyan:#42b9eb;
+  --rio-gray:#eceded;
+
+  --navy:#13335a; --navy-2:#1a4170;
+  --amber:#42b9eb;                 /* acento da marca (antes âmbar) */
+  --bg:#eceded; --card:#fff; --border:#d9dde0;
+  --ink:#10284a; --muted:#566170;
+  --mint:#dcebf5; --mint-ink:#1d527a;
+  --green:#2a688f; --green-dark:#13335a;   /* "primário" = azul da marca */
+  --radius:12px;
+
+  --rio-font:"Cera Pro","Figtree","Segoe UI",system-ui,-apple-system,Helvetica,Arial,sans-serif;
+  --rio-ring:0 0 0 3px rgba(66,185,235,.45);
+  --rio-shadow-1:0 1px 2px rgba(19,51,90,.06),0 2px 8px rgba(19,51,90,.05);
+  --rio-shadow-2:0 8px 28px rgba(19,51,90,.14);
+  --rio-ease:cubic-bezier(.2,.7,.2,1);
+}
+
+/* ---------- Tipografia ---------- */
+html{-webkit-text-size-adjust:100%;text-rendering:optimizeLegibility;scroll-behavior:smooth;}
+body,button,input,select,textarea{font-family:var(--rio-font);}
+body{background:var(--rio-gray);color:var(--ink);font-size:15px;line-height:1.5;-webkit-font-smoothing:antialiased;}
+h1,h2,h3{letter-spacing:-.02em;color:var(--ink);}
+.eyebrow,.central-acao-eyebrow{font-weight:800;letter-spacing:.12em;color:var(--rio-blue);}
+.crumbs{color:var(--muted);}
+.crumbs b{color:var(--rio-navy);}
+.main{padding-top:24px;}
+
+/* ---------- Foco e acessibilidade ---------- */
+:focus{outline:none;}
+:focus-visible{outline:3px solid var(--rio-cyan)!important;outline-offset:2px!important;border-radius:8px;}
+input:focus-visible,select:focus-visible,textarea:focus-visible{outline:none!important;border-color:var(--rio-blue)!important;box-shadow:var(--rio-ring)!important;}
+::selection{background:var(--rio-cyan);color:var(--rio-navy);}
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation-duration:.001ms!important;animation-iteration-count:1!important;transition-duration:.001ms!important;scroll-behavior:auto!important;}
+}
+
+/* ---------- Barra lateral ---------- */
+.sidebar{
+  position:sticky;top:0;height:100vh;overflow-y:auto;overscroll-behavior:contain;scrollbar-width:thin;
+  background:linear-gradient(180deg,var(--rio-navy) 0%,#0f2a4b 100%);
+  border-right:1px solid rgba(255,255,255,.06);
+}
+.brand-name{font-weight:900;letter-spacing:-.04em;}
+.brand-name span{color:var(--rio-cyan);}
+.brand-sub{color:#9fc3dd;letter-spacing:.14em;text-transform:uppercase;font-size:11px;font-weight:700;}
+.who{border-top:1px solid rgba(255,255,255,.1);padding-top:14px;margin-top:14px;color:#a9bfd3;}
+.who strong{color:#fff;}
+.nav-item{position:relative;color:#c3d3e2;border-radius:10px;transition:background .18s var(--rio-ease),color .18s var(--rio-ease),transform .18s var(--rio-ease);}
+.nav-item:hover{background:rgba(255,255,255,.07);color:#fff;}
+.nav-item.active{background:rgba(66,185,235,.16);color:#fff;font-weight:700;}
+.nav-item.active::before{content:"";position:absolute;left:-16px;top:8px;bottom:8px;width:4px;border-radius:0 4px 4px 0;background:var(--rio-cyan);}
+.nav-item.almox-subitem.active{background:rgba(66,185,235,.22);}
+.sidebar-quote{color:#9fc3dd;font-style:italic;border-top:1px solid rgba(255,255,255,.1);padding-top:14px;}
+.sidebar-footer img{display:block;max-width:132px;height:auto;margin:0 auto 10px;opacity:.95;}
+.sidebar .btn-ghost{border:1px solid rgba(255,255,255,.28);color:#fff;background:transparent;border-radius:10px;}
+.sidebar .btn-ghost:hover{background:rgba(255,255,255,.1);}
+
+/* ---------- Cabeçalhos de página (hero) com o triângulo da marca ---------- */
+.rio-hero{
+  position:relative;overflow:hidden;color:#fff;
+  background:linear-gradient(105deg,var(--rio-navy) 0%,#1d4a7d 100%)!important;
+  border-radius:16px!important;
+  box-shadow:var(--rio-shadow-1);
+}
+.rio-hero::after{               /* "ponto-final" triangular da marca */
+  content:"";position:absolute;top:0;right:0;width:46px;height:46px;background:var(--rio-cyan);
+  clip-path:polygon(0 0,100% 0,100% 100%);pointer-events:none;
+}
+.rio-hero h1{color:#fff!important;text-transform:uppercase;letter-spacing:-.03em;font-weight:900;line-height:1.1;}
+.rio-hero .eyebrow{color:var(--rio-cyan)!important;}
+.rio-hero .subtitle,.rio-hero p{color:#d3e3f0!important;}
+.rio-hero > *{position:relative;z-index:1;}
+
+/* ---------- Botões ---------- */
+.btn{border-radius:10px;min-height:42px;font-weight:700;letter-spacing:.005em;transition:background .18s var(--rio-ease),box-shadow .18s var(--rio-ease),transform .12s var(--rio-ease);}
+.btn:active{transform:translateY(1px);}
+.btn-primary{background:var(--rio-blue);color:#fff;box-shadow:0 1px 2px rgba(19,51,90,.25);}
+.btn-primary:hover{background:var(--rio-navy);box-shadow:0 4px 12px rgba(19,51,90,.25);}
+.btn-primary:disabled,.btn:disabled{opacity:.55;cursor:not-allowed;box-shadow:none;}
+.rio-hero .btn-primary,.rio-hero .btn-ghost{background:#fff!important;color:var(--rio-navy)!important;border:0!important;}
+.rio-hero .btn-primary:hover,.rio-hero .btn-ghost:hover{background:var(--rio-cyan)!important;}
+.rio-hero .btn:not(.btn-primary){background:rgba(255,255,255,.12);color:#fff;border:1px solid rgba(255,255,255,.35);}
+
+/* ---------- Cartões e KPIs ---------- */
+.stat-card,.card-block,.pessoal-overview-busca,.pessoal-atencao,.pessoal-pendencias,.pessoal-relatorios-rapidos{
+  border-color:var(--border);box-shadow:var(--rio-shadow-1);
+}
+.stat-card{transition:transform .2s var(--rio-ease),box-shadow .2s var(--rio-ease);}
+.stat-card:hover{transform:translateY(-2px);box-shadow:var(--rio-shadow-2);}
+.stat-label{color:var(--muted);font-weight:600;line-height:1.25;overflow-wrap:anywhere;hyphens:auto;}
+.stat-num{color:var(--rio-navy);font-weight:900;letter-spacing:-.03em;font-variant-numeric:tabular-nums;}
+.stat-card [class*="link"],.stat-card small{color:var(--rio-blue);font-weight:700;}
+.stat-grid{grid-template-columns:repeat(auto-fit,minmax(190px,1fr));}
+
+/* ---------- Formulários ---------- */
+input,select,textarea{border-radius:10px;border:1px solid #c5ccd2;background:#fff;color:var(--ink);transition:border-color .15s,box-shadow .15s;}
+input:hover,select:hover,textarea:hover{border-color:#9aa7b3;}
+input::placeholder,textarea::placeholder{color:#74808c;}
+select{cursor:pointer;}
+label,.field label{font-weight:700;color:#2b3b4f;}
+.toolbar input,.toolbar select,.field input,.field select{min-height:44px;}
+
+/* ---------- Tabelas e listas ---------- */
+table{border-collapse:separate;border-spacing:0;}
+th{color:var(--rio-navy);font-weight:800;letter-spacing:.04em;text-transform:uppercase;font-size:12px;background:#f3f5f7;}
+tbody tr{transition:background .12s;}
+tbody tr:hover{background:#eef5fa;}
+
+/* ---------- Central de Ação ---------- */
+.central-acao{background:#f6f8fa;border-left:1px solid var(--border);}
+.central-acao-topo h2{color:var(--rio-navy);font-weight:900;letter-spacing:-.03em;}
+.central-acao-bloco{border-color:var(--border);border-radius:14px;box-shadow:var(--rio-shadow-1);}
+.central-acao-toggle{background:var(--rio-navy)!important;border:1px solid rgba(255,255,255,.2)!important;color:#fff;font-weight:800;box-shadow:var(--rio-shadow-2);transition:transform .18s var(--rio-ease),background .18s;}
+.central-acao-toggle:hover{background:var(--rio-blue)!important;transform:translateY(-2px);}
+.central-acao-toggle-badge{background:var(--rio-cyan)!important;color:var(--rio-navy)!important;font-weight:900;}
+.central-acao-backdrop{backdrop-filter:blur(2px);}
+
+/* ---------- Login ---------- */
+#auth-gate{background:radial-gradient(120% 90% at 50% 0%,#1d4a7d 0%,var(--rio-navy) 55%,#0b213f 100%)!important;}
+#auth-gate .auth-card{border-radius:18px;box-shadow:0 24px 60px rgba(4,16,34,.45);border-top:4px solid var(--rio-cyan);}
+#auth-gate .auth-card::before{
+  content:"";display:block;width:132px;height:48px;margin:0 auto 18px;
+  background:url(assets/prefeitura-rio.png) center/contain no-repeat;
+  filter:invert(1) brightness(.2) sepia(1) hue-rotate(185deg) saturate(4);   /* logo branca → azul-marca sobre fundo claro */
+}
+#auth-gate .auth-card .btn-primary{min-height:46px;font-size:15px;letter-spacing:.02em;}
+.auth-link,#forgot-password-btn{color:var(--rio-blue);font-weight:700;}
+.password-toggle:hover{color:var(--rio-blue);}
+.ouro,.ap52pc-titulo .ouro{color:var(--rio-cyan)!important;}
+
+/* ---------- Detalhes ---------- */
+hr{border:0;border-top:1px solid var(--border);}
+a{color:var(--rio-blue);}
+a:hover{color:var(--rio-navy);}
+::-webkit-scrollbar{width:10px;height:10px;}
+::-webkit-scrollbar-thumb{background:#b4bfc9;border-radius:8px;border:2px solid transparent;background-clip:content-box;}
+::-webkit-scrollbar-thumb:hover{background:#8d9aa6;background-clip:content-box;border:2px solid transparent;}
+
+/* ---------- Telas médias: conteúdo respira; painel vira gaveta (<1600px) ---------- */
+@media (max-width:1100px){.sidebar{position:static;height:auto;}.nav-item.active::before{display:none;}}
+@media (max-width:600px){
+  .rio-hero::after{width:34px;height:34px;}
+  .rio-hero h1{font-size:23px!important;}
+  .btn{min-height:46px;}
+}
+@media print{.sidebar,.central-acao,.central-acao-toggle{display:none!important;}}
+
+/* ---------- KPIs: ícone nunca sobrepõe o rótulo ---------- */
+.pessoal-kpi,.equip-kpi,[class*="kpi"]:is(article,div){position:relative;}
+.pessoal-kpi .ap52-kpi-static-icon,[class*="kpi"] .ap52-kpi-static-icon{
+  position:static!important;display:inline-flex!important;align-items:center;justify-content:center;
+  width:34px;height:34px;border-radius:10px;margin:0 0 10px!important;
+}
+.pessoal-kpi-label{white-space:normal!important;overflow:visible!important;text-overflow:clip!important;line-height:1.25;}
+.pessoal-kpi{display:flex;flex-direction:column;align-items:flex-start;text-align:left;}
+@media(max-width:600px){.pessoal-kpi .ap52-kpi-static-icon{display:none!important;}}
+
+/* Especificidade para vencer regras por #id já existentes */
+#view-funcionarios .pessoal-kpi .ap52-kpi-static-icon{
+  position:static!important;width:36px!important;height:36px!important;margin:0 0 10px!important;
+  background:#dcebf5!important;color:var(--rio-navy)!important;
+}
+#view-funcionarios .pessoal-kpi .ap52-kpi-static-icon.c-amber{background:#fdf3de!important;color:#9c6b1a!important;}
+#view-funcionarios .pessoal-kpi .ap52-kpi-static-icon.c-rose{background:#fbe9e7!important;color:#b4462b!important;}
+#view-funcionarios .pessoal-kpi{align-items:flex-start!important;text-align:left!important;}
+#view-equipamentos #equip-stats .eq27-stat>span.eq27-stat-icon{
+  position:static!important;display:inline-flex!important;width:36px!important;height:36px!important;margin:0 0 10px!important;
+  align-items:center;justify-content:center;border-radius:10px;
+}
+#view-equipamentos #equip-stats .eq27-stat>span:not(.eq27-stat-icon){font-size:13px;font-weight:700;color:var(--muted);}
+@media(max-width:600px){
+  #view-funcionarios .pessoal-kpi .ap52-kpi-static-icon,#view-equipamentos #equip-stats .eq27-stat>span.eq27-stat-icon{display:none!important;}
+}
+
+.brand-sub{font-size:10.5px;letter-spacing:.1em;line-height:1.35;}
+.rio-hero{position:relative;overflow:hidden;}
+.pessoal-page-head.rio-hero{padding:24px 28px;background:linear-gradient(105deg,var(--rio-navy) 0%,#1d4a7d 100%)!important;border-radius:16px!important;}
+.pessoal-page-head.rio-hero::after{content:""!important;display:block!important;position:absolute!important;top:0!important;right:0!important;left:auto!important;bottom:auto!important;width:46px!important;height:46px!important;background:var(--rio-cyan)!important;clip-path:polygon(0 0,100% 0,100% 100%)!important;border:0!important;transform:none!important;}

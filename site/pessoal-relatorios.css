@@ -1,0 +1,131 @@
+/* AP5.2 v65.42.106 — Gestão de Pessoal · Relatórios de Efetivo + Excel */
+#pessoal-relatorio-overlay[hidden]{display:none!important}
+#pessoal-relatorio-overlay{position:fixed;inset:0;z-index:10080;background:rgba(9,23,40,.52);backdrop-filter:blur(3px);display:flex;align-items:center;justify-content:center;padding:22px}
+.pessoal-relatorio-modal{width:min(1120px,100%);max-height:min(900px,calc(100dvh - 38px));background:#fff;border:1px solid #dbe6e1;border-radius:18px;box-shadow:0 24px 70px rgba(11,26,45,.25);display:flex;flex-direction:column;overflow:hidden;color:#102845}
+.pessoal-relatorio-head{display:flex;align-items:flex-start;justify-content:space-between;gap:18px;padding:21px 24px 17px;border-bottom:1px solid #e2ebe7;background:#fbfdfc}
+.pessoal-relatorio-head .eyebrow{font-size:10px;font-weight:800;text-transform:uppercase;letter-spacing:1.05px;color:#55776b;margin-bottom:5px}
+.pessoal-relatorio-head h2{margin:0;font-size:22px;letter-spacing:-.35px;color:#102845}
+.pessoal-relatorio-head p{margin:6px 0 0;font-size:12.5px;line-height:1.5;color:#667a73;max-width:720px}
+.pessoal-relatorio-fechar{width:36px;height:36px;border:1px solid #d9e5e0;border-radius:9px;background:#fff;color:#525e6a;font:400 24px/1 Arial;cursor:pointer;flex:0 0 auto}
+.pessoal-relatorio-body{padding:20px 24px 24px;overflow:auto;min-height:0}
+.pessoal-relatorio-filtros{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;padding:16px;border:1px solid #dce7e2;border-radius:14px;background:#f8fbf9}
+.pessoal-relatorio-field{display:grid;gap:6px;min-width:0}
+.pessoal-relatorio-field>span,.pessoal-relatorio-field>label{font-size:10.5px;font-weight:800;color:#597068;text-transform:uppercase;letter-spacing:.03em}
+.pessoal-relatorio-field select{width:100%;min-height:41px;border:1px solid #d2dfd9;border-radius:9px;background:#fff;color:#153358;padding:8px 10px;font:inherit;font-size:12.5px}
+
+.pessoal-relatorio-empresas-field{grid-column:span 2}
+.pessoal-relatorio-empresas-box{border:1px solid #d2dfd9;border-radius:9px;background:#fff;padding:8px 9px;min-height:41px}
+.pessoal-relatorio-empresas{display:flex;gap:6px;flex-wrap:wrap}
+.pessoal-relatorio-empresas label{display:inline-flex;align-items:center;gap:5px;padding:5px 8px;border:1px solid #dce7e2;border-radius:999px;background:#f8fbf9;color:#486158;font-size:11px;font-weight:750;cursor:pointer}
+.pessoal-relatorio-empresas label:has(input:checked){background:#e6f2ec;border-color:#a8cdbd;color:#183b66}
+.pessoal-relatorio-empresas input{width:14px;height:14px;accent-color:#1c4475;margin:0}
+.pessoal-relatorio-empresas-acoes{display:flex;gap:10px;margin-top:7px;padding-top:7px;border-top:1px solid #edf1ef}
+.pessoal-relatorio-empresas-acoes button{border:0;background:transparent;color:#173b66;padding:0;font:750 10.5px/1.2 inherit;cursor:pointer}
+.pessoal-relatorio-opcoes{grid-column:1/-1;display:flex;align-items:center;justify-content:space-between;gap:14px;border-top:1px solid #e0e9e5;padding-top:13px;margin-top:1px;flex-wrap:wrap}
+.pessoal-relatorio-check{display:inline-flex;align-items:center;gap:8px;font-size:12px;color:#44515f;font-weight:700;cursor:pointer}
+.pessoal-relatorio-check input{width:17px;height:17px;accent-color:#1c4475}
+.pessoal-relatorio-atualizar{border:0;background:transparent;color:#173b66;font:700 12px/1.2 inherit;cursor:pointer;padding:7px 0}
+.pessoal-relatorio-status{margin:12px 0 0;min-height:18px;font-size:12px;color:#67707a}
+.pessoal-relatorio-status.erro{color:#9b3b30}
+.pessoal-relatorio-kpis{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px;margin:15px 0}
+.pessoal-relatorio-kpi{border:1px solid #dfe8e4;border-radius:12px;background:#fff;padding:12px 13px;text-align:center}
+.pessoal-relatorio-kpi span{display:block;font-size:10px;font-weight:800;text-transform:uppercase;color:#74857f;letter-spacing:.03em}
+.pessoal-relatorio-kpi strong{display:block;margin-top:5px;font-size:22px;line-height:1;color:#153357}
+.pessoal-relatorio-kpi.aviso strong{color:#a46919}
+.pessoal-relatorio-preview{border:1px solid #dce6e2;border-radius:14px;overflow:hidden;background:#fff}
+.pessoal-relatorio-preview-head{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:12px 14px;border-bottom:1px solid #e2eae6;background:#f7faf8}
+.pessoal-relatorio-preview-head strong{font-size:13px;color:#15345a}
+.pessoal-relatorio-preview-head span{font-size:11px;color:#6c757e}
+.pessoal-relatorio-grupos{max-height:430px;overflow:auto;padding:12px;display:grid;gap:12px}
+.pessoal-relatorio-grupo{border:1px solid #e1e9e5;border-radius:11px;overflow:hidden}
+.pessoal-relatorio-grupo>header{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:9px 11px;background:#f3f7f5;border-bottom:1px solid #e4ebe8}
+.pessoal-relatorio-grupo>header strong{font-size:12.5px;color:#163760}
+.pessoal-relatorio-grupo>header span{font-size:10.5px;font-weight:800;color:#6a737c}
+.pessoal-relatorio-tabela{width:100%;border-collapse:collapse;table-layout:fixed}
+.pessoal-relatorio-tabela th{font-size:9.5px;text-transform:uppercase;letter-spacing:.03em;color:#75857f;background:#fbfcfc;padding:7px 8px;text-align:left;border-bottom:1px solid #edf1ef}
+.pessoal-relatorio-tabela td{font-size:11.5px;color:#33414f;padding:8px;border-bottom:1px solid #edf1ef;vertical-align:top;overflow-wrap:anywhere}
+.pessoal-relatorio-tabela tr:last-child td{border-bottom:0}
+.pessoal-relatorio-tabela .num{width:42px;text-align:center;color:#82908b}
+.pessoal-relatorio-tabela .nome{width:29%;font-weight:750;color:#122d4d}
+.pessoal-relatorio-tabela .empresa{width:16%}
+.pessoal-relatorio-tabela .gerencia{width:15%}
+.pessoal-relatorio-tabela .cargo{width:20%}
+.pessoal-relatorio-tabela .situacao{width:20%}
+.pessoal-relatorio-tabela tr.em-aviso td{background:#fffaf0}
+.pessoal-relatorio-chip-aviso{display:inline-flex;align-items:center;padding:3px 6px;border-radius:999px;background:#fff0ce;color:#875a13;font-size:9.5px;font-weight:800;margin-top:3px}
+.pessoal-relatorio-vazio{padding:28px;text-align:center;color:#75857f;font-size:12.5px}
+.pessoal-relatorio-footer{display:flex;align-items:center;justify-content:space-between;gap:15px;padding:15px 24px;border-top:1px solid #e2ebe7;background:#fbfdfc}
+.pessoal-relatorio-footer p{margin:0;font-size:10.8px;line-height:1.45;color:#71817b;max-width:620px}
+.pessoal-relatorio-footer-acoes{display:flex;gap:9px;align-items:center;flex-wrap:wrap;justify-content:flex-end}
+.pessoal-relatorio-footer .btn{min-height:42px;border-radius:9px}
+#pessoal-relatorio-btn{white-space:nowrap}
+@media(max-width:900px){.pessoal-relatorio-filtros{grid-template-columns:repeat(2,minmax(0,1fr))}.pessoal-relatorio-empresas-field{grid-column:1/-1}.pessoal-relatorio-kpis{grid-template-columns:repeat(2,minmax(0,1fr))}.pessoal-relatorio-tabela .cargo{display:none}.pessoal-relatorio-tabela .nome{width:34%}.pessoal-relatorio-tabela .empresa,.pessoal-relatorio-tabela .gerencia{width:18%}.pessoal-relatorio-tabela .situacao{width:30%}}
+@media(max-width:640px){.pessoal-relatorio-empresas-field{grid-column:1}#pessoal-relatorio-overlay{padding:0;align-items:stretch}.pessoal-relatorio-modal{max-height:none;height:100dvh;border-radius:0;border:0}.pessoal-relatorio-head{padding:18px 17px 14px}.pessoal-relatorio-head h2{font-size:20px}.pessoal-relatorio-body{padding:15px 14px 18px}.pessoal-relatorio-filtros{grid-template-columns:1fr;padding:13px}.pessoal-relatorio-opcoes{grid-column:1}.pessoal-relatorio-kpis{gap:8px}.pessoal-relatorio-kpi{padding:10px}.pessoal-relatorio-preview{overflow:visible;border:0}.pessoal-relatorio-preview-head{border:1px solid #e1e9e5;border-radius:10px;margin-bottom:9px}.pessoal-relatorio-grupos{max-height:none;padding:0}.pessoal-relatorio-tabela th.empresa,.pessoal-relatorio-tabela td.empresa,.pessoal-relatorio-tabela th.gerencia,.pessoal-relatorio-tabela td.gerencia{display:none}.pessoal-relatorio-tabela .nome{width:48%}.pessoal-relatorio-tabela .situacao{width:40%}.pessoal-relatorio-footer{padding:13px 14px;flex-direction:column;align-items:stretch}.pessoal-relatorio-footer-acoes{display:grid;grid-template-columns:1fr 1fr}.pessoal-relatorio-footer-acoes .btn:first-child{grid-column:1/-1}.pessoal-relatorio-footer .btn{width:100%}}
+
+/* v65.42.106 — histórico, snapshots e exportação Excel */
+.pessoal-relatorio-tabs{display:flex;gap:6px;padding:10px 24px 0;background:#fbfdfc;border-bottom:1px solid #e2ebe7}
+.pessoal-relatorio-tabs button{border:0;border-bottom:2px solid transparent;background:transparent;color:#667a73;padding:10px 12px 11px;font:750 12px/1.2 inherit;cursor:pointer}
+.pessoal-relatorio-tabs button.ativo{color:#183b65;border-bottom-color:#7b1f2b}
+.pessoal-relatorio-historico[hidden],#pessoal-relatorio-gerador[hidden],#pessoal-relatorio-historico-lista-wrap[hidden],#pessoal-relatorio-historico-detalhe[hidden]{display:none!important}
+.pessoal-relatorio-historico-head{display:flex;align-items:flex-start;justify-content:space-between;gap:16px;padding:2px 2px 11px;border-bottom:1px solid #e4ebe8}
+.pessoal-relatorio-historico-head strong{font-size:15px;color:#15345a}
+.pessoal-relatorio-historico-head p{margin:4px 0 0;font-size:11.5px;color:#71817b}
+.pessoal-relatorio-historico-lista{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:11px;margin-top:12px}
+.pessoal-relatorio-historico-card{border:1px solid #dfe8e4;border-radius:13px;background:#fff;padding:13px;box-shadow:0 3px 14px rgba(17,43,75,.04)}
+.pessoal-relatorio-historico-card-top{display:flex;align-items:flex-start;justify-content:space-between;gap:12px}
+.pessoal-relatorio-historico-card-top>div{display:grid;gap:3px}.pessoal-relatorio-historico-card-top strong{font-size:13px;color:#153459}.pessoal-relatorio-historico-card-top span{font-size:10.5px;color:#778780}
+.pessoal-relatorio-snapshot-chip{display:inline-flex!important;padding:4px 7px;border-radius:999px;background:#e8f1ed;color:#326552!important;font-size:9px!important;font-weight:850;text-transform:uppercase;letter-spacing:.03em}
+.pessoal-relatorio-historico-numeros{display:grid;grid-template-columns:repeat(4,1fr);gap:6px;margin:11px 0 9px}
+.pessoal-relatorio-historico-numeros span{padding:7px 5px;border-radius:8px;background:#f6f9f7;text-align:center;font-size:9.5px;color:#70817a}.pessoal-relatorio-historico-numeros b{display:block;color:#183a64;font-size:13px;margin-bottom:2px}
+.pessoal-relatorio-historico-card>p{margin:0;min-height:30px;color:#6c7c76;font-size:10px;line-height:1.45}
+.pessoal-relatorio-historico-card-acoes{display:grid;grid-template-columns:1.2fr .8fr .8fr;gap:7px;margin-top:11px}.pessoal-relatorio-historico-card-acoes .btn{min-height:34px;padding:7px 9px;font-size:10.5px;border-radius:8px;width:100%}
+.pessoal-relatorio-detalhe-head{display:flex;justify-content:space-between;gap:18px;align-items:flex-start;margin-bottom:12px}.pessoal-relatorio-detalhe-head h3{margin:7px 0 4px;font-size:17px;color:#153459}.pessoal-relatorio-detalhe-head p{margin:0;color:#6c7e77;font-size:10.8px;line-height:1.45}.pessoal-relatorio-detalhe-acoes{display:flex;gap:8px;align-items:center;flex-wrap:wrap;justify-content:flex-end}
+.pessoal-relatorio-voltar{border:0;background:transparent;color:#173b66;padding:0;font:750 11.5px/1.2 inherit;cursor:pointer}
+.pessoal-relatorio-snapshot-nota{padding:9px 11px;margin-bottom:11px;border:1px solid #d9e7e1;border-radius:10px;background:#f5faf7;color:#586470;font-size:10.5px}
+#pessoal-relatorio-historico-detalhe .pessoal-relatorio-grupos{max-height:470px;padding:0}
+@media(max-width:800px){.pessoal-relatorio-historico-lista{grid-template-columns:1fr}.pessoal-relatorio-historico-numeros{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:640px){.pessoal-relatorio-tabs{padding:8px 14px 0}.pessoal-relatorio-historico-head,.pessoal-relatorio-detalhe-head{flex-direction:column}.pessoal-relatorio-detalhe-acoes{width:100%;display:grid;grid-template-columns:1fr 1fr}.pessoal-relatorio-detalhe-acoes .btn{width:100%}.pessoal-relatorio-historico-card-acoes{grid-template-columns:1fr 1fr}.pessoal-relatorio-historico-card-acoes .btn:first-child{grid-column:1/-1}.pessoal-relatorio-historico-card-acoes .btn{width:100%}}
+
+/* v65.42.107 — comparação entre snapshots */
+.pessoal-relatorio-comparar[hidden]{display:none!important}
+.pessoal-relatorio-comparar-head{display:flex;align-items:flex-start;justify-content:space-between;gap:16px;padding:2px 2px 12px;border-bottom:1px solid #e4ebe8}
+.pessoal-relatorio-comparar-head strong{font-size:15px;color:#15345a}.pessoal-relatorio-comparar-head p{margin:4px 0 0;font-size:11.5px;color:#71817b}
+.pessoal-relatorio-comparar-selecao{display:grid;grid-template-columns:minmax(0,1fr) 42px minmax(0,1fr) auto;gap:10px;align-items:end;margin-top:14px;padding:14px;border:1px solid #dce7e2;border-radius:13px;background:#f8fbf9}
+.pessoal-relatorio-comparar-selecao .btn{min-height:41px;border-radius:9px;white-space:nowrap}.pessoal-relatorio-trocar{width:42px;height:41px;border:1px solid #d2dfd9;border-radius:9px;background:#fff;color:#275774;font:800 18px/1 inherit;cursor:pointer}
+.pessoal-relatorio-comparar-resultado{margin-top:12px}.pessoal-relatorio-comp-cabecalho{display:grid;grid-template-columns:1fr 44px 1fr;gap:8px;align-items:center;padding:12px 14px;border:1px solid #dce7e2;border-radius:12px;background:#fff}
+.pessoal-relatorio-comp-cabecalho>div:not(.pessoal-relatorio-comp-seta){display:grid;gap:3px;text-align:center}.pessoal-relatorio-comp-cabecalho span{font-size:9.5px;text-transform:uppercase;font-weight:850;color:#7b8b85;letter-spacing:.04em}.pessoal-relatorio-comp-cabecalho strong{font-size:13px;color:#153459}.pessoal-relatorio-comp-cabecalho small{font-size:10px;color:#71817b}.pessoal-relatorio-comp-seta{text-align:center;color:#7b1f2b;font-size:22px;font-weight:800}
+.pessoal-relatorio-comp-alerta,.pessoal-relatorio-comp-nota{margin-top:10px;padding:10px 12px;border-radius:10px;font-size:10.8px;line-height:1.45}.pessoal-relatorio-comp-alerta{border:1px solid #e7cfa0;background:#fff8e8;color:#795516}.pessoal-relatorio-comp-nota{border:1px solid #d8e5df;background:#f5f9f7;color:#586470}
+.pessoal-relatorio-comp-kpis{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:9px;margin-top:11px}.pessoal-relatorio-comp-kpis article{padding:11px;border:1px solid #dfe8e4;border-radius:11px;background:#fff;text-align:center}.pessoal-relatorio-comp-kpis span{display:block;font-size:9.5px;font-weight:850;text-transform:uppercase;color:#788983}.pessoal-relatorio-comp-kpis strong{display:block;margin-top:4px;font-size:21px;color:#255444}.pessoal-relatorio-comp-kpis .aviso strong{color:#9a6618}
+.pessoal-relatorio-comp-saldo{margin:9px 0 11px;text-align:center;font-size:10.8px;color:#6a7b75}.pessoal-relatorio-comp-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;max-height:430px;overflow:auto;padding-right:2px}.pessoal-relatorio-comp-bloco{border:1px solid #dfe8e4;border-radius:12px;background:#fff;overflow:hidden;min-width:0}.pessoal-relatorio-comp-bloco>header{display:flex;justify-content:space-between;align-items:center;padding:9px 11px;background:#f6f9f7;border-bottom:1px solid #e5ece8}.pessoal-relatorio-comp-bloco>header strong{font-size:11.5px;color:#173a64}.pessoal-relatorio-comp-bloco>header span{display:inline-grid;place-items:center;min-width:24px;height:22px;padding:0 6px;border-radius:999px;background:#e7efeb;color:#1b4374;font-size:10px;font-weight:850}.pessoal-relatorio-comp-bloco.entrada>header{background:#f1f8f4}.pessoal-relatorio-comp-bloco.saida>header{background:#fbf4f4}.pessoal-relatorio-comp-bloco.aviso>header{background:#fff8e9}
+.pessoal-relatorio-comp-lista{display:grid;max-height:250px;overflow:auto}.pessoal-relatorio-comp-lista>p{margin:0;padding:20px 12px;text-align:center;color:#788780;font-size:10.8px}.pessoal-relatorio-comp-pessoa{padding:9px 11px;border-bottom:1px solid #edf1ef;display:grid;gap:3px}.pessoal-relatorio-comp-pessoa:last-child{border-bottom:0}.pessoal-relatorio-comp-pessoa>strong{font-size:11.3px;color:#153357}.pessoal-relatorio-comp-pessoa>span{font-size:9.8px;color:#73837d}.pessoal-relatorio-comp-pessoa>small{font-size:9.3px;color:#8a611e;font-weight:750}.pessoal-relatorio-comp-mudancas{display:grid;gap:3px}.pessoal-relatorio-comp-mudancas span{font-size:9.8px;line-height:1.4;color:#60736c}.pessoal-relatorio-comp-mudancas b{color:#384a5c}.pessoal-relatorio-comp-mudancas i{font-style:normal;color:#7b1f2b;font-weight:800;margin:0 3px}
+@media(max-width:850px){.pessoal-relatorio-comparar-selecao{grid-template-columns:1fr 42px 1fr}.pessoal-relatorio-comparar-selecao .btn{grid-column:1/-1}.pessoal-relatorio-comp-grid{grid-template-columns:1fr}}
+@media(max-width:640px){.pessoal-relatorio-comparar-head{flex-direction:column}.pessoal-relatorio-comparar-selecao{grid-template-columns:1fr}.pessoal-relatorio-trocar{width:100%;height:34px}.pessoal-relatorio-comp-kpis{grid-template-columns:repeat(2,1fr)}.pessoal-relatorio-comp-cabecalho{grid-template-columns:1fr 28px 1fr}.pessoal-relatorio-comp-grid{max-height:none}.pessoal-relatorio-comp-lista{max-height:none}}
+
+/* v65.42.108 — exportação da comparação entre snapshots */
+.pessoal-relatorio-comp-exportar{display:flex;align-items:center;justify-content:space-between;gap:14px;margin:0 0 11px;padding:11px 12px;border:1px solid #d8e5df;border-radius:11px;background:#f7faf8}
+.pessoal-relatorio-comp-exportar>div:first-child{display:grid;gap:2px}.pessoal-relatorio-comp-exportar strong{font-size:11.5px;color:#173a64}.pessoal-relatorio-comp-exportar span{font-size:9.8px;color:#71817b}.pessoal-relatorio-comp-exportar-acoes{display:flex;gap:8px;flex-wrap:wrap;justify-content:flex-end}.pessoal-relatorio-comp-exportar-acoes .btn{min-height:36px;border-radius:9px;white-space:nowrap}
+@media(max-width:640px){.pessoal-relatorio-comp-exportar{align-items:stretch;flex-direction:column}.pessoal-relatorio-comp-exportar-acoes{display:grid;grid-template-columns:1fr 1fr}.pessoal-relatorio-comp-exportar-acoes .btn{width:100%}}
+
+
+/* v65.42.109 — modelos rápidos de relatórios */
+.pessoal-relatorio-modelos[hidden]{display:none!important}
+.pessoal-relatorio-modelos-head{display:flex;align-items:flex-start;justify-content:space-between;gap:16px;padding:2px 2px 12px;border-bottom:1px solid #e4ebe8}
+.pessoal-relatorio-modelos-head strong{font-size:15px;color:#15345a}.pessoal-relatorio-modelos-head p{margin:4px 0 0;font-size:11.5px;color:#71817b;max-width:690px}
+.pessoal-relatorio-modelo-salvar{display:grid;grid-template-columns:minmax(0,1fr) minmax(360px,.8fr);gap:18px;align-items:end;margin-top:14px;padding:14px;border:1px solid #d8e5df;border-radius:13px;background:#f7faf8}
+.pessoal-relatorio-modelo-salvar>div:first-child{display:grid;gap:5px;align-self:center}.pessoal-relatorio-modelo-salvar>div:first-child strong{font-size:12px;color:#173963}.pessoal-relatorio-modelo-salvar>div:first-child span{font-size:10.4px;line-height:1.45;color:#6e817a}
+.pessoal-relatorio-modelo-salvar-acoes{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:8px;align-items:end}.pessoal-relatorio-modelo-salvar-acoes .pessoal-relatorio-field{margin:0}.pessoal-relatorio-modelo-salvar-acoes input{width:100%;min-height:41px;border:1px solid #cad9d3;border-radius:9px;background:#fff;padding:9px 10px;color:#143256;font:inherit}.pessoal-relatorio-modelo-salvar-acoes .btn{min-height:41px;border-radius:9px;white-space:nowrap}
+.pessoal-relatorio-modelos-lista{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:11px;margin-top:12px}
+.pessoal-relatorio-modelo-card{border:1px solid #dfe8e4;border-radius:13px;background:#fff;padding:13px;box-shadow:0 3px 14px rgba(17,43,75,.04);display:grid;gap:10px}.pessoal-relatorio-modelo-card-top{display:flex;align-items:flex-start;justify-content:space-between;gap:12px}.pessoal-relatorio-modelo-card-top>div{display:grid;gap:3px}.pessoal-relatorio-modelo-card-top strong{font-size:13px;color:#153459}.pessoal-relatorio-modelo-card-top span{font-size:10px;color:#778780}.pessoal-relatorio-modelo-chip{display:inline-flex!important;padding:4px 7px;border-radius:999px;background:#edf3f0;color:#275673!important;font-size:8.8px!important;font-weight:850;text-transform:uppercase;letter-spacing:.03em;white-space:nowrap}.pessoal-relatorio-modelo-card>p{margin:0;color:#656e77;font-size:10.2px;line-height:1.45;min-height:30px}.pessoal-relatorio-modelo-card-acoes{display:grid;grid-template-columns:1fr auto;gap:8px}.pessoal-relatorio-modelo-card-acoes .btn{min-height:35px;border-radius:8px;font-size:10.5px}.pessoal-relatorio-modelo-card-acoes .btn:last-child{min-width:82px}
+@media(max-width:860px){.pessoal-relatorio-modelo-salvar{grid-template-columns:1fr}.pessoal-relatorio-modelos-lista{grid-template-columns:1fr}}
+@media(max-width:640px){.pessoal-relatorio-modelos-head{flex-direction:column}.pessoal-relatorio-modelo-salvar-acoes{grid-template-columns:1fr}.pessoal-relatorio-modelo-salvar-acoes .btn{width:100%}.pessoal-relatorio-modelo-card-acoes{grid-template-columns:1fr 1fr}.pessoal-relatorio-tabs{overflow-x:auto;white-space:nowrap}}
+
+
+/* v65.42.110 — modelos favoritos no Painel de Gestão de Pessoal */
+.pessoal-relatorio-modelo-card.favorito{border-color:#dbc07e;box-shadow:0 3px 14px rgba(128,92,21,.08)}
+.pessoal-relatorio-modelo-card-meta{display:flex;align-items:center;gap:6px}.pessoal-relatorio-modelo-favorito{width:30px;height:30px;border:1px solid #d8e2de;border-radius:8px;background:#fff;color:#8b929a;font-size:18px;line-height:1;cursor:pointer;display:inline-flex;align-items:center;justify-content:center}.pessoal-relatorio-modelo-favorito:hover{border-color:#c7ad6b;color:#8b651b}.pessoal-relatorio-modelo-favorito.ativo{background:#fff8e7;border-color:#d8b963;color:#9a6b14}.pessoal-relatorio-modelo-card.favorito .pessoal-relatorio-modelo-chip{background:#fff4d8;color:#8a6015!important}
+.pessoal-relatorios-rapidos{margin-top:18px;border:1px solid #dce6e2;border-radius:14px;background:#fff;padding:16px;box-shadow:0 5px 20px rgba(18,44,76,.04)}
+.pessoal-relatorios-rapidos-head{display:flex;align-items:flex-start;justify-content:space-between;gap:14px;margin-bottom:12px}.pessoal-relatorios-rapidos-head h2{margin:1px 0 4px;font-size:18px;color:#102743}.pessoal-relatorios-rapidos-head p{margin:0;color:#6c7d77;font-size:11.5px;line-height:1.45}.pessoal-relatorios-rapidos-head-acoes{display:flex;align-items:center;gap:9px}.pessoal-relatorios-rapidos-status{font-size:10px;font-weight:800;color:#6b7e77;white-space:nowrap}.pessoal-relatorios-rapidos-gerenciar{border:0;background:transparent;color:#1d477a;font:inherit;font-size:11px;font-weight:800;cursor:pointer;padding:5px 0}
+.pessoal-relatorios-rapidos-lista{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px}.pessoal-relatorios-rapidos-card{min-width:0;border:1px solid #e1e9e5;border-radius:12px;background:#fbfdfc;padding:11px;display:grid;gap:10px}.pessoal-relatorios-rapidos-card-top{display:flex;align-items:flex-start;gap:8px;min-width:0}.pessoal-relatorios-rapidos-estrela{width:27px;height:27px;flex:0 0 27px;border-radius:8px;background:#fff4d8;color:#946817;display:flex;align-items:center;justify-content:center;font-size:14px}.pessoal-relatorios-rapidos-card-top>div{min-width:0;display:grid;gap:3px}.pessoal-relatorios-rapidos-card-top strong{font-size:12px;color:#153459;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.pessoal-relatorios-rapidos-card-top span:not(.pessoal-relatorios-rapidos-estrela){font-size:9.6px;color:#717981;line-height:1.35;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}.pessoal-relatorios-rapidos-card-acoes{display:grid;grid-template-columns:1fr auto auto;gap:6px}.pessoal-relatorios-rapidos-card-acoes .btn{min-height:32px;padding:6px 9px;border-radius:8px;font-size:9.5px}.pessoal-relatorios-rapidos-vazio{grid-column:1/-1;display:flex;align-items:center;justify-content:space-between;gap:16px;padding:11px 13px;border:1px dashed #ccd9d3;border-radius:11px;background:#fafcfb}.pessoal-relatorios-rapidos-vazio>div{display:grid;gap:3px}.pessoal-relatorios-rapidos-vazio strong{font-size:11.5px;color:#1b4272}.pessoal-relatorios-rapidos-vazio span,.pessoal-relatorios-rapidos-loading{font-size:10.5px;color:#717981;margin:0}
+@media(max-width:1180px){.pessoal-relatorios-rapidos-lista{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:680px){.pessoal-relatorios-rapidos{padding:14px}.pessoal-relatorios-rapidos-head{flex-direction:column}.pessoal-relatorios-rapidos-head-acoes{width:100%;justify-content:space-between}.pessoal-relatorios-rapidos-lista{grid-template-columns:1fr}.pessoal-relatorios-rapidos-vazio{align-items:flex-start;flex-direction:column}.pessoal-relatorios-rapidos-vazio .btn{width:100%}}
+.pessoal-relatorio-modelo-card-top>.pessoal-relatorio-modelo-card-meta{display:flex;align-items:center;gap:6px}

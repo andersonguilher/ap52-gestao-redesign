@@ -1,0 +1,120 @@
+/* AP5.2 v65.42.150 — Central de Demandas */
+#app-shell.demandas-layout-ativo:not(.mobile-inicio){background:#f3f4f6;}
+#app-shell.demandas-layout-ativo>.main{max-width:none;min-width:0;padding:28px 26px 54px;}
+#app-shell.demandas-layout-ativo>.central-acao,#app-shell.demandas-layout-ativo>.central-acao-toggle,#app-shell.demandas-layout-ativo>.central-acao-backdrop{display:none!important;}
+#demandas-menu{display:flex;align-items:center;gap:10px;width:100%;text-align:left;border:0;font-family:inherit;}
+#demandas-menu svg{width:18px;height:18px;flex-shrink:0;}
+/* Botões do menu precisam do mesmo fundo dos demais itens da sidebar. */
+.sidebar>#demandas-menu,.sidebar>#ac28-menu{appearance:none;background:transparent;border:0;box-shadow:none;font-family:inherit;}
+.sidebar>#demandas-menu:hover,.sidebar>#ac28-menu:hover,.sidebar>#demandas-menu.active,.sidebar>#ac28-menu.active{background:#25394A;color:#fff;}
+.sidebar>#demandas-menu:focus-visible,.sidebar>#ac28-menu:focus-visible{outline:2px solid var(--amber);outline-offset:2px;}
+
+#view-demandas{--dem-line:#dce1e6;color:#102846;}
+#view-demandas [hidden]{display:none!important;}
+#view-demandas .crumbs{font-size:13px;color:#626c77;margin:0 100px 22px 0;}
+#view-demandas button,#view-demandas input,#view-demandas select{font-family:inherit;}
+#view-demandas button:focus-visible,#view-demandas input:focus-visible,#view-demandas select:focus-visible{outline:3px solid #d39528;outline-offset:3px;}
+.dem52-head{display:flex;align-items:center;justify-content:space-between;gap:20px;padding-bottom:23px;margin-bottom:24px;border-bottom:1px solid var(--dem-line);}
+.dem52-head h1{font-size:30px;line-height:1.18;letter-spacing:-.7px;margin:0 0 9px;color:#102845;}
+.dem52-head p{font-size:14px;line-height:1.55;margin:0;color:#525d68;max-width:630px;}
+.dem52-eyebrow{font-size:11px;text-transform:uppercase;font-weight:750;letter-spacing:1.3px;color:#173b66;margin-bottom:8px;}
+.dem52-scope{border:1px solid #cdd6df;border-radius:9px;background:#eaf4ef;color:#193d6a;padding:9px 12px;font-size:12px;font-weight:700;white-space:nowrap;}
+.dem52-layout{display:grid;grid-template-columns:minmax(0,1fr) minmax(280px,325px);gap:22px;align-items:start;}
+.dem52-principal{min-width:0;display:grid;gap:18px;}
+.dem52-panel{background:white;border:1px solid var(--dem-line);border-radius:15px;overflow:hidden;box-shadow:0 2px 8px #15333b03;}
+.dem52-filters{padding:20px;display:grid;gap:15px;}
+.dem52-search{display:grid;grid-template-columns:145px minmax(0,1fr);gap:12px;}
+.dem52-filter-row{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;}
+.dem52-filters label{display:grid;gap:7px;margin:0;color:#45525f;font-size:12px;font-weight:650;min-width:0;}
+.dem52-filters input,.dem52-filters select{width:100%;min-width:0;border:1px solid #ccd4dc;border-radius:9px;background:#fcfcfd;color:#102846;min-height:44px;padding:10px 11px;font-size:13px;font-weight:400;}
+.dem52-filters select:disabled{background:#f0f2f4;color:#525d68;opacity:1;}
+.dem52-filter-actions{display:flex;justify-content:flex-end;gap:9px;}
+#view-demandas .btn{border-radius:9px;min-height:42px;font-size:13px;white-space:normal;}
+#view-demandas .btn-primary{background:#173b66;}
+#view-demandas .btn:disabled{opacity:.5;cursor:default;}
+.dem52-list-head{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:18px 20px;border-bottom:1px solid #e8ecef;}
+.dem52-list-head h2{font-size:17px;margin:0;letter-spacing:-.2px;}
+.dem52-list-head p{font-size:12px;color:#636f7b;margin:7px 0 0;}
+.dem52-row{display:grid;gap:9px;width:100%;background:white;border:0;border-bottom:1px solid #e8ecef;padding:18px 20px;text-align:left;color:#102846;cursor:pointer;font:inherit;}
+.dem52-row:last-child{border-bottom:0;}
+.dem52-row:hover{background:#f6f8fa;}
+.dem52-row[aria-pressed=true]{background:#f0f8f4;box-shadow:inset 3px 0 #265877;}
+.dem52-row-top,.dem52-row-bottom{display:flex;align-items:center;justify-content:space-between;gap:9px;flex-wrap:wrap;}
+.dem52-origin{font-size:12px;font-weight:700;overflow-wrap:anywhere;}
+.dem52-origin>span{font-weight:400;color:#5b6670;}
+.dem52-row>strong{font-size:15px;line-height:1.4;overflow-wrap:anywhere;}
+.dem52-address{font-size:13px;line-height:1.5;color:#525d68;overflow-wrap:anywhere;}
+.dem52-row-bottom{font-size:11px;color:#636f7b;line-height:1.5;}
+.dem52-tag{display:inline-block;font-size:10px;font-weight:750;line-height:1.5;padding:4px 8px;border-radius:7px;background:#edf0f2;color:#525d68;}
+.dem52-tag[data-status=recebida],.dem52-tag[data-status=em_triagem]{background:#fdf3de;color:#896019;}
+.dem52-tag[data-status=vinculada_a_caso],.dem52-tag[data-status=aguardando_resposta]{background:#eaf0f8;color:#365f8a;}
+.dem52-tag[data-status=respondida],.dem52-tag[data-status=encerrada]{background:#e4f3ec;color:#246b4e;}
+.dem52-empty{padding:44px 22px;text-align:center;color:#5b6670;font-size:13px;line-height:1.6;}
+.dem52-empty strong{display:block;font-size:16px;font-weight:650;color:#16375f;}
+.dem52-empty p{margin:8px auto 0;max-width:350px;}
+.dem52-empty-icon{display:flex;width:46px;height:46px;border-radius:12px;background:#edf1f5;color:#2c5c97;margin:0 auto 15px;align-items:center;justify-content:center;font-size:29px;}
+.dem52-error{background:#fffaf6;}.dem52-error strong{color:#9c4b36;}
+.dem52-notice{padding:12px 20px;background:#fdf3de;color:#896019;font-size:12px;line-height:1.5;}
+.dem52-pagination{display:flex;align-items:center;justify-content:space-between;gap:8px;padding:14px 20px;border-top:1px solid #e8ecef;font-size:12px;color:#525d68;}
+.dem52-context{position:sticky;top:24px;}
+.dem52-context .dem52-list-head{flex-wrap:wrap;}
+.dem52-context .dem52-list-head .btn{font-size:11px;min-height:34px;padding:6px 8px;}
+.dem52-context-body{padding:20px;overflow-wrap:anywhere;}
+.dem52-context h3{font-size:16px;line-height:1.4;margin:0 0 9px;}
+.dem52-context p{font-size:13px;line-height:1.65;margin:0;color:#5b6670;}
+.dem52-context p+p{margin-top:10px;}
+.dem52-help{padding-top:20px;margin-top:20px;border-top:1px solid #e8ecef;}
+.dem52-help h3{font-size:13px;}
+.dem52-context .dem52-sei{margin-top:22px;padding:12px;background:#f3f5f7;border-radius:9px;font-size:12px;}
+.dem52-context .dem52-detail-title{font-size:18px;margin-top:12px;}
+.dem52-meta{margin:18px 0 0;display:grid;gap:13px;}
+.dem52-meta div{display:grid;gap:5px;}.dem52-meta dt{color:#636f7b;font-size:11px;font-weight:650;}.dem52-meta dd{margin:0;font-size:13px;line-height:1.5;}
+.dem52-observacao{white-space:pre-wrap;}
+@media(min-width:901px){#app-shell.demandas-layout-ativo>.sidebar{position:sticky;top:0;height:100dvh;overflow:auto;align-self:flex-start;width:218px;scrollbar-width:thin;scrollbar-color:#566675 #102845;}#app-shell.demandas-layout-ativo>.sidebar .brand-name{font-size:58px;}}
+@media(max-width:1100px){.dem52-layout{grid-template-columns:1fr;}.dem52-context{position:static;}.dem52-context-intro{max-width:650px;}}
+@media(max-width:900px){#app-shell.demandas-layout-ativo:not(.mobile-inicio)>.main{padding:18px 16px 94px;}.dem52-head{align-items:flex-start;flex-direction:column;gap:14px;margin-bottom:18px;padding-bottom:19px;}.dem52-head h1{font-size:25px;}.dem52-filters{padding:16px;}.dem52-filter-row{grid-template-columns:1fr 1fr;}.dem52-filter-row>label:last-child{grid-column:1/-1;}.dem52-list-head,.dem52-row,.dem52-context-body{padding:16px;}.dem52-head p{font-size:13px;}}
+@media(max-width:420px){.dem52-search{grid-template-columns:1fr;gap:12px;}.dem52-filter-row{grid-template-columns:1fr;}.dem52-filter-row>label:last-child{grid-column:auto;}.dem52-filter-actions .btn{flex:1;padding:10px 8px;}.dem52-pagination{padding:12px 10px;}.dem52-pagination .btn{padding:8px;font-size:11px;}}
+
+/* AP5.2 6.6F — Separação operacional do acervo histórico (156.4.2). */
+.dem52-acervo{display:flex;align-items:center;gap:13px;flex-wrap:wrap;padding:0 0 13px;border-bottom:1px solid var(--dem-line);}
+.dem52-acervo-label{font-size:12px;font-weight:700;color:#45525f;}
+.dem52-acervo-botoes{display:flex;align-items:stretch;gap:5px;flex-wrap:wrap;}
+#view-demandas .dem52-acervo-botao{font-size:12px;font-weight:650;border-radius:8px;background:#f2f4f6;color:#465360;border:1px solid #d5dce4;padding:9px 12px;min-height:40px;cursor:pointer;}
+#view-demandas .dem52-acervo-botao[aria-pressed="true"]{background:#173b66;border-color:#173b66;color:#fff;}
+#view-demandas .dem52-acervo-botao:hover:not([aria-pressed="true"]){background:#e7ecf0;}
+.dem52-acervo-aviso{font-size:12px;line-height:1.55;color:#6c552c;background:#fff7e7;padding:14px 20px;border-bottom:1px solid #f1e3c5;}
+.dem52-acervo-tag,.dem52-duplicidade-tag{display:inline-block;margin-left:7px;padding:2px 7px;border-radius:7px;font-size:10px;font-weight:700;line-height:1.7;background:#eaf0f8;color:#2f5b82;}
+.dem52-duplicidade-tag{background:#fff2df;color:#855c20;}
+.dem52-context-historico{background:#fff8eb;border:1px solid #eadcc2;border-radius:10px;padding:13px 14px;margin-bottom:14px;color:#725324;}
+.dem52-context-historico strong{font-size:12px;}
+.dem52-context-historico p{font-size:12px;margin-top:5px;color:#725324;line-height:1.5;}
+@media(max-width:600px){.dem52-acervo{display:block;}.dem52-acervo-label{display:block;margin-bottom:9px;}.dem52-acervo-botoes{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));}.dem52-acervo-botao{min-width:0;padding:9px 6px!important;white-space:normal;}.dem52-acervo-tag,.dem52-duplicidade-tag{margin-top:5px;margin-left:0;margin-right:5px;}}
+
+/* AP5.2 v65.42.156.4.3 — Atalho acessível ao acervo histórico no estado vazio. */
+#view-demandas .dem52-empty-historicas p{max-width:440px;}
+#view-demandas .dem52-atalho-historicas{margin:18px auto 0;display:inline-flex;align-items:center;justify-content:center;max-width:100%;white-space:normal;padding:10px 17px;cursor:pointer;}
+@media(max-width:420px){#view-demandas .dem52-atalho-historicas{width:100%;}}
+
+/* AP5.2 v65.42.156.4.5 — Detalhes da demanda com rolagem independente no desktop.
+   Rolagem via roda do mouse/trackpad ao passar sobre o conteudo; o cabecalho permanece visivel.
+   Tablets e celulares (<=1100px) mantem a rolagem natural da pagina. */
+@media (min-width:1101px) {
+  #view-demandas .dem52-context {
+    display: flex;
+    flex-direction: column;
+    max-height: calc(100dvh - 48px);
+    min-height: 0;
+    overflow: hidden;
+  }
+  #view-demandas .dem52-context > .dem52-list-head {
+    flex: 0 0 auto;
+  }
+  #view-demandas .dem52-context > .dem52-context-body {
+    flex: 1 1 auto;
+    min-height: 0;
+    overflow-y: auto;
+    overscroll-behavior-y: contain;
+    scrollbar-width: thin;
+    scrollbar-color: #b3bec9 transparent;
+  }
+}

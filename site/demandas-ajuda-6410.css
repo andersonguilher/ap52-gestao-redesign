@@ -1,0 +1,22 @@
+/* AP5.2 6.6G UX / v65.42.156.4.10 — Somente ajudas de leitura. */
+#view-demandas .dem52c-abas{width:100%;max-width:100%;min-width:0;align-items:stretch;box-sizing:border-box;}
+#view-demandas .ap52-help-tab-wrap{flex:1 1 0;min-width:0;display:flex;flex-direction:column;gap:5px;}
+#view-demandas .ap52-help-tab-wrap>[role=tab]{width:100%;flex:0 0 auto;min-width:0;box-sizing:border-box;white-space:normal;overflow-wrap:anywhere;}
+#view-demandas .ap52-help-tab{margin:0;padding:2px 7px 4px;font-size:11px;line-height:1.45;color:#475664;overflow-wrap:anywhere;min-width:0;}
+#view-demandas .dem52-acervo-botoes{flex:1 1 0;min-width:0;align-items:stretch;}
+#view-demandas .ap52-help-acervo-wrap{flex:1 1 135px;min-width:0;display:flex;flex-direction:column;gap:5px;}
+#view-demandas .ap52-help-acervo-wrap>.dem52-acervo-botao{width:100%;min-width:0;box-sizing:border-box;}
+#view-demandas .ap52-help-acervo{font-size:11px;line-height:1.4;color:#525c67;margin:0 2px 3px;overflow-wrap:anywhere;min-width:0;}
+#view-demandas .dem52-help-empty{overflow-wrap:anywhere;min-width:0;}
+#view-demandas .dem52-help-empty strong{overflow-wrap:anywhere;}
+#view-demandas .ap52-g2-already{display:inline-block;padding:5px 10px;margin:7px 0 0;border:1px solid #c8d2db;border-radius:8px;background:#f0f7f2;color:#214673;font-size:12px;font-weight:700;}
+@media(max-width:600px){
+ #view-demandas .dem52c-abas{gap:4px;padding:4px;}
+ #view-demandas .ap52-help-tab-wrap{flex:1 1 0;min-width:0;}
+ #view-demandas .ap52-help-tab-wrap>[role=tab]{padding:8px 4px;font-size:11px;line-height:1.25;min-height:48px;}
+ #view-demandas .ap52-help-tab{font-size:10px;line-height:1.4;padding:3px 3px 5px;}
+ #view-demandas .dem52-acervo-botoes{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:5px;}
+ #view-demandas .ap52-help-acervo-wrap{min-width:0;}
+ #view-demandas .ap52-help-acervo{font-size:10px;margin:0 1px 4px;}
+ #view-demandas .ap52-help-acervo-wrap>.dem52-acervo-botao{padding:8px 4px!important;min-height:40px;}
+}

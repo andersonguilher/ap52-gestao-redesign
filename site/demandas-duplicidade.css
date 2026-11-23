@@ -1,0 +1,18 @@
+/* AP5.2 v65.42.151 — Conferência de registros existentes */
+.dem52-dup-panel{border:1px solid #d4dce3;border-radius:12px;background:#f8fafb;padding:17px;min-width:0;}
+.dem52-dup-head{display:flex;justify-content:space-between;align-items:flex-start;gap:13px;}
+.dem52-dup-head h3{font-size:15px;margin:0 0 7px;color:#16375f;}.dem52-dup-head p{font-size:12px;line-height:1.6;color:#5b6670;margin:0;}
+.dem52-dup-head .btn{flex-shrink:0;white-space:nowrap;font-size:12px;}
+.dem52-dup-message{margin:14px 0 0;padding:11px 13px;font-size:12px;line-height:1.6;border-radius:8px;background:#eef1f4;color:#525d68;}
+.dem52-dup-message[data-estado=atencao]{background:#fff3d9;color:#725115;}.dem52-dup-message[data-estado=ok]{background:#eaf6ed;color:#1f416b;}.dem52-dup-message[data-estado=erro]{background:#fff1e9;color:#934630;}
+.dem52-dup-grupo{margin-top:18px;}.dem52-dup-grupo>h4{font-size:13px;color:#16375f;margin:0 0 10px;display:flex;align-items:center;gap:8px;}.dem52-dup-grupo>h4 span{padding:3px 7px;border-radius:6px;background:#e7ebef;font-size:11px;}
+.dem52-dup-cards{display:grid;gap:10px;}.dem52-dup-card{background:white;border:1px solid #dce2e7;border-radius:10px;padding:14px;min-width:0;overflow-wrap:anywhere;}
+.dem52-dup-card-top{display:flex;justify-content:space-between;align-items:flex-start;gap:8px;flex-wrap:wrap;}.dem52-dup-card-top>strong{font-size:12px;color:#20436e;}.dem52-dup-card h4{font-size:14px;line-height:1.5;color:#102846;margin:10px 0 5px;}
+.dem52-dup-card p{margin:0;font-size:12px;line-height:1.6;color:#525d68;}.dem52-dup-card .dem52-dup-resumo{font-size:11px;margin-top:6px;}
+.dem52-dup-motivos{list-style:none;margin:11px 0;padding:0;display:flex;gap:5px;flex-wrap:wrap;}.dem52-dup-motivos li{padding:4px 7px;border-radius:6px;background:#fff5df;color:#775a20;font-size:10px;line-height:1.5;}
+.dem52-dup-card details{border-top:1px solid #edf0f2;padding-top:9px;font-size:12px;}.dem52-dup-card summary{cursor:pointer;font-weight:650;color:#1c4476;padding:3px 0;}.dem52-dup-card summary:focus-visible{outline:3px solid #d39528;outline-offset:3px;}
+.dem52-dup-card .dem52-meta{margin:12px 0;}.dem52-dup-card .dem52-observacao{padding:10px;border-radius:8px;background:#f5f6f8;}
+.dem52-cadastro .dem52-dup-confirmacao{display:flex;align-items:flex-start;gap:10px;margin-top:17px;padding:13px;border:1px solid #ecd8a7;background:#fffaf0;border-radius:9px;font-size:12px;font-weight:500;line-height:1.6;}
+.dem52-cadastro .dem52-dup-confirmacao input{width:19px;height:19px;min-height:19px;padding:0;margin:2px 0 0;flex-shrink:0;accent-color:#265877;}
+.dem52-dup-limite{font-size:11px;line-height:1.6;margin:0 0 10px;color:#775a20;}
+@media(max-width:600px){.dem52-dup-panel{padding:14px;}.dem52-dup-head{flex-direction:column;gap:11px;}.dem52-dup-head .btn{width:100%;}.dem52-dup-card{padding:12px;}.dem52-cadastro .dem52-dup-confirmacao{font-size:13px;}}

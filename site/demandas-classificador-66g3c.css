@@ -1,0 +1,12 @@
+
+/* AP5.2 6.6G.3C — paineis de conferencia, sem botoes ocultos no celular. */
+#view-demandas .ap52-g1-subheading{font-size:.87rem;margin:12px 0 7px;color:#334155;font-weight:750}
+#view-demandas .ap52-g1-review-list{list-style:none;padding:0;margin:8px 0;display:grid;gap:9px}
+#view-demandas .ap52-g1-review-list li{padding:9px 10px;border-left:3px solid #b7791f;background:#fffdf7;border-radius:6px;min-width:0;overflow-wrap:anywhere}
+#view-demandas .ap52-g1-review-list strong,#view-demandas .ap52-g1-notes strong,#view-demandas .ap52-g1-exclusions strong{display:block;font-size:.83rem;color:#334155}
+#view-demandas .ap52-g1-review-list small{display:block;color:#64748b;font-size:.78rem;margin:4px 0}
+#view-demandas .ap52-g1-review-list p{margin:4px 0;font-size:.79rem}
+#view-demandas .ap52-g1-check{margin-top:7px;max-width:100%;white-space:normal}
+#view-demandas .ap52-g1-notes,#view-demandas .ap52-g1-exclusions{padding:10px;border:1px solid #e3e7ef;border-radius:8px;margin-top:12px;background:#fff}
+#view-demandas .ap52-g1-exclusions{border-color:#e6d3b5;background:#fff9ef}
+@media(max-width:620px){#view-demandas .ap52-g1-review-list li{padding:8px}#view-demandas .ap52-g1-check{width:100%}}

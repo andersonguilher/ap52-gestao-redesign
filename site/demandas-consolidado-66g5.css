@@ -1,0 +1,112 @@
+/* AP5.2 v65.42.156.4.12.5.4.8 R2 — Consolidado, painel separado e somente leitura. */
+body.ap52con-travado{overflow:hidden!important}
+#ap52con-painel[hidden]{display:none!important}
+#ap52con-painel{box-sizing:border-box;position:fixed;inset:0;z-index:5800;background:#f5f6f8;overflow-y:auto;overflow-x:hidden;max-height:100dvh;padding:clamp(12px,2vw,30px);padding-top:calc(14px + env(safe-area-inset-top));padding-bottom:calc(24px + env(safe-area-inset-bottom));font-family:inherit;color:#132842;}
+#ap52con-painel *{box-sizing:border-box}
+#ap52con-painel button,#ap52con-painel select,#ap52con-painel input{font:inherit}
+#ap52con-painel button{min-height:39px;border-radius:9px;border:1px solid #c4ced7;background:#fff;color:#1d3e66;padding:8px 11px;cursor:pointer;font-size:12px;font-weight:750}
+#ap52con-painel button:hover{background:#ebf0f4}
+#ap52con-painel button:focus-visible,#ap52con-painel input:focus-visible,#ap52con-painel select:focus-visible,#ap52con-painel [tabindex]:focus-visible{outline:3px solid #e9b557;outline-offset:2px}
+#ap52con-painel .ap52con-head{display:flex;align-items:center;justify-content:space-between;gap:18px;max-width:1700px;margin:auto auto 18px}
+#ap52con-painel .ap52con-head span{font-size:10px;letter-spacing:1px;text-transform:uppercase;color:#4b6178;font-weight:850}
+#ap52con-painel .ap52con-head h2{margin:4px 0;font-size:clamp(22px,2.3vw,30px);color:#12263e}
+#ap52con-painel .ap52con-head p{margin:0;color:#566371;font-size:12px;line-height:1.5}
+#ap52con-painel .ap52con-head>div:last-child{display:flex;align-items:center;gap:9px;flex-wrap:wrap}
+#ap52con-painel #ap52con-fechar{background:#173b66;border-color:#173b66;color:#fff}
+#ap52con-painel .ap52con-msg{max-width:1700px;margin:8px auto 13px;padding:12px;border-radius:9px;border:1px solid #cad4df;background:#e9eef3;color:#1c3b61;font-size:12px}
+#ap52con-painel .ap52con-msg[data-erro=true]{border-color:#e0b590;background:#fff4e8;color:#965b2c}
+#ap52con-painel .ap52con-filtros{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));align-items:start;gap:12px;background:white;border:1px solid #dae1e8;border-radius:14px;padding:16px;max-width:1700px;margin:0 auto 12px}
+#ap52con-painel .ap52con-filtros label{min-width:0;display:grid;gap:5px;font-size:11px;font-weight:800;color:#20436e}
+#ap52con-painel input:not([type=checkbox]),#ap52con-painel select{min-width:0;width:100%;border:1px solid #cad2db;border-radius:8px;padding:9px 10px;min-height:40px;background:#f9fcfa;color:#142a44;font-size:13px}
+#ap52con-painel .ap52con-mais{grid-column:1/-1;font-size:12px}
+#ap52con-painel .ap52con-mais summary{cursor:pointer;font-weight:750}
+#ap52con-painel .ap52con-mais>div{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin-top:12px}
+#ap52con-painel .ap52con-situacoes{display:flex;align-items:center;flex-wrap:wrap;gap:7px;max-width:1700px;margin:8px auto 12px}
+#ap52con-painel .ap52con-situacoes>span{font-size:12px;font-weight:800;color:#455769;margin-right:5px}
+#ap52con-painel button[aria-pressed=true]{background:#e3f2e8;border-color:#257a53;color:#16365d}
+#ap52con-painel .ap52con-inclui{max-width:1700px;margin:0 auto 12px;font-size:12px;line-height:1.5;color:#20446f;border-left:3px solid #c89d52;padding:10px 12px;background:#fff9ed}
+#ap52con-painel .ap52con-kpis{max-width:1700px;margin:12px auto 16px;display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:10px}
+#ap52con-painel .ap52con-kpis article{background:#fff;border:1px solid #d9e0e7;border-radius:12px;padding:15px 12px;display:grid;align-content:center;gap:4px;text-align:center;min-height:96px;min-width:0}
+#ap52con-painel .ap52con-kpis small{font-size:11px;color:#6b7681;overflow-wrap:anywhere}
+#ap52con-painel .ap52con-kpis strong{font-size:clamp(20px,2vw,29px);color:#17304f;overflow-wrap:anywhere;font-variant-numeric:tabular-nums}
+#ap52con-painel .ap52con-tabela-tools{max-width:1700px;margin:auto;display:flex;gap:9px;align-items:end;flex-wrap:wrap}
+#ap52con-painel .ap52con-tabela-tools>div{display:flex;gap:5px;flex-wrap:wrap}
+#ap52con-painel .ap52con-tabela-tools>label{margin-left:auto;font-weight:750;color:#485b6e;font-size:11px;display:grid;gap:4px}
+#ap52con-painel .ap52con-nota{max-width:1700px;margin:14px auto 9px;font-size:11px;color:#626e79}
+#ap52con-painel .ap52con-rolagem{overflow:auto;max-width:1700px;margin:auto;background:#fff;border:1px solid #dce2e8;border-radius:13px;max-height:min(62dvh,700px);scrollbar-width:thin}
+#ap52con-painel table{width:100%;border-collapse:separate;border-spacing:0;min-width:810px;font-variant-numeric:tabular-nums;font-size:12px}
+#ap52con-painel th,#ap52con-painel td{padding:12px 13px;border-bottom:1px solid #e8ecef;white-space:normal;overflow-wrap:anywhere;text-align:left;vertical-align:top}
+#ap52con-painel th{position:sticky;top:0;background:#eaeef2;z-index:2;color:#1f416a;font-weight:800;cursor:pointer}
+#ap52con-painel th:first-child,#ap52con-painel td:first-child{position:sticky;left:0;background:#fff;z-index:1;min-width:180px;max-width:270px}
+#ap52con-painel th:first-child{background:#eaeef2;z-index:3}
+#ap52con-painel .ap52con-linha{cursor:pointer}
+#ap52con-painel .ap52con-linha:hover td{background:#f2f8f3}
+#ap52con-painel .ap52con-detalhe td{background:#f7f8fa!important;position:static!important}
+#ap52con-painel .ap52con-detalhe>td>div{padding:5px 12px 12px}
+#ap52con-painel .ap52con-detalhe h3{font-size:13px;margin:5px 0 10px}
+#ap52con-painel .ap52con-detalhe p{margin:7px 0;font-size:12px;color:#455464}
+#ap52con-painel .ap52con-fonte{font-size:11px;color:#606c79;max-width:1700px;margin:12px auto}
+@media(max-width:900px){
+ #ap52con-painel .ap52con-head{align-items:stretch;flex-direction:column}
+ #ap52con-painel .ap52con-filtros{grid-template-columns:repeat(2,minmax(0,1fr))}
+ #ap52con-painel .ap52con-kpis{grid-template-columns:repeat(3,minmax(0,1fr))}
+}
+@media(max-width:520px){
+ #ap52con-painel .ap52con-filtros{grid-template-columns:1fr}
+ #ap52con-painel .ap52con-mais>div{grid-template-columns:1fr}
+ #ap52con-painel .ap52con-kpis{grid-template-columns:repeat(2,minmax(0,1fr))}
+ #ap52con-painel .ap52con-tabela-tools>label{flex:1 1 100%;margin-left:0}
+ #ap52con-painel .ap52con-tabela-tools>label input{width:100%}
+ #ap52con-painel th,#ap52con-painel td{padding:10px}
+}
+@media print{
+ body *{visibility:hidden!important}
+ #ap52con-painel,#ap52con-painel *{visibility:visible!important}
+ #ap52con-painel{position:static!important;max-height:none!important;overflow:visible!important;padding:0!important}
+ #ap52con-painel .ap52con-head>div:last-child,#ap52con-painel .ap52con-filtros,#ap52con-painel .ap52con-situacoes,#ap52con-painel .ap52con-tabela-tools,#ap52con-painel .ap52con-msg{display:none!important}
+ #ap52con-painel .ap52con-rolagem{max-height:none!important;overflow:visible!important}
+ #ap52con-painel table{min-width:0!important;font-size:9px}
+ #ap52con-painel th,#ap52con-painel td{position:static!important;padding:5px!important}
+}
+
+/* 4.12.5.4.9 R2 — Frente 2: colunas de números e datas centralizadas; nome e solicitantes à esquerda */
+#ap52con-painel th.ap52con-col-num,#ap52con-painel td.ap52con-col-num{text-align:center;vertical-align:middle}
+#ap52con-painel th.ap52con-col-texto,#ap52con-painel td.ap52con-col-texto{text-align:left;vertical-align:middle}
+/* R3: indicadores em dois grupos (Pedidos | Serviços feitos), todos os números na mesma cor */
+#ap52con-painel .ap52con-kpis{grid-template-columns:minmax(0,5fr) minmax(0,2fr);gap:14px;align-items:stretch}
+#ap52con-painel .ap52con-kpi-grupo{display:grid;gap:10px;align-content:start;min-width:0}
+#ap52con-painel .ap52con-kpi-pedidos{grid-template-columns:repeat(5,minmax(0,1fr))}
+#ap52con-painel .ap52con-kpi-servicos{grid-template-columns:repeat(2,minmax(0,1fr));padding-left:14px;border-left:1px solid #d9e0e7}
+#ap52con-painel .ap52con-kpi-titulo{grid-column:1/-1;font-size:11px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;color:#20436e}
+#ap52con-painel .ap52con-n-linhas{align-self:center;margin-left:6px;font-size:12px;font-weight:700;color:#485b6e}
+@media(max-width:1100px){#ap52con-painel .ap52con-kpis{grid-template-columns:1fr}#ap52con-painel .ap52con-kpi-servicos{padding-left:0;border-left:0}}
+@media(max-width:700px){#ap52con-painel .ap52con-kpi-pedidos{grid-template-columns:repeat(3,minmax(0,1fr))}}
+@media(max-width:420px){#ap52con-painel .ap52con-kpi-pedidos{grid-template-columns:repeat(2,minmax(0,1fr))}}
+/* 4.12.5.4.10 R1 — Frente 2: "Pesquisar" (um campo só) e "Ruas da gerência" (com e sem serviço registrado). Números na mesma cor dos outros indicadores. */
+#ap52con-painel .ap52con-pesquisa{grid-column:1/-1;font-size:12px}
+#ap52con-painel .ap52con-pesquisa input{min-height:46px;font-size:15px;padding:10px 12px;background:#fff;border-color:#b9c5d1}
+#ap52con-painel .ap52con-pesquisa small{font-size:11.5px;font-weight:600;color:#5d6a77}
+#ap52con-painel .ap52con-pesquisa small[data-ativo=true]{color:#1b385c;font-weight:800}
+#ap52con-painel .ap52con-cob{max-width:1700px;margin:0 auto 16px;background:#fff;border:1px solid #d9e0e7;border-radius:14px;padding:14px 16px;display:grid;gap:10px}
+#ap52con-painel .ap52con-cob-topo{display:flex;align-items:baseline;gap:10px;flex-wrap:wrap}
+#ap52con-painel .ap52con-cob-topo small{font-size:11.5px;color:#5d6a77}
+#ap52con-painel .ap52con-cob-barra{height:12px;border-radius:999px;background:#e3e7eb;overflow:hidden}
+#ap52con-painel .ap52con-cob-barra span{display:block;height:100%;width:0;background:#154580;border-radius:inherit;transition:width .25s ease}
+#ap52con-painel .ap52con-cob-nums{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}
+#ap52con-painel .ap52con-cob-nums button{display:grid;justify-items:start;align-content:start;gap:3px;text-align:left;min-height:74px;padding:12px 14px;border-radius:12px;border:1px solid #d9e0e7;background:#fff;color:#17304f;font-weight:600}
+#ap52con-painel .ap52con-cob-nums button:hover{border-color:#8fa5bc;background:#f4f6f9}
+#ap52con-painel .ap52con-cob-nums button[aria-pressed=true]{border-color:#257a53;background:#e3f2e8}
+#ap52con-painel .ap52con-cob-nums strong{font-size:clamp(20px,2vw,27px);color:#17304f;font-variant-numeric:tabular-nums;line-height:1.1}
+#ap52con-painel .ap52con-cob-nums small{font-size:11.5px;color:#5d6a77;display:flex;align-items:center;gap:6px;text-align:left}
+#ap52con-painel .ap52con-cob-com small::before,#ap52con-painel .ap52con-cob-sem small::before,#ap52con-painel td.ap52con-situ-com::before,#ap52con-painel td.ap52con-situ-sem::before{content:"";width:9px;height:9px;border-radius:50%;flex:none;display:inline-block}
+#ap52con-painel .ap52con-cob-com small::before,#ap52con-painel td.ap52con-situ-com::before{background:#154580}
+#ap52con-painel .ap52con-cob-sem small::before,#ap52con-painel td.ap52con-situ-sem::before{background:#c3c9cf}
+#ap52con-painel td.ap52con-situ-com::before,#ap52con-painel td.ap52con-situ-sem::before{margin-right:7px;vertical-align:1px}
+#ap52con-painel .ap52con-cob-nota{margin:0;font-size:12px;line-height:1.5;color:#4f5d6b}
+#ap52con-painel .ap52con-ver{min-height:32px;padding:5px 9px;font-size:11.5px}
+@media(max-width:520px){#ap52con-painel .ap52con-cob{padding:12px}
+#ap52con-painel .ap52con-cob-nums{gap:6px}
+#ap52con-painel .ap52con-cob-nums button{padding:10px;min-height:68px}
+}
+@media print{#ap52con-painel .ap52con-cob-nums button{min-height:0;padding:6px}
+}

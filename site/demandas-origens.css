@@ -1,0 +1,37 @@
+/* AP5.2 — Etapa Origem R1, gerenciamento restrito. */
+#view-demandas .dem52-orig-control{display:grid;gap:5px;min-width:0}
+#view-demandas .dem52-orig-abrir{justify-self:start;border:0;background:none;color:#193f6d;font-family:inherit;font-size:13px;font-weight:650;cursor:pointer;text-decoration:underline;text-underline-offset:3px;padding:3px 0}
+#view-demandas .dem52-orig-abrir[hidden],.dem52-orig-dialogo[hidden]{display:none!important}
+.dem52-orig-dialogo{position:fixed;inset:0;z-index:18000;display:flex;align-items:center;justify-content:center;padding:18px}
+.dem52-orig-fundo{position:absolute;inset:0;background:rgba(8,19,33,.64)}
+.dem52-orig-painel{position:relative;background:#fff;width:min(100%,620px);max-height:92vh;overflow-y:auto;box-shadow:0 20px 55px #08261f4d;border:1px solid #d5dce2;border-radius:17px;color:#112947}
+.dem52-orig-painel header{display:flex;justify-content:space-between;align-items:start;gap:16px;padding:20px 22px 17px;border-bottom:1px solid #e3e7eb}
+.dem52-orig-painel header span{color:#616d79;font-weight:650;font-size:12px}
+.dem52-orig-painel h2{font-size:21px;font-weight:750;line-height:1.3;margin:3px 0 6px}
+.dem52-orig-painel header p{font-size:13px;line-height:1.5;color:#5b6773;margin:0}
+.dem52-orig-painel button{font:inherit;cursor:pointer}
+#dem52-orig-fechar{height:40px;width:40px;border-radius:9px;border:1px solid #d4dbe1;background:#fff;font-size:23px;flex:0 0 auto}
+.dem52-orig-corpo{padding:18px 22px 23px}
+#dem52-orig-aviso{font-size:13px;line-height:1.5;padding:10px 12px;border-radius:8px;background:#eef6f1;color:#1d3e66;margin:0 0 16px}
+#dem52-orig-aviso[data-erro="1"]{background:#fff2ee;color:#9c3a25}
+.dem52-orig-add label{display:block;font-size:14px;font-weight:700;margin-bottom:7px}
+.dem52-orig-add>div:first-of-type{display:flex;gap:9px;align-items:stretch}
+#dem52-orig-nome{width:100%;min-width:0;min-height:45px;padding:10px 11px;border:1px solid #bfc7cf;border-radius:9px;font:400 15px inherit}
+#dem52-orig-adicionar{flex:0 0 auto;border-radius:9px;border:1px solid #214673;background:#214673;color:white;padding:9px 14px;font-size:14px;font-weight:700}
+.dem52-orig-add p{font-size:12px;color:#616d79;margin:11px 0 7px}
+.dem52-orig-sugestoes{display:flex;gap:8px;flex-wrap:wrap}
+.dem52-orig-sugestoes button{font-size:12px;border:1px solid #bfcbd6;background:#f3f5f8;border-radius:18px;color:#1d3d65;padding:7px 10px}
+.dem52-orig-lista-titulo{display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap;margin:24px 0 10px}
+.dem52-orig-lista-titulo h3{font-size:15px;margin:0}
+#dem52-orig-contagem{font-size:12px;color:#626e79}
+#dem52-orig-lista{list-style:none;padding:0;margin:0;display:grid;gap:7px}
+.dem52-orig-item{display:flex;align-items:center;justify-content:space-between;gap:14px;border:1px solid #e0e4e9;border-radius:10px;padding:11px 12px}
+.dem52-orig-item span{display:grid;gap:4px;min-width:0}
+.dem52-orig-item strong{font-size:14px;overflow-wrap:anywhere}
+.dem52-orig-item small{font-size:11px;color:#6c757e}
+.dem52-orig-item button{flex:0 0 auto;background:white;border:1px solid #c4ced7;color:#1c3b61;padding:8px 10px;border-radius:8px;font-weight:650;font-size:12px}
+.dem52-orig-item button[data-orig-acao="desativar"]{color:#795523}
+.dem52-orig-painel footer{border-top:1px solid #e6e9ec;margin-top:18px;padding-top:14px;color:#616b75;line-height:1.5}
+.dem52-orig-dialogo button:focus-visible,.dem52-orig-dialogo input:focus-visible,#view-demandas .dem52-orig-abrir:focus-visible{outline:3px solid #d39528;outline-offset:3px}
+.dem52-orig-dialogo button:disabled,.dem52-orig-dialogo input:disabled{opacity:.55;cursor:wait}
+@media(max-width:600px){.dem52-orig-painel{max-height:95vh}.dem52-orig-painel header,.dem52-orig-corpo{padding:15px}.dem52-orig-add>div:first-of-type{flex-wrap:wrap}#dem52-orig-adicionar{width:100%}}

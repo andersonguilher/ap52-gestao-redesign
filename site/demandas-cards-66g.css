@@ -1,0 +1,60 @@
+/* AP5.2 — Central de Demandas — 6.6G. CSS exclusivamente de tela. */
+#view-demandas .ap52-66g-summary {display:flex;flex-wrap:wrap;align-items:center;gap:6px;margin-top:9px;line-height:1.35;}
+#view-demandas .ap52-66g-counter {display:inline-flex;background:#fff3d5;border:1px solid #e9c57d;color:#795114;border-radius:99px;font-size:.76rem;font-weight:750;padding:3px 9px;}
+#view-demandas .ap52-66g-hint {color:#6c5f4d;font-size:.8rem;max-width:100%;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
+#view-demandas .ap52-66g-muted,#view-demandas .ap52-66g-ok{color:#64748b;font-size:.82rem;}
+#view-demandas .ap52-66g-error{color:#a92d2d;font-size:.82rem;}
+#view-demandas .ap52-66g-detail {border-top:1px solid var(--border,#e5e7eb);margin-top:15px;padding-top:18px;display:grid;gap:14px;min-width:0;}
+#view-demandas .ap52-66g-detail-head {display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;}
+#view-demandas .ap52-66g-detail-head h3{font-size:1.05rem;font-weight:750;line-height:1.3;margin:0;}
+#view-demandas .ap52-66g-observations {background:#f7f9fc;border:1px solid #e1e6ed;border-radius:12px;padding:13px;overflow-wrap:anywhere;}
+#view-demandas .ap52-66g-observations h4,#view-demandas .ap52-66g-alerts h4{font-size:.94rem;font-weight:750;margin:0 0 9px;}
+#view-demandas .ap52-66g-observations p{margin:0;color:#334155;white-space:pre-wrap;line-height:1.5;}
+#view-demandas .ap52-66g-alerts{display:grid;gap:9px;min-width:0;}
+#view-demandas .ap52-66g-issue{border:1px solid #edc879;border-left:4px solid #d39a35;border-radius:9px;padding:11px;background:#fffaf0;overflow-wrap:anywhere;margin:0;}
+#view-demandas .ap52-66g-issue-head{display:flex;align-items:flex-start;gap:8px;justify-content:space-between;margin-bottom:6px;}
+#view-demandas .ap52-66g-issue-head strong{font-size:.9rem;font-weight:700;}
+#view-demandas .ap52-66g-issue p{margin:5px 0 9px;color:#5b4931;line-height:1.45;font-size:.86rem;}
+#view-demandas .ap52-66g-status{font-size:.7rem;white-space:nowrap;background:#fde6ab;border-radius:99px;padding:3px 7px;color:#69480d;}
+#view-demandas .ap52-66g-automatic{display:flex;flex-direction:column;gap:5px;}
+#view-demandas .ap52-66g-auto-label{text-transform:uppercase;letter-spacing:.04em;font-size:.66rem;color:#92622b;font-weight:700;}
+#view-demandas .ap52-66g-small{margin-top:2px;font-size:.8rem!important;min-height:34px;}
+#view-demandas .ap52-66g-original-wrap,#view-demandas .ap52-66g-history-wrap{border:1px solid #e2e8f0;border-radius:9px;padding:10px 12px;overflow-wrap:anywhere;}
+#view-demandas .ap52-66g-original-wrap summary,#view-demandas .ap52-66g-history-wrap summary{font-size:.89rem;font-weight:700;cursor:pointer;padding:3px 0;}
+#view-demandas .ap52-66g-meta{display:grid;gap:5px;margin:12px 0 0;}
+#view-demandas .ap52-66g-field {display:grid;grid-template-columns:130px minmax(0,1fr);gap:7px;border-top:1px solid #e8edf4;padding:8px 0;font-size:.8rem;}
+#view-demandas .ap52-66g-field dt{color:#64748b;}#view-demandas .ap52-66g-field dd{margin:0;color:#334155;overflow-wrap:anywhere;}
+#view-demandas .ap52-66g-history-entry{padding:9px 0;border-bottom:1px solid #e7ecf1;display:flex;flex-direction:column;gap:3px;font-size:.79rem;margin:0;}
+#view-demandas .ap52-66g-history-entry span{color:#64748b;}
+.ap52-66g-overlay{position:fixed;inset:0;background:rgba(15,23,42,.65);z-index:2147483000;display:flex;align-items:center;justify-content:center;padding:12px;overflow-y:auto;}
+.ap52-66g-modal{max-width:640px;width:100%;max-height:calc(100vh - 24px);overflow-y:auto;overscroll-behavior:contain;background:white;color:#17212f;border-radius:16px;box-shadow:0 24px 70px rgba(0,0,0,.25);padding:18px;}
+.ap52-66g-modal-head{display:flex;align-items:center;justify-content:space-between;gap:10px;border-bottom:1px solid #e2e8f0;padding-bottom:12px;}
+.ap52-66g-modal-head h3{font-size:1.1rem;margin:0;font-weight:760;}
+.ap52-66g-notice{font-size:.84rem;line-height:1.45;margin:12px 0;color:#42526a;}
+.ap52-66g-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:12px;}
+.ap52-66g-input-label{display:flex;flex-direction:column;gap:5px;margin-top:12px;font-size:.84rem;font-weight:650;}
+.ap52-66g-input-label input,.ap52-66g-input-label textarea,.ap52-66g-input-label select{width:100%;min-width:0;border:1px solid #b8c3d2;padding:10px 11px;min-height:44px;border-radius:9px;font:inherit;font-size:.95rem;color:#1e293b;background:#fff;}
+.ap52-66g-input-label textarea{resize:vertical;min-height:94px;}
+.ap52-66g-input-label:has(textarea){grid-column:1/-1;}
+.ap52-66g-input-label input:focus-visible,.ap52-66g-input-label textarea:focus-visible,.ap52-66g-input-label select:focus-visible{outline:2px solid #3679a2;outline-offset:1px;}
+.ap52-66g-modal-foot{margin-top:16px;display:flex;gap:9px;justify-content:flex-end;flex-wrap:wrap;}
+.ap52-66g-modal .btn{min-height:40px;}
+.ap52-66g-form-error{margin:12px 0 0;padding:9px 12px;background:#fff0ed;color:#9d271b;border:1px solid #efb4af;border-radius:8px;font-size:.84rem;}
+@media(max-width:600px){#view-demandas .ap52-66g-detail-head{align-items:stretch;flex-direction:column;}#view-demandas .ap52-66g-detail-head .btn{width:100%;}#view-demandas .ap52-66g-field{grid-template-columns:1fr;gap:2px;} .ap52-66g-modal{padding:14px;border-radius:12px;}.ap52-66g-grid{grid-template-columns:1fr;}.ap52-66g-input-label{grid-column:1/-1;}.ap52-66g-modal-foot .btn{flex:1 1 120px;}}
+
+/* AP5.2 R10.2 — sinalizacao histórica não equivale a prioridade de execução */
+.ap52-66g-historical{display:inline-flex;align-items:center;border:1px solid #e9c98c;background:#fff6e4;color:#86580d;padding:3px 9px;border-radius:6px;font-size:.76rem;font-weight:700;white-space:normal}
+.ap52-66g-historical-detail{margin:8px 0;padding:10px 12px;border-left:3px solid #b78a30;background:#fff8ed;border-radius:4px;color:#624a20;font-size:.88rem;line-height:1.48}
+@media(max-width:620px){.ap52-66g-historical{white-space:normal;font-size:.72rem}.ap52-66g-historical-detail{font-size:.83rem}}
+
+/* AP5.2 R10.2.1 — execução do serviço nos pedidos históricos */
+.ap52-66g-execution{margin:10px 0;padding:10px 12px;border:1px solid #d9e2e8;border-radius:8px;background:#f8fafb}
+.ap52-66g-execution h4{margin:0 0 6px}
+.ap52-66g-execution p{margin:4px 0;line-height:1.45}
+.ap52-66g-exec-falta{font-weight:700;margin-top:8px}
+.ap52-66g-exec-list{margin:4px 0 6px 18px;padding:0;line-height:1.5}
+@media(max-width:620px){.ap52-66g-execution{font-size:.9rem}}
+
+/* 6.6G v65.42.156.4.6 — classificação humana pelo catálogo */
+.ap52-66g-classification-help{display:block;color:#526176;font-weight:400;font-size:.78rem;line-height:1.45;margin-top:2px;}
+.ap52-66g-suggest{align-self:flex-start;margin-top:5px;white-space:normal;text-align:left;font-size:.81rem!important;max-width:100%;}

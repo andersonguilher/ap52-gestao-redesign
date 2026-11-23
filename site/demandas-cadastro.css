@@ -1,0 +1,28 @@
+/* AP5.2 v65.42.150 — Cadastro de Demandas */
+.dem52-head-actions{display:flex;gap:12px;align-items:center;flex-wrap:wrap;justify-content:flex-end;}
+.dem52-cadastro{padding:22px;display:grid;gap:24px;}
+.dem52-cadastro fieldset{margin:0;padding:0;border:0;min-width:0;}
+.dem52-cadastro fieldset+fieldset{padding-top:22px;border-top:1px solid #e8ecef;}
+.dem52-cadastro legend{float:left;width:100%;display:flex;align-items:center;gap:9px;font-size:15px;font-weight:700;color:#16375f;margin:0 0 18px;padding:0;}
+.dem52-cadastro legend+*{clear:both;}
+.dem52-cadastro legend>span{display:inline-flex;align-items:center;justify-content:center;width:25px;height:25px;border-radius:8px;background:#eaf4ef;color:#246b4e;font-size:12px;flex:0 0 auto;}
+.dem52-cad-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px;}
+.dem52-cad-full{grid-column:1/-1;}
+.dem52-cadastro label{display:grid;gap:7px;margin:0;color:#45525f;font-size:12px;font-weight:650;min-width:0;}
+.dem52-cadastro input,.dem52-cadastro select,.dem52-cadastro textarea{font-family:inherit;width:100%;min-width:0;padding:11px 12px;min-height:44px;border:1px solid #ccd4dc;border-radius:9px;background:#fcfcfd;color:#102846;font-size:14px;font-weight:400;}
+.dem52-cadastro input:disabled,.dem52-cadastro select:disabled,.dem52-cadastro textarea:disabled{background:#f0f2f4;color:#525d68;opacity:1;}
+.dem52-cadastro small{font-weight:400;color:#636f7b;font-size:11px;line-height:1.5;}
+.dem52-cadastro textarea{resize:vertical;line-height:1.5;}
+#view-demandas .dem52-cadastro textarea:focus-visible{outline:3px solid #d39528;outline-offset:3px;}
+.dem52-cad-coordenadas{margin-top:19px;font-size:12px;color:#525d68;}
+.dem52-cad-coordenadas summary{font-weight:650;cursor:pointer;padding:8px 0;}
+.dem52-cad-coordenadas p{margin:4px 0 14px;line-height:1.6;}
+.dem52-cad-coordenadas summary:focus-visible{outline:3px solid #d39528;outline-offset:3px;}
+.dem52-cad-message{margin:0;padding:12px 14px;background:#f3f5f7;border-radius:9px;font-size:13px;color:#525d68;line-height:1.6;}
+.dem52-cad-error{color:#9c4b36;background:#fff4ee;}
+.dem52-cad-note{font-size:12px;line-height:1.6;background:#f3f5f7;border-radius:9px;padding:12px 14px;color:#525d68;margin:0;}
+.dem52-cad-footer{display:flex;align-items:center;justify-content:flex-end;gap:10px;}
+.dem52-cad-success{display:flex;gap:16px;align-items:center;justify-content:space-between;padding:17px 19px;border:1px solid #bddfcb;background:#edf8f1;border-radius:13px;color:#246b4e;}
+.dem52-cad-success strong{font-size:14px;}.dem52-cad-success p{margin:6px 0 0;font-size:12px;line-height:1.5;overflow-wrap:anywhere;}
+@media(max-width:900px){.dem52-head-actions{justify-content:flex-start;}.dem52-cadastro{padding:18px 16px;gap:22px;}.dem52-cad-success{align-items:flex-start;flex-direction:column;gap:12px;}}
+@media(max-width:600px){.dem52-cad-grid{grid-template-columns:1fr;}.dem52-cad-full{grid-column:auto;}.dem52-cad-footer .btn{flex:1;padding:12px 9px;}.dem52-cadastro input,.dem52-cadastro select,.dem52-cadastro textarea{font-size:16px;}.dem52-head-actions{width:100%;justify-content:space-between;}}

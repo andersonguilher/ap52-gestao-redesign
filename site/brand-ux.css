@@ -1,0 +1,765 @@
+/* ==========================================================================
+   AP5.2 · Densidade e hierarquia da informação (UX)
+   Princípios: 1) o que exige ação vem primeiro; 2) nada repetido na mesma tela;
+   3) detalhe sob demanda (acordeões, "mostrar mais"); 4) rótulo só quando agrega.
+   ========================================================================== */
+
+/* ---------- Global: remove redundâncias ---------- */
+.unidade-topo{display:none!important;}                       /* unidade já está na sidebar e no breadcrumb */
+.rio-hero .eyebrow,.rio-hero .subtitle,.rio-hero .page-head-tag{display:none!important;} /* eyebrow/subtítulo repetem o título */
+.rio-hero{padding:16px 22px!important;margin-bottom:14px!important;min-height:0!important;}
+.rio-hero h1{font-size:24px!important;margin:0!important;}
+.main{padding:18px 28px 48px;}
+.crumbs{margin-bottom:10px;font-size:13px;}
+
+/* eyebrows decorativos dentro de seções e descrições auxiliares */
+.main section .eyebrow,
+.main section > [class*="head"] p,
+.main section > [class*="cabecalho"] p,
+.pessoal-overview-busca-cabecalho > span{display:none!important;}
+
+/* ---------- Painel de Gestão de Pessoal ---------- */
+#overview-stats{grid-template-columns:repeat(auto-fit,minmax(118px,1fr))!important;gap:10px!important;margin-bottom:14px!important;}
+#overview-stats .stat-card{
+  min-height:0!important;padding:12px 14px!important;border-radius:12px!important;align-items:flex-start!important;text-align:left!important;
+  display:grid!important;grid-template-columns:1fr auto;grid-template-rows:auto auto;column-gap:8px;row-gap:2px;
+}
+#overview-stats .stat-label{grid-column:1;grid-row:1;font-size:12.5px;padding:0!important;margin:0;}
+#overview-stats .stat-num{grid-column:1;grid-row:2;font-size:30px!important;margin:0!important;line-height:1.05;}
+#overview-stats .stat-icon{grid-column:2;grid-row:1/3;align-self:center;width:32px;height:32px;margin:0!important;}
+#overview-stats .stat-card > span:not(.stat-num):not(.stat-label){display:none!important;}  /* "Ver relação →": o cartão inteiro já é clicável */
+#overview-stats .stat-card>:not(.stat-icon):not(.stat-label):not(.stat-num){display:none!important;}
+
+/* busca: uma linha só */
+.pessoal-overview-busca{padding:10px 12px!important;margin-bottom:12px!important;}
+.pessoal-overview-busca-cabecalho{display:none!important;}
+
+/* seções: espaçamento e padding menores */
+#view-overview > section{margin:0 0 12px!important;padding:14px 16px!important;border-radius:14px;}
+#view-overview > section h2{font-size:16px;margin:0;}
+#view-overview > section > [class*="head"],#view-overview > section > [class*="cabecalho"]{margin-bottom:10px!important;}
+
+/* Atenção necessária: mostra só o que tem ocorrência */
+.pessoal-atencao-item.rio-zero{display:none!important;}
+#pessoal-atencao-lista{grid-template-columns:repeat(auto-fill,minmax(260px,1fr))!important;gap:8px!important;}
+.pessoal-atencao-item small{display:none!important;}         /* o título já diz; detalhe no clique */
+.pessoal-atencao-item{padding:10px 12px!important;}
+.rio-ok-note{display:none;font-size:13px;color:var(--muted);padding:6px 2px;}
+.rio-all-zero .rio-ok-note{display:block;}
+
+/* Alertas e pendências: 5 primeiros + "mostrar todas" */
+#pessoal-pendencias-lista .rio-extra{display:none!important;}
+.rio-more{display:flex;margin:10px auto 0;padding:8px 16px;border:1px solid var(--border);background:#fff;color:var(--rio-blue);
+  border-radius:999px;font:700 13px var(--rio-font);cursor:pointer;transition:background .15s;}
+.rio-more:hover{background:#eef5fa;}
+.pessoal-pendencia-item small{display:none!important;}
+.pessoal-pendencia-item{padding-top:8px!important;padding-bottom:8px!important;}
+#pessoal-pendencias-nota{display:none!important;}
+
+/* Acordeões (seções analíticas, fechadas por padrão) */
+.rio-acc-head{cursor:pointer;position:relative;padding-right:34px;user-select:none;}
+.rio-acc-head::after{content:"";position:absolute;right:6px;top:50%;width:9px;height:9px;margin-top:-7px;
+  border-right:2px solid var(--rio-blue);border-bottom:2px solid var(--rio-blue);transform:rotate(45deg);transition:transform .2s var(--rio-ease);}
+.rio-collapsed .rio-acc-head::after{transform:rotate(-45deg);margin-top:-5px;}
+.rio-acc-head:hover h2{color:var(--rio-blue);}
+.rio-collapsed > :not(.rio-acc-head){display:none!important;}
+.rio-collapsed{padding-top:12px!important;padding-bottom:12px!important;}
+.rio-collapsed .rio-acc-head{margin-bottom:0!important;}
+.rio-acc-head .rio-acc-hint{font-size:12.5px;color:var(--muted);font-weight:600;margin-left:8px;}
+
+/* ---------- Funcionários: lista compacta em vez de 22 cartões repetidos ---------- */
+@media(min-width:821px){
+  /* painel lateral vira gaveta: abre ao selecionar uma pessoa (dossiê) ou ao pedir o resumo */
+  #view-funcionarios .pessoal-contexto{display:none!important;}
+  #view-funcionarios .pessoal-contexto.pessoal-contexto-selecionado,
+  #view-funcionarios .pessoal-contexto.rio-resumo-open{
+    display:block!important;position:fixed!important;top:0!important;right:0!important;bottom:0!important;left:auto!important;
+    height:100vh!important;max-height:none!important;width:min(430px,92vw)!important;overflow-y:auto!important;z-index:9500!important;
+    background:#fff!important;border-radius:0!important;margin:0!important;transform:none!important;
+    box-shadow:-18px 0 46px rgba(12,30,52,.28)!important;animation:rioDrawer .22s var(--rio-ease);
+  }
+  .pessoal-layout-contextual{display:block!important;}
+  .ps15-abrir-resumo{display:inline-flex!important;}
+  .rio-drawer-backdrop{position:fixed;inset:0;background:rgba(10,24,42,.38);z-index:9400;backdrop-filter:blur(1.5px);}
+  .rio-drawer-close{position:fixed;top:14px;right:min(380px,80vw);z-index:9600;width:38px;height:38px;border-radius:50%;border:0;
+    background:var(--rio-navy);color:#fff;font:700 22px/1 var(--rio-font);cursor:pointer;box-shadow:var(--rio-shadow-2);}
+  .rio-drawer-close:hover{background:var(--rio-blue);}
+}
+@keyframes rioDrawer{from{transform:translateX(28px);opacity:0}to{transform:none;opacity:1}}
+.ps15-indicadores{margin-bottom:10px;}
+#view-funcionarios .pessoal-kpis{gap:10px!important;}
+#view-funcionarios .pessoal-kpis .pessoal-kpi{padding:10px 14px!important;min-height:0!important;height:auto!important;display:flex!important;flex-direction:row!important;align-items:center!important;justify-content:space-between!important;gap:10px;}
+#view-funcionarios .pessoal-kpi .ap52-kpi-static-icon,#view-funcionarios .pessoal-kpi small{display:none!important;}
+#view-funcionarios .pessoal-kpi-label{margin:0!important;}
+#view-funcionarios .pessoal-kpi strong{font-size:24px!important;}
+#view-funcionarios .pessoal-filtros-card{padding:12px 14px!important;margin-bottom:10px!important;}
+
+#view-funcionarios .pessoal-grupo .emp-grid{display:grid!important;grid-template-columns:1fr!important;gap:6px!important;}
+#view-funcionarios .pessoal-grupo .emp-grid .emp-card{position:relative!important;display:flex!important;flex-direction:row!important;align-items:center!important;gap:8px!important;padding:0!important;min-height:0!important;height:auto!important;border-radius:12px!important;}
+#view-funcionarios .pessoal-grupo .emp-card .ps15-card-selecionar{
+  flex:1 1 auto!important;min-width:0!important;display:grid!important;grid-template-columns:minmax(220px,1.6fr) auto minmax(90px,1fr) minmax(90px,1fr)!important;
+  align-items:center!important;column-gap:16px!important;padding:8px 12px!important;text-align:left!important;background:transparent!important;border:0!important;box-shadow:none!important;
+}
+#view-funcionarios .emp-card .ps15-card-topo{display:flex!important;align-items:center!important;gap:10px!important;min-width:0!important;}
+#view-funcionarios .emp-card .ps15-card-topo .avatar{width:34px!important;height:34px!important;font-size:12px!important;flex:none!important;}
+#view-funcionarios .emp-card .ps15-card-identidade{display:flex!important;flex-direction:column!important;min-width:0!important;line-height:1.2!important;}
+#view-funcionarios .emp-card .ps15-card-identidade strong{font-size:14.5px!important;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+#view-funcionarios .emp-card .ps15-card-identidade small{display:none!important;}
+#view-funcionarios .emp-card .ps15-card-identidade span{font-size:12.5px!important;color:var(--muted)!important;}
+#view-funcionarios .emp-card .ps15-card-chips{display:flex!important;gap:6px!important;margin:0!important;}
+#view-funcionarios .emp-card .ps15-card-chips .pessoal-tag.gerencia{display:none!important;}
+#view-funcionarios .emp-card .ps15-card-dados{display:contents!important;}
+#view-funcionarios .emp-card .ps15-card-dados > span{display:flex!important;flex-direction:column!important;min-width:0!important;}
+#view-funcionarios .emp-card .ps15-card-dados small{font-size:11px!important;color:var(--muted)!important;text-transform:uppercase;letter-spacing:.05em;margin:0!important;}
+#view-funcionarios .emp-card .ps15-card-dados b{font-size:13px!important;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+#view-funcionarios .emp-card .ps15-card-dados .ps15-linha-inteira{display:none!important;}
+#view-funcionarios .emp-card .ps15-card-rodape{display:flex!important;align-items:center!important;gap:10px!important;padding:0 46px 0 0!important;border:0!important;margin:0!important;flex:none!important;width:auto!important;}
+#view-funcionarios .emp-card .ps15-card-rodape small{display:none!important;}
+#view-funcionarios .emp-card .ps15-link{font-size:13px!important;font-weight:700;white-space:nowrap;}
+#view-funcionarios .emp-card .ps15-lote-check{top:50%!important;right:10px!important;bottom:auto!important;transform:translateY(-50%)!important;}
+@media(max-width:900px){
+  #view-funcionarios .pessoal-grupo .emp-card .ps15-card-selecionar{grid-template-columns:1fr auto!important;row-gap:2px!important;}
+  #view-funcionarios .emp-card .ps15-card-dados{display:none!important;}
+}
+
+/* ---------- Outras telas: ajuda auxiliar fora do caminho ---------- */
+#view-equipamentos .eq27-contrato-ajuda,#view-equipamentos [class*="visao"] small{display:none;}
+.card-block > p.muted,.card-block .hint{font-size:13px;}
+
+@media(max-width:1100px){
+  #overview-stats{grid-template-columns:repeat(2,1fr)!important;}
+  .main{padding:14px 14px 70px;}
+}
+
+.pessoal-gerencias .rio-acc-head,.pessoal-gerencias .rio-acc-head *{text-align:left!important;}
+.pessoal-gerencias .rio-acc-head{display:flex;align-items:center;gap:10px;flex-wrap:wrap;}
+
+/* acertos finos */
+#view-overview #overview-stats{grid-template-columns:repeat(auto-fit,minmax(118px,1fr))!important;}
+@media(min-width:1180px){#view-overview #overview-stats:has(> :nth-child(7):last-child){grid-template-columns:repeat(7,minmax(0,1fr))!important;}}
+#view-funcionarios .pessoal-grupo .emp-card .ps15-card-selecionar{grid-template-columns:minmax(220px,1.6fr) 190px minmax(90px,1fr) minmax(90px,1fr)!important;}
+#view-funcionarios .emp-card .ps15-card-chips{flex-wrap:nowrap!important;justify-content:flex-start!important;}
+
+/* Filtros: recolhidos por padrão, botão sempre visível */
+#view-funcionarios .ps15-filtros-detalhes>summary{
+  display:inline-flex!important;align-items:center;gap:8px;padding:8px 14px!important;margin-top:8px;border:1px solid var(--border);border-radius:999px;
+  background:#fff;color:var(--rio-blue)!important;font-size:13.5px!important;font-weight:700!important;cursor:pointer;list-style:none;
+}
+#view-funcionarios .ps15-filtros-detalhes>summary:hover{background:#eef5fa;}
+#view-funcionarios .ps15-filtros-detalhes>summary::before{content:"";width:14px;height:10px;background:currentColor;
+  clip-path:polygon(0 0,100% 0,60% 55%,60% 100%,40% 85%,40% 55%);}
+#view-funcionarios .ps15-filtros-detalhes>summary::after{content:"+";margin-left:2px;font-size:16px;}
+#view-funcionarios .ps15-filtros-detalhes[open]>summary::after{content:"−";}
+#view-funcionarios .ps15-filtros-detalhes>summary>small{display:none;}
+
+/* gaveta: botão de fechar dentro do painel; some o atalho flutuante enquanto aberta */
+@media(min-width:821px){.rio-drawer-close{right:16px!important;top:12px!important;}}
+body:has(.rio-drawer-backdrop:not([hidden])) #central-acao-toggle{display:none!important;}
+
+/* Equipamentos: KPIs compactos, sem ícone nem subtexto repetido */
+#view-equipamentos #equip-stats{gap:10px!important;}
+#view-equipamentos #equip-stats .eq27-stat{min-height:0!important;padding:12px 14px!important;}
+#view-equipamentos #equip-stats .eq27-stat>span.eq27-stat-icon,#view-equipamentos #equip-stats .eq27-stat>small{display:none!important;}
+#view-equipamentos #equip-stats .eq27-stat>strong{font-size:28px!important;margin-top:4px!important;}
+
+/* Painel: 7 KPIs sempre numa linha em telas largas */
+@media(min-width:1180px){
+  #app-shell #view-overview #overview-stats.stat-grid{grid-template-columns:repeat(7,minmax(0,1fr))!important;}
+}
+#overview-stats > .stat-card{grid-column:auto!important;grid-row:auto!important;}
+#overview-stats .stat-label,#overview-stats .stat-num{text-align:left!important;justify-self:start;}
+
+/* ==========================================================================
+   RVL — Relatório de Vistoria: identidade + assistente por etapas
+   ========================================================================== */
+#view-rvl,#view-rvl *{--rvl-red:#2a688f;--rvl-red-dark:#13335a;--rvl-red-soft:#e6f3fb;--rvl-red-line:#b9dbef;}
+#view-rvl{--rvl-green:#13335a;--rvl-soft:#eef5fa;}
+
+/* cabeçalho no padrão dos demais (azul + triângulo) */
+#view-rvl .rvl-page-head.rio-hero{background:linear-gradient(105deg,#13335a 0%,#1d4a7d 100%)!important;border:0!important;border-radius:16px!important;padding:14px 22px!important;box-shadow:var(--rio-shadow-1)!important;margin:0 0 12px!important;align-items:center!important;}
+#view-rvl .rvl-page-head.rio-hero h1{color:#fff!important;font-size:24px!important;text-transform:uppercase;font-weight:900;letter-spacing:-.03em;}
+#view-rvl .rvl-page-head.rio-hero .rvl-title-icon{background:rgba(66,185,235,.2)!important;color:#42b9eb!important;box-shadow:none!important;border:1px solid rgba(66,185,235,.4)!important;width:38px!important;height:38px!important;}
+#view-rvl .rvl-page-head.rio-hero .btn{background:#fff!important;color:#13335a!important;border:0!important;}
+#view-rvl .rvl-page-head.rio-hero .btn:hover{background:#42b9eb!important;}
+#view-rvl .rvl-page-head.rio-hero .rvl-title-wrap p,#view-rvl .rvl-page-head.rio-hero .eyebrow{display:none!important;}
+
+/* etapas: ativa=azul com anel ciano, concluída=azul-marca preenchida, pendente=cinza */
+#view-rvl .rvl-step.is-active{color:#13335a!important;}
+#view-rvl .rvl-step.is-active span{background:#13335a!important;box-shadow:0 0 0 4px rgba(66,185,235,.45)!important;}
+#view-rvl .rvl-step.is-complete:not(.is-active) span{background:#2a688f!important;}
+#view-rvl .rvl-step.is-complete:not(.is-active) b{color:#2a688f!important;}
+#view-rvl .rvl-steps{position:sticky;top:0;z-index:30;margin-bottom:12px!important;box-shadow:var(--rio-shadow-1);}
+
+/* um passo por vez */
+#view-rvl.rio-wizard .rvl-card[data-rvl-step]{display:none!important;}
+#view-rvl.rio-wizard .rvl-card[data-rvl-step].rio-step-on{display:block!important;animation:rioFade .25s var(--rio-ease);}
+#view-rvl.rio-wizard:not(.rio-step-final) .rvl-preview-final,
+#view-rvl.rio-wizard:not(.rio-step-final) .rvl-bottom-actions{display:none!important;}
+#view-rvl.rio-step-final .rvl-side-panel{display:none!important;}
+#view-rvl.rio-step-final .rvl-layout{display:block!important;}
+@keyframes rioFade{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+
+/* descrições longas fora do caminho */
+#view-rvl .rvl-card > p,#view-rvl .rvl-card > .rvl-media-note{display:none!important;}
+#view-rvl .rvl-card{border-top:3px solid #2a688f!important;border-left:0!important;}
+#view-rvl .rvl-card h2{font-size:18px;}
+
+/* coluna lateral: só Resumo e Pendências (Acompanhamento repetia as etapas; Atalhos repetia botões) */
+#view-rvl .rvl-side-panel > section:nth-child(2),
+#view-rvl .rvl-side-panel > section:nth-child(4){display:none!important;}
+#view-rvl .rvl-side-panel{position:sticky;top:76px;align-self:start;}
+#view-rvl .rvl-side-panel > section{padding:12px 14px!important;}
+
+/* navegação Voltar / Avançar */
+.rio-wiz-nav{display:flex;justify-content:space-between;align-items:center;gap:12px;margin:14px 0 0;padding:12px 14px;background:#fff;border:1px solid var(--border);border-radius:14px;box-shadow:var(--rio-shadow-1);}
+.rio-wiz-nav .rio-wiz-pos{font-size:13px;font-weight:700;color:var(--muted);}
+.rio-wiz-nav .btn[hidden]{display:none;}
+#view-rvl:not(.rio-wizard) .rio-wiz-nav{display:none;}
+@media(max-width:900px){#view-rvl .rvl-steps b{display:none;}#view-rvl .rvl-side-panel{position:static;}}
+
+/* Logo da barra lateral = link para o início */
+.rio-home-link{display:block;cursor:pointer;border-radius:12px;padding:6px 8px;margin:-6px -8px 0;transition:background .18s var(--rio-ease),transform .18s var(--rio-ease);}
+.rio-home-link:hover{background:rgba(255,255,255,.08);}
+.rio-home-link:active{transform:scale(.98);}
+.rio-home-link:focus-visible{outline:3px solid var(--rio-cyan)!important;outline-offset:2px;}
+.rio-home-link .brand-name,.rio-home-link .brand-sub{pointer-events:none;}
+
+/* ==========================================================================
+   Contratos · Demandas · Almoxarifado
+   ========================================================================== */
+.contrato-toolbar > div:not(.rio-ctr-chips),.contrato-toolbar .hint{display:none!important;}
+.contrato-toolbar{padding:10px 14px!important;margin-bottom:10px!important;}
+.contrato-master{padding:16px 18px!important;margin-bottom:10px!important;}
+.contrato-dado{padding:8px 12px!important;}
+.contrato-fiscais-lista{display:grid!important;grid-template-columns:repeat(auto-fill,minmax(320px,1fr))!important;gap:6px!important;max-height:none!important;}
+.contrato-fiscal-pill{padding:6px 12px!important;min-height:0!important;}
+.contrato-fiscais-card{padding:12px 14px!important;}
+.contrato-historico-card,.contrato-auto{margin-bottom:8px!important;}
+.contrato-auto-grid{display:grid!important;grid-template-columns:1fr!important;gap:8px!important;}
+.contrato-auto-head,.contrato-historico-head{margin-bottom:8px;}
+.contrato-historico-note{display:none!important;}
+.contrato-auto.rio-collapsed,.contrato-historico-card.rio-collapsed{padding-top:10px!important;padding-bottom:10px!important;}
+.contrato-auto .rio-acc-head::after,.contrato-historico-card .rio-acc-head::after{right:2px;}
+.contrato-auto-head{padding-right:30px;}
+
+.ap52u-topo.rio-hero{display:flex!important;align-items:center!important;justify-content:space-between!important;gap:16px;padding:14px 22px!important;margin:0 0 12px!important;}
+.ap52u-topo.rio-hero h1{color:#fff!important;font-size:24px!important;text-transform:uppercase;font-weight:900;letter-spacing:-.03em;margin:0!important;line-height:1.1;}
+.ap52u-topo.rio-hero .ap52u-kicker,.ap52u-topo.rio-hero #ap52u-escopo{display:none!important;}
+.ap52u-topo.rio-hero #ap52u-adicionar{background:#fff!important;color:#13335a!important;border:0!important;border-radius:10px;font-weight:700;min-height:42px;padding:0 16px;cursor:pointer;position:relative;z-index:1;}
+.ap52u-topo.rio-hero #ap52u-adicionar:hover{background:#42b9eb!important;}
+.ap52u-guia{display:none!important;}
+
+.almox-painel-kpis{gap:10px!important;}
+.almox-painel-kpi{min-height:0!important;height:auto!important;padding:12px 16px!important;text-align:left!important;display:flex!important;flex-direction:column!important;align-items:flex-start!important;gap:2px!important;}
+.almox-painel-kpi small{display:none!important;}
+.almox-painel-kpi strong{font-size:30px!important;line-height:1.05!important;}
+.almox-painel-status small{display:none!important;}
+
+.rio-crumb{color:var(--rio-blue);font-weight:700;cursor:pointer;border-radius:4px;text-decoration:none;}
+.rio-crumb:hover{text-decoration:underline;color:var(--rio-navy);}
+.rio-crumb:focus-visible{outline:2px solid var(--rio-cyan);outline-offset:2px;}
+
+#almox-stats .almox-painel-kpis .almox-painel-kpi{min-height:0!important;height:auto!important;padding:12px 16px!important;text-align:left!important;align-items:flex-start!important;justify-content:center!important;}
+#almox-stats .almox-painel-kpis .almox-painel-kpi strong{font-size:30px!important;margin:0!important;}
+#almox-stats .almox-painel-kpis .almox-painel-kpi span{margin:0!important;}
+
+/* ==========================================================================
+   Funcionários · barra de busca compacta (uma linha) + filtros em popover
+   ========================================================================== */
+@media(min-width:821px){
+  #view-funcionarios .pessoal-filtros-card{
+    position:relative!important;display:grid!important;grid-template-columns:minmax(240px,1fr) auto auto auto!important;
+    align-items:center!important;column-gap:10px!important;row-gap:8px!important;padding:10px 12px!important;margin-bottom:10px!important;overflow:visible!important;
+  }
+  #view-funcionarios .pessoal-filtros-card .pessoal-secao-head{display:contents!important;}
+  #view-funcionarios .pessoal-filtros-card .pessoal-secao-head h2{display:none!important;}
+  #view-funcionarios .pessoal-filtros-card .pessoal-link-btn{grid-column:4;grid-row:1;white-space:nowrap;font-size:13px!important;padding:6px 8px!important;}
+  #view-funcionarios .pessoal-filtros-card .pessoal-campo-busca{grid-column:1;grid-row:1;margin:0!important;}
+  #view-funcionarios .pessoal-filtros-card .pessoal-campo-busca > span{display:none!important;}
+  #view-funcionarios .pessoal-filtros-card .pessoal-campo-busca input{min-height:42px!important;width:100%;}
+  #view-funcionarios .pessoal-filtros-card .ps15-filtros-detalhes{grid-column:2;grid-row:1;margin:0!important;position:static!important;}
+  #view-funcionarios .pessoal-filtros-card .ps15-filtros-detalhes>summary{margin-top:0!important;min-height:42px;}
+  #view-funcionarios .pessoal-filtros-card .pessoal-filtros-rodape{display:contents!important;}
+  #view-funcionarios .pessoal-filtros-card .pessoal-ordenar{grid-column:3;grid-row:1;display:inline-flex!important;align-items:center;gap:8px;margin:0!important;white-space:nowrap;font-size:13px;font-weight:700;color:var(--muted);}
+  #view-funcionarios .pessoal-filtros-card .pessoal-ordenar select{min-height:42px;}
+  #view-funcionarios .pessoal-filtros-card .ps15-lista-dica{display:none!important;}
+  #view-funcionarios .pessoal-filtros-card #pessoal-filtros-ativos,
+  #view-funcionarios .pessoal-filtros-card #pessoal-dados-aviso{grid-column:1/-1;grid-row:2;margin:0!important;}
+  /* painel de filtros vira popover sobre a lista */
+  #view-funcionarios .ps15-filtros-detalhes .pessoal-filtros-grid{
+    position:absolute!important;left:0;right:0;top:calc(100% + 6px);z-index:60;background:#fff;border:1px solid var(--border);border-radius:14px;
+    box-shadow:var(--rio-shadow-2);padding:14px!important;display:grid!important;grid-template-columns:repeat(3,minmax(0,1fr))!important;gap:10px 14px!important;
+  }
+}
+
+/* ==========================================================================
+   Ponto e frequência — o mês inteiro cabe na tela (sem rolar)
+   ========================================================================== */
+#view-ponto .rio-hero{padding:10px 20px!important;margin-bottom:8px!important;}
+#view-ponto .ponto-toolbar{display:flex!important;align-items:flex-end!important;flex-wrap:nowrap!important;gap:12px!important;padding:8px 14px!important;margin-bottom:8px!important;}
+#view-ponto .ponto-toolbar .ponto-field{margin:0!important;min-width:0;}
+#view-ponto .ponto-toolbar .ponto-field:first-child{flex:1 1 320px;}
+#view-ponto .ponto-toolbar label{font-size:12px!important;margin:0 0 3px!important;}
+#view-ponto .ponto-toolbar select,#view-ponto .ponto-toolbar .btn{min-height:38px!important;height:38px!important;padding-top:0!important;padding-bottom:0!important;}
+#view-ponto .ponto-layout{padding:10px 14px!important;gap:14px!important;align-items:start!important;margin:0!important;}
+#view-ponto .ponto-main{gap:8px!important;}
+
+/* resumo: faixa compacta */
+#view-ponto #ponto-summary{display:grid!important;grid-template-columns:repeat(6,minmax(0,1fr))!important;gap:8px!important;margin:0!important;}
+#view-ponto #ponto-summary > div{min-height:0!important;height:auto!important;padding:6px 12px!important;display:flex!important;flex-direction:row!important;align-items:center!important;justify-content:space-between!important;gap:8px;text-align:left!important;}
+#view-ponto #ponto-summary .stat-label{font-size:12.5px!important;margin:0!important;padding:0!important;}
+#view-ponto #ponto-summary .stat-num{font-size:22px!important;margin:0!important;line-height:1;}
+
+/* calendário */
+#view-ponto .ponto-panel{padding:10px 12px!important;}
+#view-ponto .ponto-section-head{margin-bottom:6px!important;}
+#view-ponto .ponto-section-head h2,#view-ponto .ponto-section-head h3{font-size:16px!important;margin:0!important;}
+#view-ponto .ponto-weekdays{gap:5px!important;margin-bottom:5px!important;}
+#view-ponto .ponto-weekdays span{height:26px!important;min-height:0!important;line-height:26px!important;font-size:12px!important;padding:0!important;}
+#view-ponto #ponto-grid{gap:5px!important;}
+#view-ponto #ponto-grid .day-cell,#view-ponto #ponto-grid .day-empty{height:54px!important;min-height:0!important;padding:4px 8px!important;}
+#view-ponto #ponto-grid .day-cell{display:flex!important;flex-direction:row!important;align-items:center!important;justify-content:space-between!important;gap:6px;}
+#view-ponto #ponto-grid .day-num{font-size:18px!important;line-height:1;}
+#view-ponto #ponto-grid .day-tag{font-size:11px!important;padding:2px 6px!important;margin:0!important;max-width:70%;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
+#view-ponto #ponto-grid .day-cell.rio-nodata .day-tag{display:none!important;}   /* "Sem registro" em todo dia vazio é ruído */
+#view-ponto .ponto-legend{margin:0!important;padding:4px 0 0!important;gap:6px 14px!important;}
+#view-ponto .ponto-legend span{height:auto!important;font-size:12px!important;}
+
+/* painel do dia */
+#view-ponto .ponto-panel-side{padding:12px!important;}
+#view-ponto .ponto-dia-card{padding:10px 12px!important;margin-bottom:8px!important;}
+#view-ponto .ponto-action-btn{min-height:38px!important;}
+
+#view-ponto #ponto-summary{margin:0 0 8px!important;}
+#view-ponto #ponto-summary > div{padding:6px 10px!important;}
+#view-ponto #ponto-summary .stat-label{white-space:nowrap!important;overflow:hidden;text-overflow:ellipsis;font-size:12px!important;}
+#view-ponto #ponto-summary .stat-num{font-size:20px!important;}
+/* altura das células acompanha a janela: o mês inteiro sempre cabe */
+@media(min-width:901px){
+  #view-ponto #ponto-grid .day-cell,#view-ponto #ponto-grid .day-empty{height:clamp(32px,calc((100vh - 466px)/6),64px)!important;}
+}
+@media(min-width:901px){.main{padding-bottom:20px!important;}}
+#view-ponto #ponto-summary > div{flex-direction:column!important;align-items:flex-start!important;justify-content:center!important;gap:0!important;}
+#view-ponto #ponto-summary .stat-label{max-width:100%;}
+#view-ponto #ponto-grid .day-cell.FS .day-tag{display:none!important;}
+
+/* ==========================================================================
+   Central de Ação: sempre um botão (gaveta) com indicadores de quantidade
+   ========================================================================== */
+#app-shell>.main{max-width:none!important;}
+.central-acao-toggle{display:inline-flex!important;align-items:center;gap:8px;padding:0 10px 0 16px!important;min-height:46px!important;font-size:14px!important;}
+.central-acao-toggle .rio-ca-pill{display:none;min-width:24px;height:24px;padding:0 7px;border-radius:999px;align-items:center;justify-content:center;
+  font:900 12.5px/1 var(--rio-font);letter-spacing:0;}
+.central-acao-toggle .rio-ca-att{background:#fbe9e7;color:#b4462b;}
+.central-acao-toggle .rio-ca-att.rio-on{display:inline-flex;}
+.central-acao-toggle .rio-ca-att.rio-urgent{background:#e5484d;color:#fff;animation:rioPulse 2.2s ease-in-out infinite;}
+.central-acao-toggle.tem-itens .central-acao-toggle-badge{background:var(--rio-cyan)!important;color:var(--rio-navy)!important;min-width:24px;height:24px;font-size:12.5px;}
+@keyframes rioPulse{0%,100%{box-shadow:0 0 0 0 rgba(229,72,77,.55)}50%{box-shadow:0 0 0 6px rgba(229,72,77,0)}}
+/* some o botão quando a gaveta está aberta */
+body.central-acao-aberta .central-acao-toggle{display:none!important;}
+
+/* Chama atenção enquanto houver itens em atenção ainda não vistos */
+.central-acao-toggle.rio-attn{animation:rioAttn 3.6s ease-in-out infinite;}
+.central-acao-toggle.rio-attn.rio-attn-urgent{--rio-attn:229,72,77;}
+.central-acao-toggle.rio-attn:not(.rio-attn-urgent){--rio-attn:66,185,235;}
+@keyframes rioAttn{
+  0%{box-shadow:0 0 0 0 rgba(var(--rio-attn),.65),var(--rio-shadow-2);transform:none}
+  45%{box-shadow:0 0 0 16px rgba(var(--rio-attn),0),var(--rio-shadow-2);transform:none}
+  60%{transform:none}
+  64%{transform:translateY(-4px) rotate(-3deg)}
+  68%{transform:translateY(0) rotate(3deg)}
+  72%{transform:translateY(-3px) rotate(-2deg)}
+  76%{transform:translateY(0) rotate(2deg)}
+  80%,100%{transform:none;box-shadow:0 0 0 0 rgba(var(--rio-attn),0),var(--rio-shadow-2)}
+}
+.central-acao-toggle.rio-attn:hover,.central-acao-toggle.rio-attn:focus-visible{animation-play-state:paused;}
+
+/* ==========================================================================
+   Gestão de Contratos v2 — seletor visual, medidor de vigência, cadastro leve
+   ========================================================================== */
+@media(min-width:901px){.contrato-local-nav{display:none!important;}}
+
+.contrato-toolbar{background:transparent!important;border:0!important;box-shadow:none!important;padding:0!important;margin:0 0 12px!important;}
+.contrato-toolbar > label{position:absolute!important;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);}
+.rio-ctr-chips,.rio-ctr-filter{display:flex;flex-wrap:wrap;gap:8px;align-items:center;}
+.rio-chip{border:1px solid var(--border);background:#fff;color:var(--ink);border-radius:999px;padding:7px 14px;min-height:36px;font:700 13.5px var(--rio-font);cursor:pointer;
+  transition:background .15s,border-color .15s,color .15s,box-shadow .15s;box-shadow:var(--rio-shadow-1);}
+.rio-chip:hover{border-color:var(--rio-blue);color:var(--rio-blue);}
+.rio-chip[aria-pressed="true"]{background:var(--rio-navy);border-color:var(--rio-navy);color:#fff;box-shadow:0 3px 10px rgba(19,51,90,.28);}
+.rio-chip .n{margin-left:7px;opacity:.65;font-weight:800;}
+
+.rio-vig{margin-top:8px;--c:#2a688f;}
+.rio-vig[data-s="ok"]{--c:#1f7a54;} .rio-vig[data-s="warn"]{--c:#9c6b1a;}
+.rio-vig[data-s="danger"],.rio-vig[data-s="over"]{--c:#b4462b;} .rio-vig[data-s="done"]{--c:#6b7785;}
+.rio-vig-bar{height:6px;border-radius:99px;background:#e3e8ee;overflow:hidden;}
+.rio-vig-bar i{display:block;height:100%;border-radius:99px;background:var(--c);transition:width .6s var(--rio-ease);}
+.rio-vig-txt{margin-top:5px;font-size:12.5px;font-weight:800;color:var(--c);display:flex;align-items:center;gap:6px;}
+.rio-vig-txt::before{content:"";width:8px;height:8px;border-radius:50%;background:var(--c);flex:none;}
+.rio-vig[data-s="danger"] .rio-vig-txt::before,.rio-vig[data-s="over"] .rio-vig-txt::before{animation:rioPulse 2.2s ease-in-out infinite;}
+
+.contrato-master-top h2{font-size:26px!important;}
+.contrato-dados{gap:10px!important;}
+.contrato-dado{border-radius:12px!important;}
+
+#contrato-cadastro-resumo,.contrato-cadastro-top .almox-note{display:none!important;}
+.contrato-cadastro-box{padding:14px 18px!important;}
+.rio-ctr-filter{margin:6px 0 14px;}
+#contrato-cadastro-body{display:grid!important;grid-template-columns:repeat(auto-fill,minmax(380px,1fr))!important;gap:12px!important;}
+.contrato-cadastro-card[hidden]{display:none!important;}
+.contrato-cadastro-card{--st:#9aa7b3;display:flex!important;flex-direction:column!important;gap:12px!important;padding:14px 16px!important;border-radius:14px!important;
+  border:1px solid var(--border)!important;border-left:5px solid var(--st)!important;background:#fff!important;box-shadow:var(--rio-shadow-1);transition:transform .18s var(--rio-ease),box-shadow .18s var(--rio-ease);}
+.contrato-cadastro-card:hover{transform:translateY(-2px);box-shadow:var(--rio-shadow-2);}
+.contrato-cadastro-card:has(.contrato-status.ativo){--st:#1f7a54;}
+.contrato-cadastro-card:has(.contrato-status.suspenso){--st:#c58b1f;}
+.contrato-cadastro-card:has(.contrato-status.pendente){--st:#c8ccd2;}
+.contrato-cadastro-card:has(.contrato-status.encerrado){--st:#6b7785;}
+.contrato-cadastro-card h3{font-size:19px!important;margin:0!important;}
+.contrato-cadastro-card .oficial{display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;font-size:13px!important;color:var(--muted)!important;margin-top:4px!important;line-height:1.35!important;}
+.contrato-mini-meta{display:grid!important;grid-template-columns:1fr 1fr!important;gap:10px 16px!important;}
+.contrato-mini-meta .item{background:none!important;border:0!important;box-shadow:none!important;padding:0!important;min-height:0!important;}
+.contrato-mini-meta .item span{display:block;font-size:11.5px!important;text-transform:uppercase;letter-spacing:.05em;color:var(--muted)!important;font-weight:700!important;margin:0 0 2px!important;}
+.contrato-mini-meta .item strong{font-size:14px!important;word-break:break-word;}
+.contrato-mini-meta .item:has(.rio-vig){grid-column:1/-1;}
+.contrato-cadastro-acoes{margin-top:auto;display:flex;gap:6px;justify-content:flex-end;border-top:1px solid var(--border);padding-top:10px;}
+.contrato-cadastro-acoes .btn{min-height:34px!important;height:34px;padding:0 12px!important;font-size:13px!important;}
+
+#asf-contract-header{background:#fff!important;border:1px solid var(--border)!important;border-left:5px solid #c58b1f!important;padding:12px 16px!important;box-shadow:var(--rio-shadow-1)!important;}
+.asf-meta{padding:8px 12px!important;border-radius:10px!important;}
+.asf52-kpis{gap:10px!important;}
+.asf52-kpis > div:not(.asf52-attention){display:flex!important;flex-direction:row-reverse!important;align-items:center!important;justify-content:space-between!important;text-align:left!important;padding:10px 16px!important;min-height:0!important;}
+.asf52-scope{display:none!important;}
+.asf52-heading p{display:none!important;}
+
+/* Asfaltinho: acabamentos */
+#asf-contract-header.asf-contract-card,.asf-contract-card{background:#fff!important;background-image:none!important;}
+.asf52-kpis > .asf52-attention{display:flex!important;flex-direction:row-reverse!important;align-items:center!important;justify-content:space-between!important;text-align:left!important;padding:10px 16px!important;min-height:0!important;}
+.asf52-kpis > div strong,.asf52-kpis > div b{font-size:26px!important;line-height:1;margin:0!important;}
+.asf-tabs .asf-tab{border-color:var(--border)!important;}
+.asf-tabs .asf-tab.active,.asf-tabs .asf-tab[aria-selected="true"],.asf-tabs .asf-tab.is-active{background:var(--rio-navy)!important;border-color:var(--rio-navy)!important;color:#fff!important;}
+
+/* ==========================================================================
+   Equipamentos · Mapa das Gerências · Almoxarifado (v2)
+   ========================================================================== */
+#view-equipamentos .eq27-heading.rio-hero{padding:14px 22px!important;margin:0 0 12px!important;border-radius:16px!important;}
+#view-equipamentos .eq27-heading.rio-hero h1{color:#fff!important;font-size:24px!important;text-transform:uppercase;font-weight:900;letter-spacing:-.03em;margin:0!important;}
+#view-equipamentos .eq27-heading.rio-hero p,#view-equipamentos .eq27-heading.rio-hero [class*="kicker"],#view-equipamentos .eq27-heading.rio-hero .eq27-eyebrow{display:none!important;}
+#view-equipamentos .eq27-heading.rio-hero .btn{background:#fff!important;color:#13335a!important;border:0!important;}
+#view-equipamentos .eq27-heading.rio-hero .btn:hover{background:#42b9eb!important;}
+#view-equipamentos .eq27-contract-scope{background:transparent!important;border:0!important;box-shadow:none!important;padding:0!important;margin:0 0 12px!important;display:block!important;}
+#view-equipamentos .eq27-contract-scope > label,#view-equipamentos .eq27-contract-scope-copy{position:absolute!important;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);}
+#view-equipamentos[data-section="cadastro"] #equip-stats,#view-equipamentos[data-section="escalas"] #equip-stats,#view-equipamentos[data-section="historico"] #equip-stats{display:none!important;}
+#view-equipamentos .eq27-filters{padding:12px 14px!important;margin-bottom:12px!important;}
+@media(min-width:1101px){
+  #view-equipamentos .eq27-layout{display:block!important;}
+  #view-equipamentos .eq27-context{display:none!important;}
+  #view-equipamentos .eq27-context.is-open{display:flex!important;position:fixed!important;top:0!important;right:0!important;bottom:0!important;left:auto!important;width:min(440px,92vw)!important;
+    max-height:none!important;border-radius:0!important;z-index:2002;box-shadow:-18px 0 46px rgba(12,30,52,.28)!important;animation:rioDrawer .22s var(--rio-ease);}
+  #view-equipamentos .eq27-summary-trigger{display:inline-flex!important;width:auto!important;margin:0 0 10px!important;min-height:38px;}
+  #view-equipamentos[data-section="escalas"] .eq27-summary-trigger{display:none!important;}
+  #view-equipamentos .eq27-backdrop.is-open{display:block!important;position:fixed;inset:0;z-index:2001;background:rgba(10,24,42,.38);backdrop-filter:blur(1.5px);}
+}
+#view-equipamentos #equip-painel-wrap > section.rio-collapsed{padding-top:12px!important;padding-bottom:12px!important;}
+
+#view-mapa .mapa-page-head.rio-hero{display:flex!important;align-items:center!important;justify-content:space-between!important;padding:14px 22px!important;margin:0 0 12px!important;border-radius:16px!important;border:0!important;}
+#view-mapa .mapa-page-head.rio-hero h1{color:#fff!important;font-size:24px!important;text-transform:uppercase;font-weight:900;letter-spacing:-.03em;margin:0!important;}
+#view-mapa .mapa-page-head.rio-hero .btn{background:#fff!important;color:#13335a!important;border:0!important;}
+#view-mapa .mapa-page-head.rio-hero .btn:hover{background:#42b9eb!important;}
+#view-mapa .mapa-busca-box{padding:12px 14px!important;margin-bottom:10px!important;}
+#view-mapa .mapa-busca-box .eyebrow,#view-mapa .mapa-busca-box [class*="kicker"]{display:none!important;}
+#view-mapa .mapa-busca-box h2{font-size:16px!important;margin:0 0 6px!important;}
+#view-mapa .mapa-nota-fonte{font-size:12px;}
+
+.almox-estoque-kpis,.almox-materiais-kpis,.almox-inventario-kpis,.almox-historico-kpis{gap:10px!important;}
+.almox-estoque-kpis > *,.almox-materiais-kpis > *,.almox-inventario-kpis > *,.almox-historico-kpis > *{min-height:0!important;height:auto!important;padding:10px 16px!important;text-align:left!important;display:flex!important;flex-direction:column!important;align-items:flex-start!important;justify-content:center!important;gap:2px!important;}
+.almox-estoque-kpis small,.almox-materiais-kpis small,.almox-inventario-kpis small,.almox-historico-kpis small{display:none!important;}
+.almox-estoque-kpis strong,.almox-materiais-kpis strong,.almox-inventario-kpis strong,.almox-historico-kpis strong{font-size:26px!important;line-height:1.05!important;margin:0!important;}
+.almox-estoque-kpis span,.almox-materiais-kpis span,.almox-inventario-kpis span,.almox-historico-kpis span{margin:0!important;font-size:12.5px!important;}
+
+/* Parte Diária: filtros em uma única linha */
+#view-equipamentos .eq27-daily-filters{display:flex!important;flex-wrap:wrap!important;align-items:flex-end!important;gap:8px 12px!important;grid-template-columns:none!important;}
+#view-equipamentos .eq27-daily-filters > label{flex:1 1 170px;margin:0!important;min-width:0;}
+#view-equipamentos .eq27-daily-filters > label.eq27-daily-search{flex:2 1 260px;}
+#view-equipamentos .eq27-daily-filters > label.eq27-check{flex:0 0 auto;align-self:center;white-space:nowrap;}
+#view-equipamentos .eq27-daily-filters .eq27-link{flex:0 0 auto;align-self:center;}
+
+/* Nome da gerência na barra lateral: branco, uma linha, ajustado à largura */
+.sidebar .brand-sub{color:#fff!important;white-space:nowrap!important;overflow:hidden;letter-spacing:.06em!important;font-size:11px;font-weight:800!important;line-height:1.3!important;text-overflow:clip;}
+.rio-home-link{overflow:visible!important;flex:0 0 auto!important;}
+
+/* ==========================================================================
+   Escalas dos conjugados — calendário do mês
+   ========================================================================== */
+#view-equipamentos .toolbar{background:transparent!important;border:0!important;box-shadow:none!important;padding:0!important;margin:0 0 10px!important;display:flex!important;gap:10px!important;align-items:center!important;flex-wrap:wrap;}
+#view-equipamentos .toolbar select{min-height:40px!important;min-width:180px;}
+#view-equipamentos .toolbar .btn{min-height:40px!important;}
+#escala-setembro-aviso{margin:0 0 6px!important;}
+#equip-escalas-tabela .plantao-extra-box{padding:0!important;margin:0 0 10px!important;border-radius:12px!important;}
+#equip-escalas-tabela .plantao-extra-head{padding:8px 14px!important;min-height:0!important;}
+#equip-escalas-tabela .plantao-extra-empty{padding:4px 14px 8px!important;min-height:0!important;font-size:12.5px!important;}
+#equip-escalas-tabela .escala-mes-titulo{margin:4px 0 8px!important;}
+#equip-escalas-tabela .escala-mes-titulo h2{font-size:18px!important;margin:0!important;}
+.rio-vista-bar{display:flex;gap:8px;margin:0 0 10px;}
+#equip-escalas-wrap .card-block{padding:12px 14px!important;}
+
+#equip-escalas-tabela .escala-dupla{display:grid!important;grid-template-columns:repeat(auto-fit,minmax(520px,1fr))!important;gap:14px!important;align-items:start;}
+#equip-escalas-tabela .escala-bloco{margin:0!important;border-radius:14px!important;overflow:hidden;}
+#equip-escalas-tabela .escala-dupla.rio-cal-on .escala-bloco table,
+#equip-escalas-tabela .escala-dupla.rio-cal-on .escala-bloco > :is(.escala-tabela,.tabela-wrap,.table-wrap,div):not(.rio-cal):not(:first-child){display:none!important;}
+#equip-escalas-tabela .escala-dupla:not(.rio-cal-on) .rio-cal{display:none!important;}
+.rio-cal{padding:10px 12px 12px;background:#fff;}
+.rio-cal-semana,.rio-cal-grade{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:5px;}
+.rio-cal-semana{margin-bottom:5px;}
+.rio-cal-semana span{text-align:center;font:800 11.5px var(--rio-font);letter-spacing:.08em;color:var(--rio-navy);background:#eef3f8;border-radius:8px;padding:5px 0;}
+.rio-cal-dia{position:relative;min-height:clamp(44px,calc((100vh - 470px)/6),66px);border:1px solid var(--border);border-radius:10px;padding:5px 7px;background:#fff;display:flex;flex-direction:column;gap:2px;overflow:hidden;}
+.rio-cal-dia.rio-vazio{border:1px dashed #d9dfe6;background:transparent;}
+.rio-cal-dia b{font:800 15px/1 var(--rio-font);color:var(--ink);}
+.rio-cal-dia span{font:700 12px/1.2 var(--rio-font);color:var(--rio-navy);background:#e4f0f9;border-radius:6px;padding:2px 6px;align-self:flex-start;max-width:100%;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
+.rio-cal-dia.rio-fim{background:#f3f5f7;}
+.rio-cal-dia.rio-fim b{color:var(--muted);}
+.rio-cal-dia.rio-sem span{display:none;}
+.rio-cal-dia.rio-plantao{background:#fff7e6;border-color:#f0d9a6;}
+.rio-cal-dia.rio-plantao span{background:#fbe3a6;color:#6b4a0b;}
+.rio-cal-dia.rio-hoje{border:2px solid var(--rio-blue);box-shadow:0 0 0 3px rgba(66,185,235,.3);}
+.rio-cal-dia i{position:absolute;top:5px;right:6px;font:800 10.5px var(--rio-font);font-style:normal;background:var(--rio-navy);color:#fff;border-radius:999px;padding:2px 7px;}
+
+/* ==========================================================================
+   Asfaltinho — listas compactas
+   ========================================================================== */
+.asf54-summary{gap:10px!important;}
+.asf54-summary > div{min-height:0!important;padding:10px 16px!important;display:flex!important;flex-direction:row-reverse!important;align-items:center!important;justify-content:space-between!important;text-align:left!important;}
+.asf54-summary strong{font-size:26px!important;margin:0!important;line-height:1;}
+.asf54-note:not(.asf64-areas){display:none!important;}
+.asf64-row,#asf-content article.asf54-row{display:grid!important;grid-template-columns:minmax(0,1fr) auto!important;align-items:center!important;column-gap:18px!important;row-gap:4px!important;padding:10px 16px!important;border-radius:12px!important;margin-bottom:8px!important;}
+.asf64-row .asf64-main{display:flex!important;align-items:center!important;justify-content:space-between!important;gap:18px;min-width:0;grid-column:1;}
+.asf64-row .asf64-main h4{font-size:16px!important;margin:0!important;}
+.asf64-row .asf64-main p{margin:0!important;font-size:13px!important;}
+.asf64-row .asf64-progress{display:flex!important;align-items:center;gap:10px;min-width:170px;}
+.asf64-row .asf64-progress strong{font-size:20px!important;margin:0!important;}
+.asf64-row .asf64-progress span{font-size:12px!important;}
+.asf64-row .asf64-progress > div{flex:1;min-width:60px;}
+.asf64-row > footer{grid-column:2;grid-row:1;padding:0!important;margin:0!important;border:0!important;}
+.asf64-row > footer .btn{min-height:38px!important;white-space:nowrap;}
+.asf64-row > details.asf64-details{grid-column:1/-1;grid-row:2;margin:0!important;}
+.asf64-row > details.asf64-details > summary{font-size:12.5px!important;padding:2px 0!important;min-height:0!important;}
+.asf64-row .asf64-dates{grid-template-columns:repeat(5,minmax(0,1fr))!important;gap:8px!important;}
+.asf64-row .asf64-dates > div{min-height:0!important;padding:6px 10px!important;}
+
+/* ==========================================================================
+   Férias e afastamentos
+   ========================================================================== */
+#view-ferias .ferias-seletor{padding:10px 14px!important;display:flex!important;align-items:flex-end;gap:16px;flex-wrap:wrap;margin-bottom:10px!important;}
+#view-ferias .ferias-seletor p,#view-ferias .ferias-seletor small{font-size:12.5px;margin:0!important;color:var(--muted);}
+#view-ferias .ferias-resumo{gap:10px!important;}
+#view-ferias .ferias-resumo > *{min-height:0!important;padding:10px 16px!important;text-align:left!important;display:flex!important;flex-direction:column!important;align-items:flex-start!important;gap:2px!important;}
+#view-ferias .ferias-resumo strong{font-size:26px!important;line-height:1.05!important;margin:0!important;}
+#view-ferias .ferias-pessoa{padding:12px 16px!important;margin-bottom:10px!important;}
+#view-ferias .ferias-bloco{padding:12px 16px!important;margin-bottom:10px!important;}
+
+/* acertos — Asfaltinho */
+.asf54-summary > div{flex-direction:column!important;align-items:flex-start!important;justify-content:center!important;gap:2px!important;}
+.asf54-summary > div span{font-size:12.5px!important;}
+#asf-content article:has(> button.btn){display:grid!important;grid-template-columns:minmax(0,1.3fr) minmax(0,1fr) auto!important;align-items:center!important;column-gap:18px!important;padding:10px 16px!important;margin-bottom:8px!important;border-radius:12px!important;}
+#asf-content article:has(> button.btn) > button.btn{width:auto!important;min-height:38px!important;white-space:nowrap;}
+#asf-content article:has(> button.btn) h4{margin:0 0 2px!important;font-size:16px!important;}
+
+/* acertos — Escalas */
+#equip-escalas-tabela .escala-bloco:not(.plantao) > :first-child,#equip-escalas-tabela .escala-bloco:not(.plantao) > :first-child *{color:#fff!important;}
+#equip-escalas-tabela .escala-bloco > :first-child{padding:10px 14px!important;}
+.rio-vista-bar{margin:0 0 0 auto!important;}
+#equip-escalas-wrap .toolbar .rio-vista-bar{margin-left:auto!important;}
+.rio-cal-dia{min-height:clamp(42px,calc((100vh - 500px)/6),58px)!important;}
+.rio-cal-dia span{display:block;line-height:1.15;}
+.rio-cal-dia span em{display:block;font-style:normal;font-weight:600;font-size:11px;opacity:.85;}
+
+/* ==========================================================================
+   Demandas · Consolidado da Gerência
+   ========================================================================== */
+#ap52con-painel{background:var(--rio-gray)!important;}
+#ap52con-painel .ap52con-head{position:relative;overflow:hidden;background:linear-gradient(105deg,#13335a 0%,#1d4a7d 100%);border-radius:16px;padding:14px 22px;margin:0 auto 12px!important;box-shadow:var(--rio-shadow-1);}
+#ap52con-painel .ap52con-head::after{content:"";position:absolute;top:0;right:0;width:46px;height:46px;background:var(--rio-cyan);clip-path:polygon(0 0,100% 0,100% 100%);pointer-events:none;}
+#ap52con-painel .ap52con-head h2{color:#fff!important;text-transform:uppercase;font-weight:900;letter-spacing:-.03em;font-size:24px!important;margin:0!important;}
+#ap52con-painel .ap52con-head > div:first-child > span,#ap52con-painel .ap52con-head p{display:none!important;}
+#ap52con-painel .ap52con-head .btn,#ap52con-painel .ap52con-head button{background:#fff!important;color:#13335a!important;border:0!important;border-radius:10px;font-weight:700;margin-right:24px;}
+#ap52con-painel .ap52con-head button:hover{background:#42b9eb!important;}
+#ap52con-painel .ap52con-filtros{grid-template-columns:repeat(5,minmax(0,1fr))!important;gap:10px 12px!important;padding:12px 14px!important;}
+#ap52con-painel .ap52con-filtros > label:first-child{grid-column:1/-1;}
+#ap52con-painel .ap52con-filtros small,#ap52con-painel .ap52con-filtros .hint{display:none!important;}
+#ap52con-painel .ap52con-kpis{gap:8px!important;margin:10px auto 12px!important;}
+#ap52con-painel .ap52con-kpis article{padding:8px 14px!important;text-align:left!important;justify-items:start!important;align-content:center!important;gap:0!important;}
+#ap52con-painel .ap52con-kpis article small{font-size:12px!important;}
+#ap52con-painel .ap52con-kpis article small:last-child:not(:first-child){display:none!important;}
+#ap52con-painel .ap52con-kpis strong{font-size:24px!important;line-height:1.1;}
+
+/* responsivo das telas novas */
+#equip-escalas-tabela .escala-dupla{grid-template-columns:repeat(auto-fit,minmax(min(520px,100%),1fr))!important;}
+@media(max-width:900px){
+  .asf64-row,#asf-content article:has(> button.btn){grid-template-columns:minmax(0,1fr)!important;}
+  .asf64-row .asf64-main{flex-direction:column;align-items:flex-start!important;}
+  .asf64-row > footer{grid-column:1;grid-row:auto;}
+  .asf64-row .asf64-dates{grid-template-columns:repeat(2,minmax(0,1fr))!important;}
+  .rio-cal-dia{padding:3px 4px;min-height:48px!important;}
+  .rio-cal-dia span{font-size:10.5px;padding:1px 3px;}
+  .rio-cal-dia span em{display:none;}
+  .rio-cal-semana,.rio-cal-grade{gap:3px;}
+  #ap52con-painel .ap52con-filtros{grid-template-columns:repeat(2,minmax(0,1fr))!important;}
+  #equip-escalas-wrap .toolbar .rio-vista-bar{margin-left:0!important;}
+}
+#contrato-cadastro-body{grid-template-columns:repeat(auto-fill,minmax(min(380px,100%),1fr))!important;}
+.contrato-fiscais-lista{grid-template-columns:repeat(auto-fill,minmax(min(320px,100%),1fr))!important;}
+.contrato-toolbar > label,#view-equipamentos .eq27-contract-scope > label{display:none!important;}   /* a <select> original segue no DOM; os chips a substituem */
+@media(max-width:900px){#asf-content strong{overflow-wrap:anywhere;max-width:100%;}}
+@media(max-width:900px){.rio-home-link{margin:12px -8px 0!important;}}
+
+/* ==========================================================================
+   Central de Ação: a animação também roda com "reduzir movimento" (versão suave, sem balançar)
+   ========================================================================== */
+@keyframes rioAttnSoft{
+  0%,100%{box-shadow:0 0 0 0 rgba(var(--rio-attn),.7),var(--rio-shadow-2);}
+  50%{box-shadow:0 0 0 14px rgba(var(--rio-attn),0),var(--rio-shadow-2);}
+}
+@media (prefers-reduced-motion:reduce){
+  .central-acao-toggle.rio-attn{animation:rioAttnSoft 2.2s ease-in-out infinite!important;transform:none!important;}
+  .central-acao-toggle .rio-ca-att.rio-urgent{animation:none!important;}
+}
+.central-acao-toggle.rio-attn{animation-duration:2.8s;}
+
+/* ==========================================================================
+   Calendários: fins de semana em vermelho
+   ========================================================================== */
+:root{--rio-wk:#c62828;--rio-wk-bg:#fdeeee;--rio-wk-line:#f1b9b9;}
+
+/* Ponto e frequência */
+#view-ponto .ponto-weekdays span:nth-child(n+6){color:var(--rio-wk)!important;background:var(--rio-wk-bg)!important;}
+#view-ponto #ponto-grid .day-cell.rio-weekend .day-num{color:var(--rio-wk)!important;}
+#view-ponto #ponto-grid .day-cell.rio-weekend:not(.P):not(.F):not(.A):not(.FO):not(.H){background:var(--rio-wk-bg)!important;border-color:var(--rio-wk-line)!important;color:var(--rio-wk)!important;}
+#view-ponto .ponto-legend span:nth-child(5) .dot,#view-ponto .legend .dot.FS{background:var(--rio-wk)!important;border-color:var(--rio-wk)!important;}
+
+/* Escalas dos conjugados (calendário) */
+.rio-cal-semana span:nth-child(n+6){color:var(--rio-wk)!important;background:var(--rio-wk-bg)!important;}
+.rio-cal-dia.rio-fim{background:var(--rio-wk-bg)!important;border-color:var(--rio-wk-line)!important;}
+.rio-cal-dia.rio-fim b{color:var(--rio-wk)!important;}
+.rio-cal-dia.rio-fim.rio-plantao{background:#fff1ef!important;}
+/* Escalas — modo lista */
+#equip-escalas-tabela tr.fim-semana td{background:var(--rio-wk-bg)!important;}
+#equip-escalas-tabela tr.fim-semana td:first-child,#equip-escalas-tabela tr.fim-semana td:first-child *{color:var(--rio-wk)!important;}
+#view-ponto #ponto-summary > div:nth-child(5){background:var(--rio-wk-bg)!important;border-color:var(--rio-wk-line)!important;}
+#view-ponto #ponto-summary > div:nth-child(5) .stat-num,#view-ponto #ponto-summary > div:nth-child(5) .stat-label{color:var(--rio-wk)!important;}
+
+/* ==========================================================================
+   Almoxarifado v2 — Painel: tudo em uma tela
+   ========================================================================== */
+#almox-dashboard .rio-almox-chips{margin:0 0 10px;}
+#almox-dashboard .almox-grid{display:grid!important;grid-template-columns:minmax(340px,.75fr) minmax(0,1.5fr)!important;gap:12px!important;align-items:stretch;}
+#almox-dashboard .almox-grid > .almox-recentes{grid-column:1/-1;}
+#almox-dashboard .almox-box{padding:12px 16px!important;margin:0!important;}
+
+/* Material selecionado: compacto (o "55" deixa de ocupar meia tela) */
+#almox-dashboard .almox-material-resumo > h2,#almox-dashboard .almox-material-resumo > .almox-note{display:none!important;}
+#almox-dashboard .cimento-destaque{padding:12px 18px!important;min-height:0!important;height:auto!important;display:flex!important;flex-direction:column!important;align-items:flex-start!important;justify-content:center;gap:2px!important;text-align:left!important;}
+#almox-dashboard .cimento-titulo{font-size:20px!important;margin:0!important;}
+#almox-dashboard .cimento-label{font-size:11.5px!important;margin:0!important;letter-spacing:.08em;}
+#almox-dashboard .cimento-numero{height:auto!important;min-height:0!important;font-size:72px!important;line-height:1!important;display:flex;align-items:baseline;gap:10px;margin:4px 0!important;}
+#almox-dashboard .cimento-numero span{font-size:18px!important;}
+#almox-dashboard .cimento-rodape{height:auto!important;min-height:0!important;padding:8px 0 0!important;font-size:13px!important;border-top:1px solid var(--border);width:100%;text-align:left!important;}
+
+/* Gráfico: menor, sem o seletor duplicado (os chips fazem esse papel) */
+#almox-dashboard .almox-grafico-controle.almox-material-desktop{display:none!important;}
+#almox-dashboard .almox-grafico-head{margin-bottom:6px!important;}
+#almox-dashboard .almox-grafico-box .almox-note{display:none!important;}
+#almox-dashboard .almox-periodo-resumo{margin:6px 0!important;}
+#almox-dashboard .almox-periodo-kpi{padding:8px 14px!important;min-height:0!important;height:auto!important;}
+#almox-dashboard .almox-periodo-kpi small{display:none!important;}
+#almox-dashboard .almox-chart-shell{height:auto!important;}
+#almox-dashboard .almox-grafico-viewport,#almox-dashboard .almox-chart,#almox-dashboard .almox-chart-grid{height:140px!important;min-height:0!important;}
+
+/* Últimas movimentações: linhas curtas */
+#almox-dashboard .almox-recentes-head{margin-bottom:6px!important;}
+#almox-dashboard .almox-feed{display:grid!important;grid-template-columns:repeat(auto-fit,minmax(min(560px,100%),1fr));gap:6px 12px!important;}
+#almox-dashboard .almox-feed-item{padding:6px 12px!important;min-height:0!important;height:auto!important;display:grid!important;grid-template-columns:64px minmax(0,1fr) auto;align-items:center;gap:10px;margin:0!important;}
+#almox-dashboard .almox-feed-data{padding:0!important;}
+
+/* Estoque: barra de nível (saldo × mínimo) */
+.rio-nivel{position:relative;height:6px;border-radius:99px;background:#e3e8ee;margin-top:5px;min-width:70px;overflow:visible;}
+.rio-nivel i{display:block;height:100%;border-radius:99px;background:#1f7a54;}
+.rio-nivel.atencao i{background:#c58b1f;} .rio-nivel.baixo i{background:#c62828;}
+.rio-nivel u{position:absolute;left:50%;top:-3px;width:2px;height:12px;background:#13335a;border-radius:2px;opacity:.55;}   /* marca do mínimo */
+#almox-dashboard .cimento-destaque{padding:8px 16px!important;}
+#almox-dashboard .cimento-numero{font-size:56px!important;margin:2px 0!important;}
+#almox-dashboard .cimento-rodape{padding-top:6px!important;}
+#almox-dashboard .almox-grafico-viewport,#almox-dashboard .almox-chart,#almox-dashboard .almox-chart-grid{height:104px!important;}
+#almox-dashboard .almox-chart-legenda{margin-top:2px!important;}
+#almox-dashboard .almox-periodo-resumo{margin:4px 0!important;}
+#almox-dashboard .almox-periodo-kpi{padding:4px 12px!important;}
+#almox-dashboard .almox-feed-item{padding:4px 12px!important;}
+#almox-dashboard .almox-box{padding:10px 14px!important;}
+#almox-dashboard .rio-almox-chips{margin:0 0 8px;}
+#almox-dashboard .almox-recentes-head{margin-bottom:4px!important;padding-bottom:4px!important;}
+#view-almoxarifado #almox-dashboard .almox-material-resumo .cimento-destaque{padding:8px 16px!important;margin:0!important;height:auto!important;min-height:0!important;}
+#view-almoxarifado #almox-dashboard .almox-material-resumo .cimento-titulo,
+#view-almoxarifado #almox-dashboard .almox-material-resumo .cimento-label,
+#view-almoxarifado #almox-dashboard .almox-material-resumo .cimento-numero{margin:0!important;padding:0!important;}
+#view-almoxarifado #almox-dashboard .almox-material-resumo .cimento-numero{font-size:60px!important;line-height:1.05!important;}
+#view-almoxarifado #almox-dashboard .almox-material-resumo .cimento-rodape{padding:6px 0 0!important;margin-top:6px!important;}
+#view-almoxarifado #almox-dashboard .almox-material-resumo{min-height:0!important;}
+
+/* ==========================================================================
+   Janelas de formulário (modais) — base comum + Almoxarifado v2
+   ========================================================================== */
+.overlay{backdrop-filter:blur(2px);}
+.overlay .modal{border-radius:18px!important;box-shadow:var(--rio-shadow-2)!important;}
+.overlay .modal h2{letter-spacing:-.02em;}
+.overlay .modal .field > label,.overlay .modal label{font-weight:700;color:#2b3b4f;font-size:13px;}
+.overlay .modal input:not([type="checkbox"]):not([type="radio"]),.overlay .modal select{min-height:42px;}
+.overlay .modal .modal-actions{position:sticky;bottom:0;background:#fff;border-top:1px solid var(--border);padding-top:12px!important;margin-top:8px;z-index:2;}
+
+@media(min-width:900px){
+  /* Registrar movimentação / Novo material: duas colunas, sem rolagem */
+  #movimentacao-overlay .almox-form-modal-mov,#material-overlay .almox-form-modal{max-width:800px!important;width:calc(100vw - 48px);}
+  #movimentacao-overlay .almox-form-modal,#material-overlay .almox-form-modal{display:grid!important;grid-template-columns:minmax(0,1fr) minmax(0,1fr);grid-auto-flow:row dense;column-gap:14px;row-gap:10px;align-content:start;}
+  #movimentacao-overlay .almox-form-modal > *:not(.almox-form-section),#material-overlay .almox-form-modal > *:not(.almox-form-section){grid-column:1/-1;}
+  #movimentacao-overlay .almox-form-modal > .almox-form-section,#material-overlay .almox-form-modal > .almox-form-section{margin:0!important;}
+  #movimentacao-overlay .almox-mov-section[data-etapa="1"],#movimentacao-overlay .almox-mov-section[data-etapa="2"]{grid-column:1;}
+  #movimentacao-overlay .almox-mov-section[data-etapa="3"]{grid-column:2;grid-row:span 2;}
+  /* os "passos" são do layout de celular e duplicam os títulos das seções */
+  #movimentacao-overlay .almox-entrada-passos,#movimentacao-overlay .almox-saida-passos,#movimentacao-overlay .almox-transferencia-passos{display:none!important;}
+  #movimentacao-overlay .almox-entrada-mobile-intro,#movimentacao-overlay .almox-saida-mobile-intro,#movimentacao-overlay .almox-transferencia-intro{padding:8px 12px!important;border-radius:12px!important;}
+  #movimentacao-overlay .almox-saida-mobile-intro p,#movimentacao-overlay .almox-entrada-mobile-intro p{margin:2px 0 0!important;}
+  #movimentacao-overlay .almox-form-confirmacao-wrap{margin:0!important;}
+}
+/* Destino: ocupa a largura toda quando o campo "Local" está oculto */
+#mov-destino-local-row{display:grid!important;grid-template-columns:repeat(auto-fit,minmax(200px,1fr))!important;gap:10px!important;}
+#movimentacao-overlay .field-row{gap:10px!important;}
+#movimentacao-overlay .almox-form-modal .almox-form-section{padding:12px 14px!important;}
+#movimentacao-overlay .almox-note{margin:0!important;font-size:12.5px;}
+@media(min-width:900px){
+  #material-overlay .almox-form-modal > section:nth-of-type(1){grid-column:1;grid-row:span 2;}
+  #material-overlay .almox-form-modal > section:nth-of-type(2),#material-overlay .almox-form-modal > section:nth-of-type(3){grid-column:2;}
+  #material-overlay .almox-form-modal .almox-form-section{padding:10px 14px!important;}
+  #material-overlay .almox-form-modal textarea{min-height:64px!important;}
+}
+
+/* ==========================================================================
+   Celular — tela inicial (lista de áreas): os 7 itens cabem na primeira tela
+   ========================================================================== */
+@media(max-width:820px){
+  .app.mobile-inicio .sidebar{padding-bottom:84px!important;}                 /* nada fica atrás da barra "Sair" */
+  .app.mobile-inicio .sidebar .nav-item:not(.almox-subitem){min-height:58px!important;padding:8px 16px!important;margin:0 0 8px!important;border-radius:14px!important;display:flex!important;align-items:center!important;}
+  .app.mobile-inicio .sidebar .nav-item:not(.almox-subitem) svg{width:22px!important;height:22px!important;flex:none;}
+  .app.mobile-inicio .sidebar .nav-item:not(.almox-subitem) span{font-size:16px!important;}
+  .app.mobile-inicio .brand-name{font-size:28px;}
+  .app.mobile-inicio .who{display:none!important;}
+  .app.mobile-inicio .sidebar-quote{margin-top:6px!important;padding-top:8px!important;}
+  .app.mobile-inicio .sidebar-footer img{max-width:96px!important;}
+  .rio-home-link{margin-top:6px!important;}
+}
+@media(max-width:820px){
+  .app.mobile-inicio .sidebar .nav-item:not(.almox-subitem){height:60px!important;min-height:0!important;padding-top:0!important;padding-bottom:0!important;margin-bottom:8px!important;}
+  .app.mobile-inicio .sidebar .nav-item:not(.almox-subitem):last-of-type{margin-bottom:0!important;}
+}
+@media(max-width:820px){
+  .app.mobile-inicio .sidebar .nav-item:not(.almox-subitem){height:56px!important;margin-bottom:6px!important;}
+  .app.mobile-inicio .sidebar{padding-top:10px!important;}
+}
+@media(max-width:820px){
+  .app.mobile-inicio > .central-acao-toggle{top:calc(10px + env(safe-area-inset-top))!important;bottom:auto!important;right:12px!important;min-height:40px!important;font-size:13px!important;padding:0 8px 0 12px!important;}
+}

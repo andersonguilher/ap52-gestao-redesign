@@ -1,0 +1,249 @@
+/* AP5.2 v65.42.98 · Central de Ação · Vigência de comunicados */
+.central-acao{
+  width:318px;flex:0 0 318px;min-width:0;box-sizing:border-box;
+  background:rgba(249,252,251,.98);border-left:1px solid #dce6e2;
+  padding:22px 18px 24px;overflow-y:auto;overscroll-behavior:contain;
+  box-shadow:-8px 0 24px rgba(15,38,65,.035);z-index:8;
+}
+.central-acao-topo{display:flex;align-items:flex-start;justify-content:space-between;gap:12px;margin-bottom:18px;}
+.central-acao-eyebrow{font-size:11.5px;letter-spacing:.11em;text-transform:uppercase;color:#737c85;font-weight:800;}
+.central-acao-topo h2{margin:4px 0 0;font-size:21px;line-height:1.15;color:#102642;letter-spacing:-.35px;}
+.central-acao-fechar{display:none;width:36px;height:36px;border:1px solid #d7dde3;background:#fff;color:#1b4271;border-radius:10px;font-size:22px;line-height:1;cursor:pointer;flex:0 0 auto;}
+.central-acao-bloco{background:#fff;border:1px solid #dbe6e2;border-radius:15px;box-shadow:0 5px 16px rgba(15,38,65,.045);overflow:hidden;}
+.central-acao-bloco-head{padding:15px 15px 12px;border-bottom:1px solid #e8efec;}
+.central-acao-bloco-head-linha{display:flex;align-items:flex-start;justify-content:space-between;gap:10px;}
+.central-acao-bloco-head h3{margin:0;color:#112946;font-size:15px;line-height:1.25;}
+.central-acao-bloco-head p{margin:5px 0 0;color:#737a81;font-size:12px;line-height:1.45;}
+.central-acao-novo{border:0;background:#eaf4ef;color:#193d69;border-radius:9px;padding:7px 9px;font:800 10.5px/1 inherit;cursor:pointer;white-space:nowrap;}
+.central-acao-novo:hover{background:#dceee6;}
+.central-acao-form{padding:13px 15px;border-bottom:1px solid #e8efec;background:#f8fafb;}
+.central-acao-form[hidden]{display:none!important;}
+.central-acao-form label{display:block;margin:0 0 5px;font-size:11.5px;font-weight:800;text-transform:uppercase;letter-spacing:.04em;color:#606a75;}
+.central-acao-form select,.central-acao-form textarea{width:100%;box-sizing:border-box;border:1px solid #d2dfda;border-radius:9px;background:#fff;color:#112946;font:inherit;font-size:12px;padding:9px 10px;outline:none;}
+.central-acao-form textarea{min-height:96px;resize:vertical;line-height:1.45;}
+.central-acao-form select:focus,.central-acao-form textarea:focus{border-color:#6583a1;box-shadow:0 0 0 3px rgba(63,133,109,.10);}
+.central-acao-form .central-acao-form-campo+.central-acao-form-campo{margin-top:10px;}
+.central-acao-form-acoes{display:flex;gap:8px;justify-content:flex-end;margin-top:10px;}
+.central-acao-form-acoes button{border:1px solid #d1ded9;background:#fff;color:#1b4271;border-radius:9px;padding:8px 10px;font:800 11px/1 inherit;cursor:pointer;}
+.central-acao-form-acoes .primario{border-color:#1b4475;background:#1b4475;color:#fff;}
+.central-acao-form-erro{min-height:0;margin:8px 0 0;color:#a13f2e;font-size:11.5px;line-height:1.35;}
+.central-acao-lista{display:grid;}
+.central-comunicado{padding:14px 15px;border-top:1px solid #eef2f0;background:#fff;}
+.central-comunicado:first-child{border-top:0;}
+.central-comunicado-meta{display:flex;align-items:center;justify-content:space-between;gap:8px;margin-bottom:7px;}
+.central-comunicado-destino{display:inline-flex;align-items:center;min-height:23px;padding:3px 7px;border-radius:999px;background:#eef5f2;color:#1b4475;font-size:11.5px;font-weight:800;}
+.central-comunicado-recente{display:inline-flex;align-items:center;padding:3px 6px;border-radius:999px;background:#fff2d8;color:#7a550b;font-size:11.5px;font-weight:900;margin-left:4px;}
+.central-comunicado time{color:#899792;font-size:11.5px;white-space:nowrap;}
+.central-comunicado p{margin:0;color:#153459;font-size:12px;line-height:1.5;white-space:pre-wrap;overflow-wrap:anywhere;}
+.central-comunicado footer{margin-top:8px;color:#7c848b;font-size:11.5px;}
+.central-acao-vazio,.central-acao-carregando{padding:20px 15px;text-align:center;color:#767e87;font-size:12px;line-height:1.45;}
+.central-acao-rodape{padding:10px 15px;border-top:1px solid #e8efec;background:#fbfdfc;text-align:center;}
+.central-acao-atualizar{border:0;background:transparent;color:#2b6081;font:800 10.5px/1 inherit;cursor:pointer;padding:5px 8px;}
+
+.central-acao-bloco+.central-acao-bloco{margin-top:14px;}
+.central-atencao-resumo{display:inline-flex;min-width:29px;height:29px;align-items:center;justify-content:center;border-radius:999px;background:#eef4f1;color:#53606e;font-size:12px;font-weight:900;padding:0 8px;box-sizing:border-box;}
+.central-atencao-resumo.tem-alerta{background:#fbe9e4;color:#a23f2b;}
+.central-atencao-lista{display:grid;}
+.central-atencao-item{width:100%;border:0;border-top:1px solid #edf2ef;background:#fff;padding:12px 13px;display:grid;grid-template-columns:31px minmax(0,1fr) auto;gap:9px;align-items:center;text-align:left;color:inherit;font:inherit;cursor:pointer;transition:background .15s ease;}
+.central-atencao-item:first-child{border-top:0;}
+.central-atencao-item:hover{background:#f7faf8;}
+.central-atencao-item:focus-visible{outline:3px solid rgba(38,86,116,.18);outline-offset:-3px;}
+.central-atencao-icone{width:30px;height:30px;border-radius:9px;display:inline-flex;align-items:center;justify-content:center;background:#f7edd9;color:#8d601b;font-size:13px;font-weight:900;}
+.central-atencao-item.urgente .central-atencao-icone{background:#fbe8e4;color:#a33d28;}
+.central-atencao-item.informativo .central-atencao-icone{background:#eaf2f6;color:#316d93;}
+.central-atencao-texto{min-width:0;}
+.central-atencao-linha{display:flex;align-items:center;gap:6px;flex-wrap:wrap;}
+.central-atencao-texto strong{font-size:12px;line-height:1.25;color:#153459;}
+.central-atencao-texto small{display:block;margin-top:3px;color:#7a8289;font-size:11.5px;line-height:1.35;}
+.central-atencao-nivel{display:inline-flex;min-height:18px;align-items:center;padding:2px 5px;border-radius:999px;background:#faefd9;color:#8d5f19;font-size:11.5px;font-weight:900;text-transform:uppercase;letter-spacing:.18px;}
+.central-atencao-item.urgente .central-atencao-nivel{background:#fbe8e4;color:#a33d28;}
+.central-atencao-item.informativo .central-atencao-nivel{background:#eaf2f6;color:#316d93;}
+.central-atencao-qtd{white-space:nowrap;color:#1b4475;font-size:11.5px;font-weight:850;background:#eef5f2;border-radius:999px;padding:5px 7px;}
+.central-atencao-tranquilo{padding:18px 15px;display:flex;flex-direction:column;gap:3px;text-align:center;background:#fbfdfc;}
+.central-atencao-tranquilo strong{font-size:12px;color:#1b4374;}
+.central-atencao-tranquilo span{font-size:11.5px;line-height:1.4;color:#7b8289;}
+.central-atencao-nota{padding:9px 13px;border-top:1px solid #edf2ef;background:#fbfdfc;color:#7b8289;font-size:11.5px;line-height:1.4;}
+.central-atencao-nota[hidden]{display:none!important;}
+@media(max-width:420px){.central-atencao-item{grid-template-columns:30px minmax(0,1fr);}.central-atencao-qtd{grid-column:2;justify-self:start;}.central-atencao-texto strong{font-size:12px;}}
+
+.central-acao-toggle{
+  display:none;position:fixed;right:18px;bottom:18px;z-index:19990;
+  min-height:44px;border:1px solid #cfe0da;background:#102846;color:#fff;border-radius:999px;
+  padding:0 15px;box-shadow:0 10px 26px rgba(13,33,58,.24);font:800 12px/1 inherit;cursor:pointer;align-items:center;gap:8px;
+}
+.central-acao-toggle-badge{display:none;min-width:18px;height:18px;align-items:center;justify-content:center;border-radius:999px;background:#f2c65e;color:#4d390a;font-size:11.5px;padding:0 4px;}
+.central-acao-toggle.tem-itens .central-acao-toggle-badge{display:inline-flex;}
+.central-acao-backdrop{display:none;position:fixed;inset:0;background:rgba(8,21,36,.34);z-index:19980;}
+body.central-acao-aberta{overflow:hidden;}
+
+@media(min-width:100000px){
+  #app-shell:not(.mapa-layout-ativo):not(.rvl-layout-ativo):not(.pessoal-func-layout-ativo)>.main{max-width:none;min-width:0;}
+  #app-shell:not(.mapa-layout-ativo):not(.rvl-layout-ativo):not(.pessoal-func-layout-ativo)>.central-acao{
+    display:block;position:sticky;top:0;height:100vh;transform:none;
+  }
+  #app-shell:not(.mapa-layout-ativo):not(.rvl-layout-ativo):not(.pessoal-func-layout-ativo)>.central-acao-toggle,
+  #app-shell:not(.mapa-layout-ativo):not(.rvl-layout-ativo):not(.pessoal-func-layout-ativo)>.central-acao-backdrop{display:none!important;}
+}
+@media(min-width:1px){
+  .central-acao{display:block;position:fixed;right:0;top:0;height:100dvh;width:min(338px,calc(100vw - 34px));transform:translateX(105%);transition:transform .2s ease;z-index:20000;box-shadow:-18px 0 46px rgba(12,30,52,.2);}
+  .central-acao.central-acao-aberta{transform:translateX(0);}
+  .central-acao-fechar{display:inline-flex;align-items:center;justify-content:center;}
+  .central-acao-toggle{display:inline-flex;}
+  .central-acao-backdrop.central-acao-aberta{display:block;}
+}
+@media(min-width:1600px){
+  #app-shell:is(.mapa-layout-ativo,.rvl-layout-ativo,.pessoal-func-layout-ativo)>.central-acao{
+    display:block;position:fixed;right:0;top:0;height:100dvh;width:338px;transform:translateX(105%);transition:transform .2s ease;z-index:20000;box-shadow:-18px 0 46px rgba(12,30,52,.2);
+  }
+  #app-shell:is(.mapa-layout-ativo,.rvl-layout-ativo,.pessoal-func-layout-ativo)>.central-acao.central-acao-aberta{transform:translateX(0);}
+  #app-shell:is(.mapa-layout-ativo,.rvl-layout-ativo,.pessoal-func-layout-ativo)>.central-acao .central-acao-fechar{display:inline-flex;align-items:center;justify-content:center;}
+  #app-shell:is(.mapa-layout-ativo,.rvl-layout-ativo,.pessoal-func-layout-ativo)>.central-acao-toggle{display:inline-flex;}
+  #app-shell:is(.mapa-layout-ativo,.rvl-layout-ativo,.pessoal-func-layout-ativo)>.central-acao-backdrop.central-acao-aberta{display:block;}
+}
+@media(max-width:820px){
+  .central-acao{left:8px;right:8px;top:auto;bottom:max(8px,env(safe-area-inset-bottom));width:auto;height:min(78dvh,680px);border-left:1px solid #dce6e2;border-radius:22px;transform:translateY(calc(100% + 18px));padding:18px 14px calc(18px + env(safe-area-inset-bottom));}
+  .central-acao.central-acao-aberta{transform:translateY(0);}
+  .central-acao-toggle{right:14px;bottom:calc(66px + env(safe-area-inset-bottom));min-height:42px;padding:0 13px;}
+}
+
+/* Central de Ação · Etapa 3 · Próximos eventos */
+.central-eventos-resumo{display:inline-flex;min-width:29px;height:29px;align-items:center;justify-content:center;border-radius:999px;background:#eef4f1;color:#53606e;font-size:12px;font-weight:900;padding:0 8px;box-sizing:border-box;}
+.central-eventos-resumo.tem-evento{background:#eaf2f6;color:#2e678b;}
+.central-eventos-lista{display:grid;}
+.central-evento-item{width:100%;border:0;border-top:1px solid #edf2ef;background:#fff;padding:11px 13px;display:grid;grid-template-columns:62px minmax(0,1fr);gap:10px;align-items:center;text-align:left;color:inherit;font:inherit;cursor:pointer;transition:background .15s ease;}
+.central-evento-item:first-child{border-top:0;}
+.central-evento-item:hover{background:#f7faf8;}
+.central-evento-item:focus-visible{outline:3px solid rgba(38,86,116,.18);outline-offset:-3px;}
+.central-evento-data{min-height:44px;border-radius:10px;background:#f2f6f4;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:5px 4px;box-sizing:border-box;text-align:center;}
+.central-evento-data strong{color:#15355c;font-size:12px;line-height:1.1;text-transform:uppercase;}
+.central-evento-data small{margin-top:3px;color:#7a828a;font-size:11.5px;line-height:1.1;}
+.central-evento-item.ferias .central-evento-data{background:#fff4dc;}.central-evento-item.ferias .central-evento-data strong{color:#8b641e;}
+.central-evento-item.afastamento .central-evento-data,.central-evento-item.retorno .central-evento-data{background:#eef3f7;}.central-evento-item.afastamento .central-evento-data strong,.central-evento-item.retorno .central-evento-data strong{color:#456b80;}
+.central-evento-item.contrato .central-evento-data{background:#f4edf8;}.central-evento-item.contrato .central-evento-data strong{color:#72598b;}
+.central-evento-corpo{min-width:0;}
+.central-evento-linha{display:flex;align-items:center;gap:6px;min-width:0;}
+.central-evento-icone{width:22px;height:22px;border-radius:7px;display:inline-flex;align-items:center;justify-content:center;background:#eef5f2;color:#295c7b;font-size:11.5px;font-weight:900;flex:0 0 auto;}
+.central-evento-corpo strong{color:#153459;font-size:12px;line-height:1.25;}
+.central-evento-corpo small{display:block;margin-top:4px;color:#777f87;font-size:11.5px;line-height:1.35;overflow-wrap:anywhere;}
+.central-eventos-vazio{padding:18px 15px;display:flex;flex-direction:column;gap:3px;text-align:center;background:#fbfdfc;}
+.central-eventos-vazio strong{font-size:12px;color:#1b4374;}.central-eventos-vazio span{font-size:11.5px;line-height:1.4;color:#7b8289;}
+.central-eventos-nota{padding:9px 13px;border-top:1px solid #edf2ef;background:#fbfdfc;color:#7b8289;font-size:11.5px;line-height:1.4;}
+.central-eventos-nota[hidden]{display:none!important;}
+
+
+
+/* Central de Ação · Etapa 4 · Ações rápidas */
+.central-acoes-grade{display:grid;grid-template-columns:1fr;}
+.central-acao-atalho{width:100%;border:0;border-top:1px solid #edf2ef;background:#fff;padding:11px 12px;display:grid;grid-template-columns:34px minmax(0,1fr) 16px;gap:9px;align-items:center;text-align:left;color:inherit;font:inherit;cursor:pointer;transition:background .15s ease,transform .15s ease;}
+.central-acao-atalho:first-child{border-top:0;}
+.central-acao-atalho:hover{background:#f7faf8;}
+.central-acao-atalho:active{transform:translateY(1px);}
+.central-acao-atalho:focus-visible{outline:3px solid rgba(38,86,116,.18);outline-offset:-3px;}
+.central-acao-atalho-icone{width:33px;height:33px;border-radius:10px;display:inline-flex;align-items:center;justify-content:center;background:#eaf4ef;color:#1c4476;font-size:16px;font-weight:900;box-sizing:border-box;}
+.central-acao-atalho.ferias .central-acao-atalho-icone{background:#fff3db;color:#966718;}
+.central-acao-atalho.busca .central-acao-atalho-icone{background:#eaf2f6;color:#316e94;}
+.central-acao-atalho.atualizar .central-acao-atalho-icone{background:#f0f2f1;color:#59636d;}
+.central-acao-atalho-texto{min-width:0;}
+.central-acao-atalho-texto strong{display:block;color:#153459;font-size:12px;line-height:1.25;}
+.central-acao-atalho-texto small{display:block;margin-top:3px;color:#7a8289;font-size:11.5px;line-height:1.3;}
+.central-acao-atalho-seta{color:#8a929a;font-size:18px;line-height:1;text-align:right;}
+@media(max-width:820px){
+  .central-acoes-grade{grid-template-columns:repeat(2,minmax(0,1fr));gap:1px;background:#edf2ef;}
+  .central-acao-atalho{border-top:0;min-height:72px;grid-template-columns:32px minmax(0,1fr);background:#fff;}
+  .central-acao-atalho-seta{display:none;}
+}
+@media(max-width:430px){
+  .central-acoes-grade{grid-template-columns:1fr;}
+  .central-acao-atalho{min-height:0;grid-template-columns:34px minmax(0,1fr) 16px;}
+  .central-acao-atalho-seta{display:block;}
+}
+
+
+/* Central de Ação · v65.42.98 · Vigência e histórico de comunicados */
+.central-comunicado-head-acoes{display:flex;align-items:center;gap:6px;flex:0 0 auto;}
+.central-acao-novo.secundario{background:#f3f4f6;color:#556371;border:1px solid #dce6e2;}
+.central-acao-novo.secundario:hover{background:#e9ecef;}
+.central-comunicado-form-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:10px;}
+.central-comunicado-form-grid .central-acao-form-campo{margin-top:0!important;min-width:0;}
+.central-acao-form input[type="date"],.central-acao-form input[type="datetime-local"]{width:100%;box-sizing:border-box;border:1px solid #d2dfda;border-radius:9px;background:#fff;color:#112946;font:inherit;font-size:12px;padding:9px 8px;outline:none;}
+.central-acao-form input[type="date"]:focus,.central-acao-form input[type="datetime-local"]:focus{border-color:#6583a1;box-shadow:0 0 0 3px rgba(63,133,109,.10);}
+.central-comunicado-prazo-nota{margin-top:8px;padding:8px 9px;border-radius:9px;background:#eef5f2;color:#606a75;font-size:11.5px;line-height:1.4;}
+.central-comunicado-vigencia{display:inline-flex;margin-top:9px;padding:4px 7px;border-radius:999px;background:#edf4f1;color:#2c6182;font-size:11.5px;font-weight:850;}
+.central-comunicados-historico[hidden]{display:none!important;}
+.central-historico-topo{padding:11px 13px;display:flex;align-items:center;justify-content:space-between;gap:10px;background:#f8fafb;border-bottom:1px solid #e8efec;}
+.central-historico-topo strong{display:block;color:#153459;font-size:12px;}
+.central-historico-topo span{display:block;margin-top:2px;color:#7a8289;font-size:11.5px;}
+.central-historico-topo button{border:1px solid #d3dfda;background:#fff;color:#275673;border-radius:8px;padding:6px 8px;font:800 9.5px/1 inherit;cursor:pointer;}
+.central-historico-lista{display:grid;max-height:520px;overflow:auto;overscroll-behavior:contain;}
+.central-historico-item{padding:12px 13px;border-top:1px solid #edf2ef;background:#fff;}
+.central-historico-item:first-child{border-top:0;}
+.central-historico-meta{display:flex;align-items:center;justify-content:space-between;gap:8px;}
+.central-historico-meta time{color:#899792;font-size:11.5px;white-space:nowrap;}
+.central-historico-status{display:inline-flex;align-items:center;min-height:20px;padding:2px 6px;border-radius:999px;font-size:11.5px;font-weight:900;text-transform:uppercase;letter-spacing:.18px;background:#eff0f2;color:#646c74;}
+.central-historico-status.ativo{background:#e8f4ee;color:#285a79;}.central-historico-status.agendado{background:#eaf2f6;color:#326f95;}.central-historico-status.encerrado{background:#f2f1ef;color:#777067;}
+.central-historico-destino{margin-top:7px;color:#455667;font-size:11.5px;font-weight:800;}
+.central-historico-item p{margin:5px 0 0;color:#153459;font-size:12px;line-height:1.45;white-space:pre-wrap;overflow-wrap:anywhere;}
+.central-historico-vigencia{margin-top:7px;color:#717981;font-size:11.5px;line-height:1.3;}
+.central-historico-item footer{margin-top:8px;display:flex;align-items:center;justify-content:space-between;gap:8px;color:#7c848b;font-size:11.5px;}
+.central-historico-item footer button{border:1px solid #ead8ca;background:#fff8f1;color:#8e5b34;border-radius:8px;padding:5px 7px;font:850 8.8px/1 inherit;cursor:pointer;white-space:nowrap;}
+.central-historico-item footer button:hover{background:#fff0e3;}
+@media(max-width:420px){.central-comunicado-form-grid{grid-template-columns:1fr;}.central-comunicado-head-acoes{gap:4px;}.central-acao-novo{padding:7px 7px;font-size:11.5px;}}
+
+/* Central de Ação · v65.42.103 · Avisos prévios */
+.central-evento-item.aviso-previo .central-evento-data{background:#fff5df;}
+.central-evento-item.aviso-previo .central-evento-data strong{color:#8b651e;}
+
+/* v65.42.148.5 — ao abrir o Histórico, a lista de comunicados ativos fica escondida.
+   O display:grid da lista anulava o atributo hidden e o comunicado aparecia duas vezes. */
+.central-acao-lista[hidden]{display:none!important;}
+/* v65.42.148.5 — cabeçalho dos comunicados: quando falta largura, os botões Histórico/+ Novo
+   descem para a linha de baixo em vez de espremer o título em três linhas. */
+.central-acao-bloco-head-linha:has(.central-comunicado-head-acoes){flex-wrap:wrap;row-gap:10px;}
+.central-acao-bloco-head-linha:has(.central-comunicado-head-acoes)>div:first-child{flex:1 1 190px;min-width:0;}
+
+/* v65.42.148.6 — letras da Central de Ação um pouco maiores (cerca de +1,5px).
+   Só tamanho de fonte; cores, pesos e espaçamentos continuam os mesmos. Os botões
+   (Histórico, + Novo, Atualizar, Encerrar) já usam 13,3px e ficam como estão. */
+#central-acao .central-acao-eyebrow{font-size:12px;}
+#central-acao .central-acao-topo h2{font-size:22px;}
+#central-acao .central-acao-bloco-head h3{font-size:16.5px;}
+#central-acao .central-acao-bloco-head p{font-size:12.5px;}
+#central-acao .central-acao-form label{font-size:12px;}
+#central-acao .central-acao-form select,#central-acao .central-acao-form textarea{font-size:13.5px;}
+#central-acao .central-acao-form input[type="date"],#central-acao .central-acao-form input[type="datetime-local"]{font-size:13px;}
+#central-acao .central-acao-form-erro{font-size:12px;}
+#central-acao .central-comunicado-prazo-nota{font-size:12px;}
+#central-acao .central-comunicado-destino{font-size:12px;}
+#central-acao .central-comunicado-recente{font-size:11.5px;}
+#central-acao .central-comunicado time{font-size:12px;}
+#central-acao .central-comunicado p{font-size:13.5px;}
+#central-acao .central-comunicado-vigencia{font-size:11.5px;}
+#central-acao .central-comunicado footer{font-size:12px;}
+#central-acao .central-acao-vazio,#central-acao .central-acao-carregando{font-size:12.5px;}
+#central-acao .central-atencao-resumo{font-size:12.5px;}
+#central-acao .central-atencao-texto strong{font-size:13px;}
+#central-acao .central-atencao-texto small{font-size:11.5px;}
+#central-acao .central-atencao-nivel{font-size:11.5px;}
+#central-acao .central-atencao-qtd{font-size:12px;}
+#central-acao .central-atencao-tranquilo strong{font-size:13px;}
+#central-acao .central-atencao-tranquilo span{font-size:12px;}
+#central-acao .central-atencao-nota{font-size:12px;}
+#central-acao .central-eventos-resumo{font-size:12.5px;}
+#central-acao .central-evento-data strong{font-size:12.5px;}
+#central-acao .central-evento-data small{font-size:11.5px;}
+#central-acao .central-evento-icone{font-size:12px;}
+#central-acao .central-evento-corpo strong{font-size:13px;}
+#central-acao .central-evento-corpo small{font-size:11.5px;}
+#central-acao .central-eventos-vazio strong{font-size:13px;}
+#central-acao .central-eventos-vazio span{font-size:12px;}
+#central-acao .central-eventos-nota{font-size:12px;}
+#central-acao .central-acao-atalho-texto strong{font-size:13px;}
+#central-acao .central-acao-atalho-texto small{font-size:11.5px;}
+#central-acao .central-historico-topo strong{font-size:12.5px;}
+#central-acao .central-historico-topo span{font-size:11.5px;}
+#central-acao .central-historico-meta time{font-size:11.5px;}
+#central-acao .central-historico-status{font-size:11.5px;}
+#central-acao .central-historico-destino{font-size:12px;}
+#central-acao .central-historico-item p{font-size:12.5px;}
+#central-acao .central-historico-vigencia{font-size:11.5px;}
+#central-acao .central-historico-item footer{font-size:11.5px;}

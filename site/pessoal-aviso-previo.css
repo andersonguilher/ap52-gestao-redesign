@@ -1,0 +1,111 @@
+/* AP5.2 v65.42.101 — Gestão de Pessoal · Aviso prévio individual, em lote e coletivo */
+.ps15-aviso-previo .ps15-secao-titulo{align-items:center}
+.ps15-aviso-previo-card{border:1px solid #e3c58f;background:#fffaf0;border-radius:12px;padding:13px 14px;margin-top:9px}
+.ps15-aviso-previo-card.prazo-encerrado{border-color:#d9a39b;background:#fff6f4}
+.ps15-aviso-previo-topo{display:flex;align-items:flex-start;justify-content:space-between;gap:10px;flex-wrap:wrap}
+.ps15-aviso-previo-topo strong{color:#6b4a16;font-size:13px}
+.ps15-aviso-previo-card.prazo-encerrado .ps15-aviso-previo-topo strong{color:#8d352e}
+.ps15-aviso-previo-status{display:inline-flex;align-items:center;min-height:24px;padding:3px 8px;border-radius:999px;background:#fff1cf;border:1px solid #e4c37f;color:#76510e;font-size:9.5px;font-weight:900;text-transform:uppercase;letter-spacing:.25px}
+.ps15-aviso-previo-card.prazo-encerrado .ps15-aviso-previo-status{background:#ffe4df;border-color:#e3aca3;color:#8d352e}
+.ps15-aviso-previo-meta{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px 12px;margin-top:11px}
+.ps15-aviso-previo-meta div{min-width:0}
+.ps15-aviso-previo-meta small{display:block;color:#7a817e;font-size:9px;font-weight:800;text-transform:uppercase;letter-spacing:.2px;margin-bottom:2px}
+.ps15-aviso-previo-meta b{display:block;color:#323e4a;font-size:11.2px;line-height:1.35;overflow-wrap:anywhere}
+.ps15-aviso-previo-contagem{margin:10px 0 0;color:#665949;font-size:10.7px;line-height:1.45}
+.ps15-aviso-previo-contagem.atrasado{color:#8d352e;font-weight:750}
+.ps15-aviso-previo-obs{margin:9px 0 0;padding:9px 10px;border-left:3px solid #d6ba83;background:rgba(255,255,255,.72);border-radius:7px;color:#535a61;font-size:10.6px;line-height:1.45}
+.ps15-aviso-previo-acoes{display:flex;gap:7px;flex-wrap:wrap;margin-top:11px}
+.ps15-aviso-previo-acoes button,.ps15-aviso-previo-novo{min-height:34px;border-radius:8px;border:1px solid #b9d2c8;background:#edf6f2;color:#183c67;padding:7px 10px;font-size:10.5px;font-weight:850;cursor:pointer}
+.ps15-aviso-previo-acoes button.cancelar{border-color:#dfb3ad;background:#fff4f2;color:#8b3a32}
+.ps15-aviso-previo-novo{margin-top:10px}
+.ps15-aviso-previo-historico{margin-top:10px;border-top:1px solid #ece7dc;padding-top:9px}
+.ps15-aviso-previo-historico summary{cursor:pointer;color:#465463;font-size:10.5px;font-weight:800}
+.ps15-aviso-previo-historico-lista{display:grid;gap:7px;margin-top:8px}
+.ps15-aviso-previo-historico-item{border:1px solid #e0e5e2;background:#fafcfb;border-radius:9px;padding:9px 10px}
+.ps15-aviso-previo-historico-item>div{display:flex;justify-content:space-between;gap:9px;align-items:flex-start}
+.ps15-aviso-previo-historico-item strong{color:#3a4550;font-size:10.5px}.ps15-aviso-previo-historico-item span{font-size:9px;font-weight:850;color:#6f7e79}
+.ps15-aviso-previo-historico-item small{display:block;margin-top:4px;color:#777c82;font-size:9.6px;line-height:1.4}
+.ps15-aviso-previo-carregando{padding:12px 0;color:#717981;font-size:10.7px}
+
+.pessoal-aviso-overlay{position:fixed;inset:0;z-index:12050;background:rgba(10,25,44,.48);display:none;align-items:center;justify-content:center;padding:18px}
+.pessoal-aviso-overlay.open{display:flex}
+.pessoal-aviso-modal{width:min(620px,100%);max-height:92vh;overflow:auto;background:#f8faf9;border-radius:16px;box-shadow:0 24px 70px rgba(9,23,41,.28);border:1px solid #dbe5e1}
+.pessoal-aviso-modal-head{padding:18px 20px;background:linear-gradient(120deg,#654b20,#8b682c);color:#fff;display:flex;justify-content:space-between;gap:15px;align-items:flex-start}
+.pessoal-aviso-modal-head h2{margin:1px 0 0;color:#fff;font-size:19px}.pessoal-aviso-modal-head p{margin:5px 0 0;color:#f6eddc;font-size:11px;line-height:1.4}
+.pessoal-aviso-modal-fechar{border:1px solid rgba(255,255,255,.35);background:rgba(255,255,255,.12);color:#fff;width:36px;height:36px;border-radius:9px;font-size:22px;cursor:pointer}
+.pessoal-aviso-modal-body{padding:18px 20px}
+.pessoal-aviso-identidade{padding:11px 12px;border:1px solid #dce5e1;background:#fff;border-radius:10px;margin-bottom:14px}
+.pessoal-aviso-identidade strong{display:block;color:#15355c;font-size:12.5px}.pessoal-aviso-identidade small{display:block;margin-top:3px;color:#717981;font-size:10.3px;line-height:1.4}
+.pessoal-aviso-grid{display:grid;grid-template-columns:1fr 1fr;gap:11px}
+.pessoal-aviso-field{display:grid;gap:5px}.pessoal-aviso-field.span2{grid-column:1/-1}.pessoal-aviso-field label{color:#424e5b;font-size:10.5px;font-weight:850}
+.pessoal-aviso-field input,.pessoal-aviso-field select,.pessoal-aviso-field textarea{width:100%;box-sizing:border-box;border:1px solid #ccd9d4;background:#fff;border-radius:9px;padding:10px 11px;color:#27313c;font:inherit;font-size:11.5px}
+.pessoal-aviso-field textarea{min-height:76px;resize:vertical}.pessoal-aviso-field small{color:#7a8188;font-size:9.6px;line-height:1.35}
+.pessoal-aviso-erro{min-height:18px;margin-top:10px;color:#963f37;font-size:10.5px;font-weight:700}
+.pessoal-aviso-modal-actions{display:flex;justify-content:flex-end;gap:8px;padding:13px 20px;border-top:1px solid #dfe7e4;background:#fff}
+.pessoal-aviso-modal-actions button{min-height:38px;border-radius:9px;padding:8px 13px;font-size:11px;font-weight:850;cursor:pointer;border:1px solid #cad8d3;background:#fff;color:#465360}
+.pessoal-aviso-modal-actions .primario{background:#285978;border-color:#285978;color:#fff}
+.pessoal-aviso-modal-actions button:disabled{opacity:.55;cursor:wait}
+@media(max-width:600px){.pessoal-aviso-overlay{padding:0;align-items:flex-end}.pessoal-aviso-modal{width:100%;max-height:94vh;border-radius:17px 17px 0 0}.pessoal-aviso-grid{grid-template-columns:1fr}.pessoal-aviso-field.span2{grid-column:auto}.ps15-aviso-previo-meta{grid-template-columns:1fr}}
+
+/* AP5.2 v65.42.100 — Etapa 2 · Aviso prévio em lote */
+.ps15-aviso-lote-btn{white-space:nowrap}
+.ps15-aviso-lote-bar{display:flex;align-items:center;justify-content:space-between;gap:16px;margin:0 0 16px;padding:14px 16px;border:1px solid #d6c18f;background:#fff9eb;border-radius:12px;box-shadow:0 4px 14px rgba(76,57,18,.05)}
+.ps15-aviso-lote-bar[hidden]{display:none!important}.ps15-aviso-lote-bar>div:first-child{display:grid;gap:2px}.ps15-aviso-lote-bar strong{font-size:12.5px;color:#5e481e}.ps15-aviso-lote-bar span{font-size:11px;font-weight:850;color:#7a5b1b}.ps15-aviso-lote-bar small{font-size:10px;color:#7b776d}.ps15-aviso-lote-bar-acoes{display:flex;gap:8px;flex-wrap:wrap;justify-content:flex-end}
+#view-funcionarios .ps15-lote-check{display:none;position:absolute;z-index:8;right:9px;top:9px;width:30px;height:30px;border-radius:9px;border:1px solid #c7d5cf;background:#fff;color:#1b4475;font-size:16px;font-weight:900;align-items:center;justify-content:center;cursor:pointer;box-shadow:0 2px 8px rgba(16,39,68,.08)}
+#view-funcionarios.pessoal-aviso-lote-ativo .ps15-lote-check{display:flex}
+#view-funcionarios.pessoal-aviso-lote-ativo .emp-card{cursor:pointer;padding-top:0!important}
+#view-funcionarios.pessoal-aviso-lote-ativo .emp-card .ps15-card-selecionar{cursor:pointer}
+#view-funcionarios.pessoal-aviso-lote-ativo .emp-card.ps15-lote-selecionado{border-color:#b9933f!important;box-shadow:inset 0 0 0 2px #d8b65e!important;background:#fffdf7!important}
+#view-funcionarios.pessoal-aviso-lote-ativo .emp-card.ps15-lote-selecionado .ps15-lote-check{background:#6f5a24;border-color:#6f5a24;color:#fff}
+#view-funcionarios.pessoal-aviso-lote-ativo .emp-card.ps15-lote-indisponivel .ps15-lote-check{display:flex;opacity:.42;cursor:not-allowed;background:#f0f2f1;color:#87938e}
+#view-funcionarios.pessoal-aviso-lote-ativo .emp-card.ps15-lote-indisponivel{opacity:.72}
+.pessoal-aviso-lote-modal{width:min(780px,100%)}
+.ps15-lote-resumo{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:9px;margin-bottom:14px}.ps15-lote-resumo>div{padding:11px 12px;border:1px solid #dfe7e4;background:#fff;border-radius:10px;text-align:center}.ps15-lote-resumo span{display:block;font-size:9.5px;font-weight:850;text-transform:uppercase;color:#757d84}.ps15-lote-resumo strong{display:block;margin-top:4px;font-size:21px;color:#193f6d}.ps15-lote-resumo .impedidos strong{color:#a05243}
+.ps15-lote-listas{display:grid;gap:10px;margin-bottom:15px}.ps15-lote-listas>section{border:1px solid #dfe7e4;background:#fff;border-radius:11px;overflow:hidden}.ps15-lote-lista-head{display:flex;justify-content:space-between;gap:10px;align-items:center;padding:10px 12px;background:#f5f6f8;border-bottom:1px solid #e5ebe8}.ps15-lote-lista-head strong{font-size:11px;color:#364555}.ps15-lote-lista-head span{font-size:9.5px;color:#7b8289}.ps15-lote-lista{max-height:190px;overflow:auto;padding:4px 10px}.ps15-lote-lista article{display:flex;justify-content:space-between;align-items:flex-start;gap:12px;padding:8px 3px;border-bottom:1px solid #eef2f0}.ps15-lote-lista article:last-child{border-bottom:0}.ps15-lote-lista article strong{display:block;font-size:10.8px;color:#34414f}.ps15-lote-lista article small{display:block;margin-top:2px;font-size:9.4px;color:#7a8883}.ps15-lote-lista article>span{font-size:9.5px;color:#6c757e;text-align:right;max-width:42%}.ps15-lote-impedidos-box{border-color:#ead1cc!important}.ps15-lote-impedidos-box .ps15-lote-lista-head{background:#fff6f4}.ps15-lote-lista.impedidos article strong{color:#7e443b}.ps15-lote-lista.impedidos article small{color:#9a594f;font-weight:750}
+.ps15-lote-campos{padding-top:2px}.ps15-lote-alerta{display:grid;gap:3px;margin-top:13px;padding:10px 11px;border-left:3px solid #c29536;background:#fff9ed;border-radius:8px}.ps15-lote-alerta strong{font-size:10.5px;color:#735718}.ps15-lote-alerta span{font-size:10px;line-height:1.45;color:#6f6550}
+@media(max-width:700px){.ps15-aviso-lote-bar{align-items:stretch;flex-direction:column}.ps15-aviso-lote-bar-acoes{display:grid;grid-template-columns:1fr 1fr}.ps15-aviso-lote-bar-acoes .btn{width:100%}.ps15-lote-resumo{grid-template-columns:repeat(3,1fr)}.ps15-lote-resumo>div{padding:9px 5px}.ps15-lote-resumo strong{font-size:18px}.ps15-lote-lista article{display:block}.ps15-lote-lista article>span{display:block;max-width:none;text-align:left;margin-top:3px}.pessoal-aviso-lote-modal .pessoal-aviso-modal-body{padding:15px}}
+
+
+/* AP5.2 v65.42.101 — Etapa 3 · Aviso prévio coletivo por empresa */
+.ps15-aviso-coletivo-btn{white-space:nowrap}
+.pessoal-aviso-coletivo-modal{width:min(860px,100%)}
+.ps15-coletivo-escolha{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:10px;align-items:end;padding:12px;border:1px solid #dfe7e4;background:#fff;border-radius:11px;margin-bottom:14px}
+.ps15-coletivo-escolha .btn{min-height:39px}
+.ps15-coletivo-resumo{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:9px;margin-bottom:13px}
+.ps15-coletivo-resumo>div{padding:11px 8px;text-align:center;border:1px solid #dfe7e4;background:#fff;border-radius:10px}
+.ps15-coletivo-resumo span{display:block;font-size:9.3px;font-weight:850;text-transform:uppercase;color:#757d84}
+.ps15-coletivo-resumo strong{display:block;margin-top:4px;font-size:20px;color:#193f6d}
+.ps15-coletivo-resumo .excecoes strong{color:#9a6a1d}
+.ps15-coletivo-selecao-head{display:flex;justify-content:space-between;align-items:flex-end;gap:12px;margin:0 0 8px}
+.ps15-coletivo-selecao-head>div:first-child{display:grid;gap:2px}.ps15-coletivo-selecao-head strong{font-size:11.3px;color:#364555}.ps15-coletivo-selecao-head small{font-size:9.5px;color:#7a8883}
+.ps15-coletivo-selecao-head>div:last-child{display:flex;gap:6px;flex-wrap:wrap}
+.ps15-coletivo-selecao-head .btn{min-height:31px;padding:5px 9px;font-size:9.5px}
+.ps15-coletivo-lista{max-height:265px;overflow:auto;border:1px solid #dfe7e4;background:#fff;border-radius:11px;padding:4px 10px;margin-bottom:10px}
+.ps15-coletivo-pessoa{display:grid;grid-template-columns:22px minmax(0,1fr);gap:9px;align-items:flex-start;padding:9px 3px;border-bottom:1px solid #eef2f0;cursor:pointer}
+.ps15-coletivo-pessoa:last-child{border-bottom:0}.ps15-coletivo-pessoa input{margin-top:2px;width:16px;height:16px;accent-color:#285978}.ps15-coletivo-pessoa strong{display:block;font-size:10.8px;color:#34414f}.ps15-coletivo-pessoa small{display:block;margin-top:2px;font-size:9.4px;line-height:1.4;color:#7a8883}
+.ps15-coletivo-impedidos{margin:10px 0 14px;overflow:hidden}.ps15-coletivo-campos{padding-top:4px}
+@media(max-width:700px){.ps15-coletivo-escolha{grid-template-columns:1fr}.ps15-coletivo-resumo{grid-template-columns:repeat(2,1fr)}.ps15-coletivo-selecao-head{align-items:stretch;flex-direction:column}.ps15-coletivo-selecao-head>div:last-child{display:grid;grid-template-columns:1fr 1fr}.ps15-coletivo-selecao-head .btn{width:100%}.ps15-coletivo-lista{max-height:230px}}
+
+/* AP5.2 v65.42.102 — Etapa 4 · Gestão das operações coletivas */
+.ps15-aviso-operacoes-btn{white-space:nowrap}
+.pessoal-aviso-operacoes-modal{width:min(900px,100%)}
+.ps15-operacoes-toolbar{display:flex;align-items:center;justify-content:space-between;gap:14px;margin-bottom:13px;padding:12px 13px;border:1px solid #dfe7e4;background:#fff;border-radius:11px}
+.ps15-operacoes-toolbar>div{display:grid;gap:2px}.ps15-operacoes-toolbar strong{font-size:11.5px;color:#364555}.ps15-operacoes-toolbar small{font-size:9.7px;color:#7a8883;line-height:1.4}.ps15-operacoes-toolbar .btn{min-height:34px}
+.ps15-operacoes-lista{display:grid;gap:10px}.ps15-operacoes-vazio{display:grid;gap:4px;padding:22px;text-align:center;border:1px dashed #d7e1dd;border-radius:12px;background:#fbfcfc}.ps15-operacoes-vazio strong{font-size:12px;color:#424e5b}.ps15-operacoes-vazio span{font-size:10px;color:#7a8883}
+.ps15-operacao-card{border:1px solid #dfe7e4;background:#fff;border-radius:12px;overflow:hidden}.ps15-operacao-card-topo{display:flex;align-items:flex-start;justify-content:space-between;gap:12px;padding:12px 13px;border-bottom:1px solid #edf1ef}.ps15-operacao-card-topo>div{display:grid;gap:2px}.ps15-operacao-card-topo strong{font-size:12.3px;color:#2e3c4b}.ps15-operacao-card-topo small{font-size:9.5px;color:#7a8883;line-height:1.35}
+.ps15-operacao-status{display:inline-flex;align-items:center;justify-content:center;min-height:24px;padding:3px 8px;border-radius:999px;font-size:9px;font-weight:900;white-space:nowrap;border:1px solid #d4ded9;background:#f3f7f5;color:#525e6b}.ps15-operacao-status.ativa{border-color:#b9d8ca;background:#edf8f3;color:#193f6d}.ps15-operacao-status.cancelada{border-color:#e3c2ba;background:#fff2ef;color:#8b4337}.ps15-operacao-status.concluida{border-color:#bfd4df;background:#f0f7fb;color:#356279}.ps15-operacao-status.encerrada{border-color:#d7d4c9;background:#f8f7f2;color:#6d6651}
+.ps15-operacao-card-resumo{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:0}.ps15-operacao-card-resumo>span{display:grid;gap:2px;padding:10px 12px;border-right:1px solid #edf1ef}.ps15-operacao-card-resumo>span:last-child{border-right:0}.ps15-operacao-card-resumo small{font-size:8.8px;text-transform:uppercase;font-weight:850;color:#80908a}.ps15-operacao-card-resumo b{font-size:11px;color:#34414f}
+.ps15-operacao-card-rodape{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:9px 13px;background:#fafcfb;border-top:1px solid #edf1ef}.ps15-operacao-card-rodape>span{font-size:9.5px;color:#6f7e79;line-height:1.35}.ps15-operacao-card-rodape .ps15-link{flex:0 0 auto}
+.ps15-operacoes-voltar{margin-bottom:12px}.ps15-operacao-detalhe-head{display:flex;align-items:flex-start;justify-content:space-between;gap:14px;padding:14px;border:1px solid #dfe7e4;background:#fff;border-radius:12px;margin-bottom:11px}.ps15-operacao-detalhe-head>div{display:grid;gap:4px}.ps15-operacao-detalhe-head h3{margin:0;color:#2f3e4e;font-size:16px}.ps15-operacao-detalhe-head p{margin:0;color:#747b83;font-size:10px}.ps15-operacao-cancelar{border-color:#d6aaa2!important;background:#fff5f3!important;color:#8e4136!important;white-space:nowrap}.ps15-operacao-cancelar:disabled{opacity:.55;cursor:wait}
+.ps15-operacao-detalhe-resumo{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:8px;margin-bottom:11px}.ps15-operacao-detalhe-resumo>div{padding:10px 7px;text-align:center;border:1px solid #dfe7e4;background:#fff;border-radius:10px}.ps15-operacao-detalhe-resumo span{display:block;font-size:8.7px;text-transform:uppercase;font-weight:850;color:#7f8e89}.ps15-operacao-detalhe-resumo strong{display:block;margin-top:3px;font-size:18px;color:#193f6d}
+.ps15-operacao-info{display:grid;gap:5px;padding:11px 13px;margin-bottom:11px;border-left:3px solid #9dbdb1;background:#f6faf8;border-radius:8px}.ps15-operacao-info p{margin:0;font-size:10px;line-height:1.45;color:#525b65}.ps15-operacao-info p.cancelado{color:#8a4a40}.ps15-operacao-lista-box{border:1px solid #dfe7e4;background:#fff;border-radius:11px;overflow:hidden;margin-bottom:11px}.ps15-operacao-lista-box.excecoes{border-color:#e7d8b4}.ps15-operacao-lista-box.excecoes .ps15-lote-lista-head{background:#fffaf0}
+.ps15-operacao-participantes,.ps15-operacao-excecoes{max-height:280px;overflow:auto;padding:4px 10px}.ps15-operacao-participantes>article,.ps15-operacao-excecoes>article{border-bottom:1px solid #eef2f0}.ps15-operacao-participantes>article:last-child,.ps15-operacao-excecoes>article:last-child{border-bottom:0}.ps15-operacao-pessoa{display:flex;width:100%;align-items:flex-start;justify-content:space-between;gap:12px;padding:9px 3px;border:0;background:transparent;text-align:left;cursor:pointer}.ps15-operacao-pessoa:hover strong{text-decoration:underline}.ps15-operacao-pessoa>span:first-child{display:grid;gap:2px;min-width:0}.ps15-operacao-pessoa strong,.ps15-operacao-excecoes strong{font-size:10.8px;color:#34414f}.ps15-operacao-pessoa small,.ps15-operacao-excecoes small{font-size:9.4px;line-height:1.4;color:#7a8883}.ps15-operacao-pessoa-status{flex:0 0 auto;display:inline-flex;padding:3px 7px;border-radius:999px;background:#eef5f2;color:#275673;font-size:8.8px;font-weight:900}.ps15-operacao-pessoa-status.cancelado{background:#fff1ee;color:#8b4337}.ps15-operacao-pessoa-status.finalizado{background:#f0f5f8;color:#2f688b}.ps15-operacao-motivo-cancelamento{display:block;padding:0 3px 8px;color:#8e5a50;font-size:9px;line-height:1.4}.ps15-operacao-excecoes>article{display:grid;gap:2px;padding:9px 3px}
+@media(max-width:760px){.ps15-operacoes-toolbar{align-items:stretch;flex-direction:column}.ps15-operacoes-toolbar .btn{width:100%}.ps15-operacao-card-resumo{grid-template-columns:repeat(2,1fr)}.ps15-operacao-card-resumo>span{border-bottom:1px solid #edf1ef}.ps15-operacao-card-resumo>span:nth-child(2n){border-right:0}.ps15-operacao-card-resumo>span:nth-last-child(-n+2){border-bottom:0}.ps15-operacao-detalhe-head{flex-direction:column}.ps15-operacao-cancelar{width:100%}.ps15-operacao-detalhe-resumo{grid-template-columns:repeat(3,1fr)}}
+@media(max-width:520px){.ps15-operacao-card-topo,.ps15-operacao-card-rodape{align-items:stretch;flex-direction:column}.ps15-operacao-card-rodape .ps15-link{align-self:flex-start}.ps15-operacao-detalhe-resumo{grid-template-columns:repeat(2,1fr)}.ps15-operacao-pessoa{flex-direction:column}.ps15-operacao-pessoa-status{align-self:flex-start}}
+
+/* AP5.2 v65.42.103 — Etapa 5 · Destaque de aviso prévio no efetivo */
+#view-funcionarios .emp-card.em-aviso-previo{border-color:#ddc996;box-shadow:0 4px 14px rgba(112,84,28,.08)}
+#view-funcionarios .emp-card.em-aviso-previo.selecionado{border-color:#b8913f}
+#view-funcionarios .badge.st-aviso-previo{background:#fff6df;color:#7d5a17;border:1px solid #ead6a3}
+#view-funcionarios .badge.st-aviso-previo.vencido{background:#fff0ed;color:#964538;border-color:#e8c5bd}
+#overview-stats .pessoal-overview-kpi.c-aviso:disabled{cursor:wait;opacity:.78}

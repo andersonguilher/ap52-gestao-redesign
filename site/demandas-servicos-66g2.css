@@ -1,0 +1,69 @@
+/* Site AP5.2 — 6.6G.2 v65.42.156.4.9.2 (somente tela, não aplicar em templates de impressão) */
+#view-demandas .ap52-g2-section{margin-top:16px;border:1px solid #cad8e5;background:#fff;border-radius:14px;padding:15px;display:grid;gap:12px;min-width:0;overflow-wrap:anywhere}
+#view-demandas .ap52-g2-head{display:flex;align-items:flex-start;justify-content:space-between;gap:12px;flex-wrap:wrap}
+#view-demandas .ap52-g2-head h3{margin:0;color:#203447;font-size:1rem;font-weight:750}
+#view-demandas .ap52-g2-helper,#view-demandas .ap52-g2-muted{font-size:.81rem;line-height:1.45;color:#5b6a79;margin:5px 0 0}
+#view-demandas .ap52-g2-head-buttons{display:flex;flex-wrap:wrap;gap:7px}
+#view-demandas .ap52-g2-head-buttons .btn{min-height:40px;font-size:.8rem;white-space:normal}
+#view-demandas .ap52-g2-totals{display:flex;flex-wrap:wrap;gap:7px}
+#view-demandas .ap52-g2-totals span{padding:4px 9px;border:1px solid #dce6f0;border-radius:999px;background:#f7fafc;color:#3e5366;font-weight:700;font-size:.75rem}
+#view-demandas .ap52-g2-totals .ap52-g2-attention{border-color:#efcf96;background:#fffaec;color:#86600d}
+#view-demandas .ap52-g2-list{display:grid;gap:9px;min-width:0}
+#view-demandas .ap52-g2-item{border:1px solid #dae4ec;border-radius:10px;padding:12px;background:#f9fbfd;min-width:0}
+#view-demandas .ap52-g2-item-head{display:flex;align-items:flex-start;justify-content:space-between;gap:12px;flex-wrap:wrap}
+#view-demandas .ap52-g2-item-info{display:grid;gap:3px;min-width:0;flex:1 1 160px}
+#view-demandas .ap52-g2-item-info strong{font-size:.88rem;line-height:1.35;color:#203243}
+#view-demandas .ap52-g2-item-info small{font-size:.76rem;color:#62778a}
+#view-demandas .ap52-g2-pill{font-size:.7rem;font-weight:750;padding:4px 8px;border-radius:99px;border:1px solid #d8e2ed;background:#edf3f9;color:#426075;line-height:1.35;max-width:100%}
+#view-demandas .ap52-g2-pill-executado_informado{background:#e5edf3;border-color:#acc5d8;color:#0b3262}
+#view-demandas .ap52-g2-pill-cancelado,#view-demandas .ap52-g2-pill-nao_executavel{background:#f1f3f5;border-color:#d5dce2;color:#667281}
+#view-demandas .ap52-g2-pill-fora_competencia{background:#fef3e4;border-color:#e9ceac;color:#8d6019}
+#view-demandas .ap52-g2-cancelled .ap52-g2-item-info strong{text-decoration:line-through;color:#7e8792}
+#view-demandas .ap52-g2-reference,#view-demandas .ap52-g2-execution{font-size:.8rem;line-height:1.5;margin:8px 0 0;color:#4c6173;white-space:pre-wrap}
+#view-demandas .ap52-g2-execution{font-weight:650;color:#173b66}
+#view-demandas .ap52-g2-actions{display:flex;flex-wrap:wrap;gap:6px;margin-top:10px}
+#view-demandas .ap52-g2-actions .btn{font-size:.77rem;min-height:36px}
+#view-demandas .ap52-g2-row-summary{display:block;width:100%;margin-top:7px;padding:6px 8px;border:1px solid #d5e4ed;background:#eff7fc;color:#244d67;border-radius:7px;font-size:.76rem;font-weight:650}
+#view-demandas .ap52-g2-suggest{margin-top:7px;padding:5px 11px!important;font-size:.77rem!important;min-height:32px!important;display:inline-block;max-width:100%}
+#view-demandas .ap52-g2-archived{border:1px solid #e1e6ee;border-radius:10px;padding:10px;font-size:.8rem;color:#5a697a}
+#view-demandas .ap52-g2-archived summary{cursor:pointer;font-weight:700}
+#view-demandas .ap52-g2-archived-item{display:flex;gap:8px;justify-content:space-between;align-items:center;margin-top:9px;flex-wrap:wrap}
+#view-demandas .ap52-g2-warn,#view-demandas .ap52-g2-error,.ap52-g2-modal .ap52-g2-error{color:#9c371d;background:#fff7ef;border:1px solid #ecc5aa;border-radius:9px;padding:10px;margin:4px 0;font-size:.82rem}
+.ap52-g2-overlay{position:fixed;inset:0;background:rgba(15,23,42,.65);z-index:2147483010;padding:14px;display:flex;align-items:center;justify-content:center;overflow:auto}
+.ap52-g2-modal{background:#fff;color:#1f2937;border-radius:15px;max-width:630px;width:100%;max-height:calc(100vh - 28px);overflow-y:auto;padding:17px;box-shadow:0 25px 80px rgba(0,0,0,.24)}
+.ap52-g2-modal-head{display:flex;align-items:center;justify-content:space-between;gap:10px;border-bottom:1px solid #e1e7ed;padding-bottom:10px}
+.ap52-g2-modal-head h3{font-size:1.05rem;font-weight:750;margin:0}
+.ap52-g2-form{display:grid;gap:11px;margin-top:12px}
+.ap52-g2-hint{font-size:.85rem;color:#4b6377;line-height:1.45;margin:0}
+.ap52-g2-field{display:grid;gap:6px;font-size:.83rem;font-weight:700;color:#334155}
+.ap52-g2-field input,.ap52-g2-field textarea,.ap52-g2-field select{box-sizing:border-box;width:100%;min-width:0;border:1px solid #bbcbd8;border-radius:9px;min-height:43px;font:inherit;color:#1e293b;background:white;padding:9px 10px;font-size:.9rem}
+.ap52-g2-field textarea{resize:vertical;min-height:72px}
+.ap52-g2-field [type=date]{max-width:100%}
+.ap52-g2-field[hidden]{display:none}
+.ap52-g2-modal-foot{display:flex;gap:8px;justify-content:flex-end;flex-wrap:wrap;margin-top:4px}
+.ap52-g2-modal-foot .btn{min-height:43px}
+@media(max-width:620px){#view-demandas .ap52-g2-section{padding:12px}#view-demandas .ap52-g2-head-buttons{width:100%}#view-demandas .ap52-g2-head-buttons .btn{flex:1 1 145px}#view-demandas .ap52-g2-item-head{gap:7px}#view-demandas .ap52-g2-pill{white-space:normal}.ap52-g2-modal{padding:13px;border-radius:11px}.ap52-g2-modal-foot .btn{flex:1 1 120px}}
+#view-demandas .dem52-meta > div[hidden]{display:none!important}
+
+/* 6.6G.2 v65.42.156.4.9.2 — aviso persistente de concorrência e confirmação consciente */
+#view-demandas .ap52-g2-persistent-warn{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;border:1px solid #d5a557;background:#fff8e9;color:#6d430c;padding:11px 13px;border-radius:9px;font-size:.84rem;line-height:1.48}
+#view-demandas .ap52-g2-persistent-warn p{margin:0;flex:1 1 230px}
+#view-demandas .ap52-g2-persistent-warn .btn{min-height:36px}
+.ap52-g2-confirm-suggestion{display:flex;align-items:flex-start;gap:10px;border:1px solid #e0bf82;background:#fff9ea;padding:12px;border-radius:9px;color:#64480c;font-size:.84rem;font-weight:600;line-height:1.45}
+.ap52-g2-confirm-suggestion input[type=checkbox]{margin-top:3px;min-width:19px;min-height:19px;flex:0 0 auto;accent-color:#173d6b}
+.ap52-g2-form .ap52-g2-modal-foot .btn[disabled]{opacity:.65;cursor:not-allowed}
+
+/* Caminho B R2 — ações administrativas (dependem de RPC segura no banco). */
+#view-demandas .ap52-g2-archive-btn{border-color:#d9c5a5;color:#805817}
+#view-demandas .ap52-g2-archived-desc{display:grid;gap:3px;min-width:0;flex:1 1 175px}
+#view-demandas .ap52-g2-archived-desc small{font-size:.76rem;line-height:1.4;white-space:pre-wrap;overflow-wrap:anywhere}
+#view-demandas .ap52-g2-archived-item .btn{min-height:36px}
+
+/* 10.4.4 R1 — separação visual entre o tipo solicitado e o acompanhamento. */
+#view-demandas .ap52-g2-requested{margin:0;padding:9px 11px;border:1px solid #d5dee6;border-radius:9px;background:#f4faf6;color:#1b395e;font-size:.82rem;line-height:1.45;overflow-wrap:anywhere}
+#view-demandas .ap52-g2-requested strong{font-weight:750}
+
+/* 10.4.5 R2 — acompanhamento somente após migração/versão transacional */
+#view-demandas .ap52-g2-pill-em_execucao{background:#fff4de;border-color:#ebca85;color:#775014}
+#view-demandas .ap52-g2-progress{font-size:.8rem;line-height:1.5;margin:8px 0;color:#805b16;font-weight:650}
+#view-demandas .ap52-g2-execution-btn{background:#173b66;color:white}
