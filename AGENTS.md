@@ -21,7 +21,7 @@ Web system for personnel and operations management of the AP5.2 Coordination (Ri
 
 ## Repository map
 - `site/` — working copy (rebrand + UX). See `site/README-ALTERACOES.md` (canonical record of what changed).
-- `site_original_backup/` — pre-rebrand original. Read-only; the baseline for `rebrand.py`.
+- `site_original_backup/` — pre-rebrand original. Read-only; the baseline for `rebrand.py`. Git-ignored (local only; do not publish).
 - `site/index.original.html` — preserved original HTML.
 - `rebrand.py` — migrates teal/petrol colors to the brand palette (run inside a site folder).
 - `recolor_green.py` — recolors greens in the `demandas*` and `asfaltinho-*` CSS files (run from the repo root).

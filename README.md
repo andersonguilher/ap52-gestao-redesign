@@ -36,6 +36,6 @@ Command taken from `site/README-ALTERACOES.md`; **not executed** during initiali
 There are no test suites, `package.json`, or build step. Verification is manual in the browser. Suggested first check: the login screen opens with no console errors.
 
 ## Git state
-The repository has no commits. Files are still untracked; see [docs/WORKFLOW.md](docs/WORKFLOW.md).
+Public repository: https://github.com/andersonguilher/ap52-gestao-redesign. `site_original_backup/` and the brand manual PDF are kept local only (see `.gitignore`). Workflow: [docs/WORKFLOW.md](docs/WORKFLOW.md).
 
 See also [AGENTS.md](AGENTS.md) and [docs/STATUS.md](docs/STATUS.md).
