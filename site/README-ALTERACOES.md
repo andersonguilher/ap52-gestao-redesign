@@ -9,7 +9,7 @@ To publish: upload the contents of `site/` to Cloudflare Pages (you decide when)
 - `brand-rio.css` (loaded last): tokens, typography (Figtree ≈ Cera Pro), visible focus, buttons, cards, forms, login, brand triangle in headers, fixed sidebar, KPIs without clipped text, reduced-motion.
 - Action Center: fixed panel only at ≥1600px; below that it becomes a drawer (more room for content).
 - Font floors (10→11.5px etc.), PWA manifest/icons (192/512/apple) and brand theme-color.
-- `rebrand.py` (in the parent folder) reapplies the color migration from the backup.
+- The color migration was done with one-off scripts that have since been removed; the results are in this folder.
 
 ## Information density (brand-ux.css / brand-ux.js)
 - Dashboard: 5,094px -> ~1,600px. KPIs in one row; "Attention needed" shows only items with occurrences; "Alerts" shows 5 + "Show all"; analytical sections (quick reports, distribution, management units, trend, stability, movements) become closed accordions (state saved in the browser).

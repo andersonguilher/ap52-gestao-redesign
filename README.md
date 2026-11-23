@@ -1,6 +1,6 @@
 # AP5.2 — Gestão Estratégica
 
-A UI/UX transformation project for the existing web system for personnel and operations control of the AP5.2 Coordination, using the Rio de Janeiro City Hall visual identity (Brand Manual 2025). Its only goal is to demonstrate the new UI/UX to the developers of the original system (https://ap52gestaoestrategica.pages.dev/); it does not replace the original. This repository holds the local rebranded copy, the backup of the original, and the color migration scripts.
+A UI/UX transformation project for the existing web system for personnel and operations control of the AP5.2 Coordination, using the Rio de Janeiro City Hall visual identity (Brand Manual 2025). Its only goal is to demonstrate the new UI/UX to the developers of the original system (https://ap52gestaoestrategica.pages.dev/); it does not replace the original. This repository holds the local rebranded copy, and a local backup of the original.
 
 ## Available today
 - Static site in `site/` (modules: dashboard, employees, demands, schedules, warehouse, contracts, map, RVL, Asfaltinho). The UI is in pt-BR.
@@ -23,10 +23,6 @@ python -m http.server 8765
 # open http://localhost:8765/
 ```
 Command taken from `site/README-ALTERACOES.md`; **not executed** during initialization.
-
-## Color scripts (not executed during initialization)
-- `rebrand.py` — reapplies the palette migration (run inside the site folder that contains the `*.css`/`*.js` files).
-- `recolor_green.py` — recolors greens in `site/demandas*.css` and `site/asfaltinho-*.css` (run from the repo root). Both rewrite files: review the diff afterwards.
 
 ## Configuration
 - The client uses the project's Supabase with a public key embedded in `site/index.html`.

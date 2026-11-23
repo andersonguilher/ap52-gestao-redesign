@@ -9,7 +9,7 @@ Demonstrate a new UI/UX (Brand Manual 2025 rebrand + lower information density) 
 - The former `site/.git` (1 commit) was moved to `../site-nested-git-backup` (outside the repo).
 - `site/` has 74 entries; `site_original_backup/` has 63 files (original).
 - Change log: `site/README-ALTERACOES.md` (palette, `brand-rio.css`, `brand-ux.*`, 6-step RVL wizard, PWA).
-- Green recoloring in `demandas*`/`asfaltinho-*` CSS done by `recolor_green.py` (script exists).
+- The one-off color migration scripts (`rebrand.py`, `recolor_green.py`) were deleted; their results are already in `site/`.
 
 ## Session summary (2026-11-23)
 - Initialized per INIT.md: created AGENTS.md, README.md, docs/STATUS.md, docs/WORKFLOW.md; translated `site/README-ALTERACOES.md` to English. No site code changed.
