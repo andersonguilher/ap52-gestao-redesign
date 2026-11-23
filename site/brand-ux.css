@@ -626,7 +626,7 @@ body.central-acao-aberta .central-acao-toggle{display:none!important;}
 /* ==========================================================================
    Calendários: fins de semana em vermelho
    ========================================================================== */
-:root{--rio-wk:#c62828;--rio-wk-bg:#fdeeee;--rio-wk-line:#f1b9b9;}
+:root{--rio-wk:#5f6f7c;--rio-wk-bg:#eef1f4;--rio-wk-line:#d5dbe1;}
 
 /* Ponto e frequência */
 #view-ponto .ponto-weekdays span:nth-child(n+6){color:var(--rio-wk)!important;background:var(--rio-wk-bg)!important;}
